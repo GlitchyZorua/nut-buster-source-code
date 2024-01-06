@@ -1,2 +1,2 @@
 # nut-buster-source-code
-game delated due shitty code (not by me)
+game delayed due shitty code (not by me)
