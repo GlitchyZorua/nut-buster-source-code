@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Power Impact.mp3-7d9d7aa4d72062f3f91e39c18082be98.mp3str"
+
+[deps]
+
+source_file="res://Assets/SFX/Power Impact.mp3"
+dest_files=[ "res://.import/Power Impact.mp3-7d9d7aa4d72062f3f91e39c18082be98.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

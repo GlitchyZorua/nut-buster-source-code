@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Her Maginificent World.mp3-f1a8b13b4e3221a17293e05792b8233a.mp3str"
+
+[deps]
+
+source_file="res://Assets/Music/Her Maginificent World.mp3"
+dest_files=[ "res://.import/Her Maginificent World.mp3-f1a8b13b4e3221a17293e05792b8233a.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

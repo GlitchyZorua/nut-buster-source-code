@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Flowing Water.mp3-031453abee4e21755092a0c450799971.mp3str"
+
+[deps]
+
+source_file="res://Assets/SFX/Flowing Water.mp3"
+dest_files=[ "res://.import/Flowing Water.mp3-031453abee4e21755092a0c450799971.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

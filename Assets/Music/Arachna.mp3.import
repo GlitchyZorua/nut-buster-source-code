@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Arachna.mp3-6e05c20db2a446ffb222239691b8e3e3.mp3str"
+
+[deps]
+
+source_file="res://Assets/Music/Arachna.mp3"
+dest_files=[ "res://.import/Arachna.mp3-6e05c20db2a446ffb222239691b8e3e3.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

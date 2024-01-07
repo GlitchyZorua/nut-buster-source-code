@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Zakaria.mp3-9fc18b09d1489458242838744240533e.mp3str"
+
+[deps]
+
+source_file="res://Assets/Music/Zakaria.mp3"
+dest_files=[ "res://.import/Zakaria.mp3-9fc18b09d1489458242838744240533e.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

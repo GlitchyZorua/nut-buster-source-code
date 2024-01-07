@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/EvilLaugh.mp3-16e7daea4d47b62d0e129c982c0cd58d.mp3str"
+
+[deps]
+
+source_file="res://Assets/SFX/EvilLaugh.mp3"
+dest_files=[ "res://.import/EvilLaugh.mp3-16e7daea4d47b62d0e129c982c0cd58d.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

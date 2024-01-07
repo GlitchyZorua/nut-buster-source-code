@@ -1,0 +1,476 @@
+[gd_scene load_steps=46 format=2]
+
+[ext_resource path="res://Assets/Shaders/Outline.tres" type="Material" id=1]
+[ext_resource path="res://Assets/Sprites/Misc/MiniGameBorder.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Sprites/Sprite/MiniGameBaa.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Codes/MiniRhythm.gd" type="Script" id=4]
+[ext_resource path="res://Assets/Fonts/m5x7.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://Assets/Shaders/VHS.gdshader" type="Shader" id=6]
+[ext_resource path="res://Assets/SFX/RhythmMissed.mp3" type="AudioStream" id=7]
+[ext_resource path="res://Assets/SFX/RhythmBeat.mp3" type="AudioStream" id=8]
+[ext_resource path="res://Assets/Scenes/Misc/RhythmResults.tscn" type="PackedScene" id=9]
+
+[sub_resource type="AtlasTexture" id=22]
+atlas = ExtResource( 2 )
+region = Rect2( 0, 144, 308, 36 )
+
+[sub_resource type="AtlasTexture" id=14]
+atlas = ExtResource( 2 )
+region = Rect2( 0, 0, 308, 36 )
+
+[sub_resource type="AtlasTexture" id=15]
+atlas = ExtResource( 2 )
+region = Rect2( 0, 36, 308, 36 )
+
+[sub_resource type="AtlasTexture" id=16]
+atlas = ExtResource( 2 )
+region = Rect2( 0, 72, 308, 36 )
+
+[sub_resource type="AtlasTexture" id=17]
+atlas = ExtResource( 2 )
+region = Rect2( 0, 108, 308, 36 )
+
+[sub_resource type="AtlasTexture" id=18]
+atlas = ExtResource( 2 )
+region = Rect2( 0, 144, 308, 36 )
+
+[sub_resource type="SpriteFrames" id=19]
+animations = [ {
+"frames": [ SubResource( 22 ) ],
+"loop": true,
+"name": "Default",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ) ],
+"loop": false,
+"name": "Pressed",
+"speed": 30.0
+} ]
+
+[sub_resource type="DynamicFont" id=28]
+font_data = ExtResource( 5 )
+
+[sub_resource type="StyleBoxFlat" id=29]
+bg_color = Color( 1, 1, 1, 1 )
+border_color = Color( 1, 1, 1, 1 )
+
+[sub_resource type="StyleBoxFlat" id=30]
+bg_color = Color( 1, 0.211765, 0, 1 )
+
+[sub_resource type="DynamicFont" id=31]
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=34]
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 5 )
+
+[sub_resource type="Animation" id=38]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 704, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("BG3:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 600, 0 ) ]
+}
+
+[sub_resource type="Animation" id=37]
+resource_name = "Transition"
+length = 2.0
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 2 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "timing"
+} ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rect_position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 704, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=39]
+resource_name = "Transitioning"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("BG3:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 600, 0 ), Vector2( -104, 0 ), Vector2( -104, 0 ) ]
+}
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 3 )
+region = Rect2( 512, 600, 512, 300 )
+
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 3 )
+region = Rect2( 1024, 600, 512, 300 )
+
+[sub_resource type="AtlasTexture" id=7]
+atlas = ExtResource( 3 )
+region = Rect2( 512, 300, 512, 300 )
+
+[sub_resource type="AtlasTexture" id=8]
+atlas = ExtResource( 3 )
+region = Rect2( 1024, 300, 512, 300 )
+
+[sub_resource type="AtlasTexture" id=11]
+atlas = ExtResource( 3 )
+region = Rect2( 1536, 300, 512, 300 )
+
+[sub_resource type="AtlasTexture" id=12]
+atlas = ExtResource( 3 )
+region = Rect2( 0, 600, 512, 300 )
+
+[sub_resource type="AtlasTexture" id=9]
+atlas = ExtResource( 3 )
+region = Rect2( 1536, 0, 512, 300 )
+
+[sub_resource type="AtlasTexture" id=10]
+atlas = ExtResource( 3 )
+region = Rect2( 0, 300, 512, 300 )
+
+[sub_resource type="AtlasTexture" id=23]
+atlas = ExtResource( 3 )
+region = Rect2( 1536, 600, 512, 300 )
+
+[sub_resource type="AtlasTexture" id=25]
+atlas = ExtResource( 3 )
+region = Rect2( 0, 900, 512, 300 )
+
+[sub_resource type="AtlasTexture" id=26]
+atlas = ExtResource( 3 )
+region = Rect2( 512, 900, 512, 300 )
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 3 )
+region = Rect2( 0, 0, 512, 300 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 3 )
+region = Rect2( 512, 0, 512, 300 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 3 )
+region = Rect2( 1024, 0, 512, 300 )
+
+[sub_resource type="AtlasTexture" id=24]
+atlas = ExtResource( 3 )
+region = Rect2( 1024, 900, 512, 300 )
+
+[sub_resource type="SpriteFrames" id=20]
+animations = [ {
+"frames": [ SubResource( 5 ), SubResource( 6 ), SubResource( 6 ), SubResource( 6 ), SubResource( 6 ), SubResource( 6 ), SubResource( 6 ) ],
+"loop": false,
+"name": "Up",
+"speed": 12.0
+}, {
+"frames": [ SubResource( 7 ), SubResource( 8 ), SubResource( 8 ), SubResource( 8 ), SubResource( 8 ), SubResource( 8 ), SubResource( 8 ) ],
+"loop": false,
+"name": "Down",
+"speed": 12.0
+}, {
+"frames": [ SubResource( 11 ), SubResource( 12 ), SubResource( 12 ), SubResource( 12 ), SubResource( 12 ), SubResource( 12 ), SubResource( 12 ) ],
+"loop": false,
+"name": "Left",
+"speed": 12.0
+}, {
+"frames": [ SubResource( 9 ), SubResource( 10 ), SubResource( 10 ), SubResource( 10 ), SubResource( 10 ), SubResource( 10 ), SubResource( 10 ) ],
+"loop": false,
+"name": "Right",
+"speed": 12.0
+}, {
+"frames": [ SubResource( 23 ), SubResource( 23 ), SubResource( 23 ), SubResource( 23 ), SubResource( 23 ), SubResource( 23 ), SubResource( 23 ) ],
+"loop": true,
+"name": "MissedLeft",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 25 ), SubResource( 25 ), SubResource( 25 ), SubResource( 25 ), SubResource( 25 ), SubResource( 25 ), SubResource( 25 ) ],
+"loop": true,
+"name": "MissedDown",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 26 ), SubResource( 26 ), SubResource( 26 ), SubResource( 26 ), SubResource( 26 ), SubResource( 26 ), SubResource( 26 ) ],
+"loop": true,
+"name": "MissedRight",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 1 ), SubResource( 1 ), SubResource( 1 ) ],
+"loop": true,
+"name": "Idle",
+"speed": 12.0
+}, {
+"frames": [ SubResource( 24 ), SubResource( 24 ), SubResource( 24 ), SubResource( 24 ), SubResource( 24 ), SubResource( 24 ), SubResource( 24 ) ],
+"loop": true,
+"name": "MissedUp",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=27]
+extents = Vector2( 8, 24 )
+
+[sub_resource type="Animation" id=32]
+resource_name = "CameraBop"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:zoom")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.95, 0.95 ), Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=33]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:zoom")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="DynamicFont" id=35]
+outline_size = 2
+outline_color = Color( 1, 0.203922, 0, 1 )
+font_data = ExtResource( 5 )
+
+[sub_resource type="ShaderMaterial" id=36]
+shader = ExtResource( 6 )
+shader_param/overlay = true
+shader_param/scanlines_opacity = 0.4
+shader_param/scanlines_width = 0.25
+shader_param/grille_opacity = 0.3
+shader_param/resolution = Vector2( 640, 480 )
+shader_param/pixelate = true
+shader_param/roll = false
+shader_param/roll_speed = 8.0
+shader_param/roll_size = 15.0
+shader_param/roll_variation = 1.8
+shader_param/distort_intensity = 0.05
+shader_param/noise_opacity = 0.4
+shader_param/noise_speed = 5.0
+shader_param/static_noise_intensity = 0.06
+shader_param/aberration = 0.03
+shader_param/brightness = 1.4
+shader_param/discolor = true
+shader_param/warp_amount = 1.0
+shader_param/clip_warp = false
+shader_param/vignette_intensity = 100.0
+shader_param/vignette_opacity = 0.5
+
+[node name="MiniRhythm" type="Area2D" groups=["NoteSlicer"]]
+collision_layer = 256
+collision_mask = 128
+script = ExtResource( 4 )
+HP = 50
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MiniGameBorder" type="AnimatedSprite" parent="CanvasLayer"]
+material = ExtResource( 1 )
+position = Vector2( 168, 32 )
+frames = SubResource( 19 )
+animation = "Default"
+
+[node name="HPBorder" type="ColorRect" parent="CanvasLayer/MiniGameBorder"]
+margin_left = -138.0
+margin_top = 18.0
+margin_right = 130.0
+margin_bottom = 38.0
+
+[node name="HPBorder" type="ColorRect" parent="CanvasLayer/MiniGameBorder/HPBorder"]
+margin_left = 2.0
+margin_top = 2.0
+margin_right = 266.0
+margin_bottom = 18.0
+color = Color( 0.054902, 0.0313726, 0.0980392, 1 )
+
+[node name="HPBar" type="ProgressBar" parent="CanvasLayer"]
+margin_left = 112.0
+margin_top = 56.0
+margin_right = 288.0
+margin_bottom = 64.0
+custom_fonts/font = SubResource( 28 )
+custom_styles/fg = SubResource( 29 )
+custom_styles/bg = SubResource( 30 )
+step = 0.1
+value = 50.0
+percent_visible = false
+
+[node name="HPCounter" type="Label" parent="CanvasLayer/HPBar"]
+anchor_left = 0.0841112
+anchor_top = 11.75
+anchor_right = 0.0841112
+anchor_bottom = 11.75
+margin_left = -88.0
+margin_top = -104.0
+margin_right = 94.0
+margin_bottom = -78.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 31 )
+text = "HP: 100"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="NotesPos" type="Position2D" parent="CanvasLayer"]
+position = Vector2( 272, 32 )
+
+[node name="Text 1" type="Label" parent="CanvasLayer/NotesPos"]
+modulate = Color( 1, 1, 1, 0 )
+anchor_left = 0.1875
+anchor_top = 1.27666
+anchor_right = 0.1875
+anchor_bottom = 1.27666
+margin_left = -88.0
+margin_top = -104.0
+margin_right = 94.0
+margin_bottom = -78.0
+custom_colors/font_color = Color( 0.431373, 0.431373, 0.431373, 1 )
+custom_fonts/font = SubResource( 34 )
+text = "[Z] to skip"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="RhythmResults" parent="CanvasLayer" instance=ExtResource( 9 )]
+margin_left = 704.0
+margin_right = 7360.0
+margin_bottom = 3900.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/RhythmResults"]
+anims/RESET = SubResource( 38 )
+anims/Transition = SubResource( 37 )
+anims/Transitioning = SubResource( 39 )
+
+[node name="Sprite" type="AnimatedSprite" parent="."]
+material = ExtResource( 1 )
+position = Vector2( 256, 150 )
+frames = SubResource( 20 )
+animation = "Idle"
+frame = 1
+playing = true
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+color = Color( 0.054902, 0.0313726, 0.0980392, 1 )
+polygon = PoolVector2Array( 512, 300, 379, 300, 512, 216 )
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+position = Vector2( 32, 32 )
+shape = SubResource( 27 )
+
+[node name="Camera" type="Camera2D" parent="."]
+position = Vector2( 256, 150 )
+current = true
+
+[node name="Animation" type="AnimationPlayer" parent="Camera"]
+anims/CameraBop = SubResource( 32 )
+anims/RESET = SubResource( 33 )
+
+[node name="Hint" type="Label" parent="."]
+anchor_left = 0.1875
+anchor_top = 1.27666
+anchor_right = 0.1875
+anchor_bottom = 1.27666
+margin_left = 336.0
+margin_top = 328.0
+margin_right = 518.0
+margin_bottom = 354.0
+rect_rotation = -32.3203
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 35 )
+text = "[Q] to quit"
+align = 2
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="VHSFilter" type="ColorRect" parent="."]
+visible = false
+material = SubResource( 36 )
+margin_right = 512.0
+margin_bottom = 300.0
+
+[node name="Beat" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+volume_db = -8.0
+bus = "SFX"
+
+[node name="Miss" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+volume_db = -10.0
+pitch_scale = 2.0
+bus = "SFX"
+
+[connection signal="animation_finished" from="CanvasLayer/MiniGameBorder" to="." method="_on_MiniGameBorder_animation_finished"]
+[connection signal="animation_finished" from="CanvasLayer/RhythmResults/AnimationPlayer" to="CanvasLayer/RhythmResults" method="_on_AnimationPlayer_animation_finished"]
+[connection signal="animation_finished" from="Sprite" to="." method="_on_Sprite_animation_finished"]
+
+[editable path="CanvasLayer/RhythmResults"]

@@ -1,0 +1,193 @@
+[gd_scene load_steps=19 format=2]
+
+[ext_resource path="res://Assets/Scenes/Characters/PlayableGaa.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Assets/Backgrounds/GaaBG/ZakumaHallway1Right.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Scenes/Misc/DialogueInteractor.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Assets/SFX/Fan.mp3" type="AudioStream" id=5]
+[ext_resource path="res://Assets/Codes/Sections.gd" type="Script" id=6]
+[ext_resource path="res://Assets/Scenes/Misc/Portal.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Assets/Sprites/Misc/LargeShadow.png" type="Texture" id=9]
+[ext_resource path="res://Assets/Sprites/Sprite/Badman.png" type="Texture" id=11]
+[ext_resource path="res://Assets/Codes/AnimatedExpressions.gd" type="Script" id=12]
+
+[sub_resource type="AtlasTexture" id=7]
+atlas = ExtResource( 2 )
+region = Rect2( 0, 0, 512, 300 )
+
+[sub_resource type="AtlasTexture" id=8]
+atlas = ExtResource( 2 )
+region = Rect2( 512, 0, 512, 300 )
+
+[sub_resource type="SpriteFrames" id=6]
+animations = [ {
+"frames": [ SubResource( 7 ), SubResource( 8 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="AtlasTexture" id=21]
+atlas = ExtResource( 11 )
+region = Rect2( 3040, 0, 160, 160 )
+
+[sub_resource type="AtlasTexture" id=19]
+atlas = ExtResource( 11 )
+region = Rect2( 3040, 0, 160, 160 )
+
+[sub_resource type="AtlasTexture" id=20]
+atlas = ExtResource( 11 )
+region = Rect2( 3200, 0, 160, 160 )
+
+[sub_resource type="SpriteFrames" id=22]
+animations = [ {
+"frames": [ SubResource( 21 ) ],
+"loop": true,
+"name": "Idle",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 19 ), SubResource( 20 ) ],
+"loop": true,
+"name": "Talking",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=23]
+extents = Vector2( 21.8116, 56.6953 )
+
+[sub_resource type="RectangleShape2D" id=24]
+extents = Vector2( 20.342, 19.5202 )
+
+[node name="Section 2" type="Node2D"]
+script = ExtResource( 6 )
+section = 2.6
+music = "res://Assets/Music/Hey Warden!.mp3"
+
+[node name="Backgrounds" type="ParallaxBackground" parent="."]
+
+[node name="1" type="ParallaxLayer" parent="Backgrounds"]
+
+[node name="Background" type="ColorRect" parent="Backgrounds/1"]
+margin_right = 512.0
+margin_bottom = 300.0
+color = Color( 0.733333, 0.431373, 0, 1 )
+
+[node name="2" type="ParallaxLayer" parent="Backgrounds"]
+
+[node name="3" type="ParallaxLayer" parent="Backgrounds"]
+
+[node name="4" type="ParallaxLayer" parent="Backgrounds"]
+
+[node name="Prison" type="AnimatedSprite" parent="Backgrounds/4"]
+position = Vector2( 256, 150 )
+frames = SubResource( 6 )
+playing = true
+
+[node name="Walls" type="StaticBody2D" parent="."]
+
+[node name="Portal" parent="Walls" instance=ExtResource( 7 )]
+position = Vector2( -8, 184 )
+next_scene_path = "res://Assets/Scenes/Gaa Section/GaaSection 2.tscn"
+player_spawn_location = Vector2( 984, 200 )
+
+[node name="Pointer" parent="Walls/Portal/Arrow" index="0"]
+position = Vector2( 16, 200 )
+rotation = 1.57079
+
+[node name="Collision" type="CollisionPolygon2D" parent="Walls"]
+polygon = PoolVector2Array( -8, 280, 296, 280, 296, 256, 368, 256, 368, 280, 496, 280, 496, 264, 384, 152, -8, 152, -8, 0, 528, 0, 528, 300, -24, 300, -24, 280, -24, 0, -8, 0 )
+
+[node name="Shadow" type="Sprite" parent="."]
+position = Vector2( 379, 198 )
+scale = Vector2( 2, 0.8 )
+texture = ExtResource( 9 )
+
+[node name="Shadow2" type="Sprite" parent="."]
+position = Vector2( 450, 264 )
+scale = Vector2( 2, 0.8 )
+texture = ExtResource( 9 )
+
+[node name="YSort" type="YSort" parent="."]
+
+[node name="PlayableGaa" parent="YSort" instance=ExtResource( 1 )]
+modulate = Color( 1, 0.882353, 0.796078, 1 )
+position = Vector2( 32, 200 )
+
+[node name="BottomRight" parent="YSort/PlayableGaa/Camera/Limits" index="1"]
+position = Vector2( 512, 300 )
+
+[node name="AlmostDead" parent="YSort/PlayableGaa/Misc" index="0"]
+frame = 1
+
+[node name="Icon" parent="YSort/PlayableGaa/MiniMenu/Background/Holder/Options/Stats" index="9"]
+frame = 3
+
+[node name="Badman" type="AnimatedSprite" parent="YSort"]
+modulate = Color( 1, 0.882353, 0.796078, 1 )
+position = Vector2( 384, 184 )
+frames = SubResource( 22 )
+animation = "Idle"
+playing = true
+offset = Vector2( 0, -32 )
+script = ExtResource( 12 )
+
+[node name="Badman2" type="AnimatedSprite" parent="YSort"]
+modulate = Color( 1, 0.882353, 0.796078, 1 )
+position = Vector2( 456, 248 )
+frames = SubResource( 22 )
+animation = "Idle"
+playing = true
+offset = Vector2( 0, -32 )
+script = ExtResource( 12 )
+
+[node name="Badman3" type="Sprite" parent="YSort"]
+modulate = Color( 1, 0.882353, 0.796078, 1 )
+position = Vector2( 328, 256 )
+texture = ExtResource( 11 )
+offset = Vector2( 0, -32 )
+flip_h = true
+hframes = 25
+frame = 18
+
+[node name="DialogueInteractor2" parent="YSort" instance=ExtResource( 4 )]
+position = Vector2( 416, 192 )
+DIALOGUE = 1
+INDEX = 35
+ALT_INDEX = 61
+
+[node name="Collision" parent="YSort/DialogueInteractor2" index="0"]
+position = Vector2( -0.764984, 8.2498 )
+rotation = -0.705861
+shape = SubResource( 23 )
+
+[node name="DialogueInteractor3" parent="YSort" instance=ExtResource( 4 )]
+position = Vector2( 336, 248 )
+DIALOGUE = 1
+INDEX = 42
+ALT_INDEX = 63
+
+[node name="Collision" parent="YSort/DialogueInteractor3" index="0"]
+shape = SubResource( 24 )
+
+[node name="Indicator" parent="YSort/DialogueInteractor3" index="1"]
+margin_top = -32.0
+margin_bottom = -8.0
+text = "[Z] Inspect"
+
+[node name="Foregrounds" type="ParallaxBackground" parent="."]
+layer = 0
+
+[node name="1" type="ParallaxLayer" parent="Foregrounds"]
+
+[node name="Ambience" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+volume_db = -5.0
+autoplay = true
+
+[node name="Cutscene" type="AnimationPlayer" parent="."]
+
+[editable path="Walls/Portal"]
+[editable path="Walls/Portal/Transition"]
+[editable path="YSort/PlayableGaa"]
+[editable path="YSort/PlayableGaa/MiniMenu"]
+[editable path="YSort/DialogueInteractor2"]
+[editable path="YSort/DialogueInteractor3"]

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Forever Insanity.mp3-e59fafcc25fa4fe30b0ea71bed783ad3.mp3str"
+
+[deps]
+
+source_file="res://Assets/Music/Forever Insanity.mp3"
+dest_files=[ "res://.import/Forever Insanity.mp3-e59fafcc25fa4fe30b0ea71bed783ad3.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

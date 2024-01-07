@@ -1,0 +1,155 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://Assets/Sprites/Sprite/Pico.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Sprites/Misc/LargeShadow.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Fonts/m5x7.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://Assets/Codes/PlayerDamageArea.gd" type="Script" id=6]
+[ext_resource path="res://Assets/SFX/Damage.mp3" type="AudioStream" id=7]
+[ext_resource path="res://Assets/SFX/Footsteps.mp3" type="AudioStream" id=9]
+[ext_resource path="res://Assets/Scenes/Misc/SoftCollision.tscn" type="PackedScene" id=10]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 24, 8 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 30, 40 )
+
+[sub_resource type="CircleShape2D" id=11]
+radius = 8.0
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 2032, 1056 )
+
+[sub_resource type="DynamicFont" id=8]
+font_data = ExtResource( 4 )
+
+[sub_resource type="StyleBoxFlat" id=9]
+bg_color = Color( 1, 0.470588, 0, 1 )
+
+[sub_resource type="StyleBoxFlat" id=10]
+bg_color = Color( 0, 0.45098, 0.219608, 1 )
+
+[sub_resource type="Animation" id=12]
+resource_name = "Idle"
+length = 0.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
+
+[sub_resource type="Animation" id=13]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1 ]
+}
+
+[sub_resource type="Animation" id=14]
+resource_name = "Run"
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 4, 5, 6, 7 ]
+}
+
+[node name="Pico" type="KinematicBody2D" groups=["Enemy"]]
+collision_layer = 4
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 8 )
+shape = SubResource( 1 )
+
+[node name="Shadow" type="Sprite" parent="."]
+position = Vector2( -2.38419e-07, 12 )
+scale = Vector2( 2, 0.8 )
+texture = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+flip_h = true
+hframes = 8
+frame = 1
+
+[node name="DamageArea" type="Area2D" parent="."]
+script = ExtResource( 6 )
+
+[node name="Collision" type="CollisionShape2D" parent="DamageArea"]
+position = Vector2( 16, 0 )
+scale = Vector2( 0.8, 0.4 )
+shape = SubResource( 2 )
+disabled = true
+
+[node name="NoticeArea" type="Area2D" parent="."]
+
+[node name="Collision" type="CollisionShape2D" parent="NoticeArea"]
+shape = SubResource( 11 )
+
+[node name="PlayerFinder" type="Area2D" parent="."]
+visible = false
+
+[node name="Collision" type="CollisionShape2D" parent="PlayerFinder"]
+shape = SubResource( 6 )
+
+[node name="SoftCollision" parent="." instance=ExtResource( 10 )]
+visible = false
+
+[node name="HPBar" type="ProgressBar" parent="."]
+margin_left = 8.0
+margin_top = -16.0
+margin_right = 24.0
+margin_bottom = -12.0
+rect_rotation = -89.9999
+custom_fonts/font = SubResource( 8 )
+custom_styles/fg = SubResource( 9 )
+custom_styles/bg = SubResource( 10 )
+value = 50.0
+percent_visible = false
+
+[node name="Animation" type="AnimationPlayer" parent="."]
+playback_process_mode = 0
+anims/Idle = SubResource( 12 )
+anims/RESET = SubResource( 13 )
+anims/Run = SubResource( 14 )
+
+[node name="Timer" type="Timer" parent="."]
+process_mode = 0
+wait_time = 0.6
+
+[node name="Hurt" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+volume_db = -5.0
+bus = "SFX"
+
+[node name="Footsteps" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
+volume_db = -10.0
+pitch_scale = 0.8
+bus = "SFX"
+
+[editable path="SoftCollision"]

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/SuperKick.mp3-20d19d0fd2343fd84a87cc37ab49c84c.mp3str"
+
+[deps]
+
+source_file="res://Assets/SFX/SuperKick.mp3"
+dest_files=[ "res://.import/SuperKick.mp3-20d19d0fd2343fd84a87cc37ab49c84c.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

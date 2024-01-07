@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Jumpscare Noise.mp3-ce9e1f8b682f0b3ce167ba878c50e3e0.mp3str"
+
+[deps]
+
+source_file="res://Assets/SFX/Jumpscare Noise.mp3"
+dest_files=[ "res://.import/Jumpscare Noise.mp3-ce9e1f8b682f0b3ce167ba878c50e3e0.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

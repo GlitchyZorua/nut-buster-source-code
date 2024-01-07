@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Ultimato.mp3-a32628b3d024840b3bb5cf9f7b9afc55.mp3str"
+
+[deps]
+
+source_file="res://Assets/Music/Ultimato.mp3"
+dest_files=[ "res://.import/Ultimato.mp3-a32628b3d024840b3bb5cf9f7b9afc55.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

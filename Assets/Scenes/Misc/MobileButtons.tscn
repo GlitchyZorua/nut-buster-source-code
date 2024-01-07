@@ -1,0 +1,90 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://Assets/Scenes/Misc/VirtualJoystick.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Assets/Sprites/MobileButtons/Normal/MobileButtonEsc.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Sprites/MobileButtons/Normal/MobileButtonZ.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Sprites/MobileButtons/Normal/MobileButtonx.png" type="Texture" id=7]
+[ext_resource path="res://Assets/Sprites/MobileButtons/Normal/MobileButtonC.png" type="Texture" id=8]
+[ext_resource path="res://Assets/Sprites/MobileButtons/Normal/MobileButtonA.png" type="Texture" id=9]
+[ext_resource path="res://Assets/Sprites/MobileButtons/Normal/MobileButtonS.png" type="Texture" id=10]
+[ext_resource path="res://Assets/Sprites/MobileButtons/Normal/MobileButtonV.png" type="Texture" id=11]
+[ext_resource path="res://Assets/Codes/MobileButtons.gd" type="Script" id=15]
+[ext_resource path="res://Assets/Sprites/MobileButtons/Pressed/MobileButtonxPressed.png" type="Texture" id=16]
+[ext_resource path="res://Assets/Sprites/MobileButtons/Pressed/MobileButtonCPressed.png" type="Texture" id=18]
+[ext_resource path="res://Assets/Sprites/MobileButtons/Pressed/MobileButtonSPressed.png" type="Texture" id=19]
+[ext_resource path="res://Assets/Sprites/MobileButtons/Pressed/MobileButtonVPressed.png" type="Texture" id=20]
+[ext_resource path="res://Assets/Sprites/MobileButtons/Pressed/MobileButtonZPressed.png" type="Texture" id=21]
+[ext_resource path="res://Assets/Sprites/MobileButtons/Pressed/MobileButtonAPressed.png" type="Texture" id=22]
+
+[node name="MobileButtons" type="CanvasLayer"]
+pause_mode = 2
+layer = 128
+script = ExtResource( 15 )
+
+[node name="Holder" type="Control" parent="."]
+modulate = Color( 1, 1, 1, 0.372549 )
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="Virtual joystick" parent="Holder" instance=ExtResource( 1 )]
+margin_left = 32.0
+margin_top = 128.0
+margin_right = 232.0
+margin_bottom = 328.0
+action_left = "ui_move_left"
+action_right = "ui_move_right"
+action_up = "ui_move_up"
+action_down = "ui_move_down"
+
+[node name="Esc" type="TouchScreenButton" parent="Holder"]
+position = Vector2( 16, 16 )
+normal = ExtResource( 5 )
+passby_press = true
+action = "ui_cancel"
+
+[node name="Z" type="TouchScreenButton" parent="Holder"]
+position = Vector2( 448, 232 )
+normal = ExtResource( 6 )
+pressed = ExtResource( 21 )
+passby_press = true
+action = "ui_attack"
+
+[node name="X" type="TouchScreenButton" parent="Holder"]
+position = Vector2( 416, 238 )
+scale = Vector2( 0.8, 0.8 )
+normal = ExtResource( 7 )
+pressed = ExtResource( 16 )
+passby_press = true
+action = "ui_block"
+
+[node name="C" type="TouchScreenButton" parent="Holder"]
+position = Vector2( 384, 238 )
+scale = Vector2( 0.8, 0.8 )
+normal = ExtResource( 8 )
+pressed = ExtResource( 18 )
+passby_press = true
+action = "ui_menu"
+
+[node name="S" type="TouchScreenButton" parent="Holder"]
+position = Vector2( 416, 200 )
+scale = Vector2( 0.8, 0.8 )
+normal = ExtResource( 10 )
+pressed = ExtResource( 19 )
+passby_press = true
+action = "ui_superkick"
+
+[node name="V" type="TouchScreenButton" parent="Holder"]
+position = Vector2( 384, 200 )
+scale = Vector2( 0.8, 0.8 )
+normal = ExtResource( 11 )
+pressed = ExtResource( 20 )
+passby_press = true
+action = "ui_transformation"
+
+[node name="A" type="TouchScreenButton" parent="Holder"]
+position = Vector2( 448, 200 )
+scale = Vector2( 0.8, 0.8 )
+normal = ExtResource( 9 )
+pressed = ExtResource( 22 )
+passby_press = true
+action = "ui_dash"

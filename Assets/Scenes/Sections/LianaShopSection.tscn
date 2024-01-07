@@ -1,0 +1,614 @@
+[gd_scene load_steps=38 format=2]
+
+[ext_resource path="res://Assets/Sprites/Misc/LianaShopKeeper.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Codes/LianaShopSection.gd" type="Script" id=2]
+[ext_resource path="res://Assets/Fonts/m5x7.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://Assets/Scenes/Misc/Transition.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Assets/SFX/Error.mp3" type="AudioStream" id=5]
+[ext_resource path="res://Assets/Sprites/Misc/ShopItemIcons.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Music/Hoopa Bonka.mp3" type="AudioStream" id=7]
+[ext_resource path="res://Assets/Codes/Camera.gd" type="Script" id=8]
+[ext_resource path="res://Assets/SFX/MenuSelected.mp3" type="AudioStream" id=9]
+[ext_resource path="res://Assets/SFX/MenuSelecting.mp3" type="AudioStream" id=10]
+[ext_resource path="res://Assets/Fonts/NiceFont.tres" type="DynamicFont" id=11]
+[ext_resource path="res://Assets/Codes/TextEffects/CustomColorEffect.gd" type="Script" id=12]
+[ext_resource path="res://Assets/SFX/Woosh.mp3" type="AudioStream" id=13]
+[ext_resource path="res://Assets/SFX/Text VC.mp3" type="AudioStream" id=14]
+
+[sub_resource type="AtlasTexture" id=25]
+atlas = ExtResource( 1 )
+region = Rect2( 512, 1500, 512, 300 )
+
+[sub_resource type="AtlasTexture" id=26]
+atlas = ExtResource( 1 )
+region = Rect2( 1024, 1500, 512, 300 )
+
+[sub_resource type="SpriteFrames" id=27]
+animations = [ {
+"frames": [ SubResource( 25 ), SubResource( 26 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="DynamicFont" id=7]
+size = 32
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 3 )
+
+[sub_resource type="StyleBoxEmpty" id=8]
+
+[sub_resource type="StyleBoxEmpty" id=9]
+
+[sub_resource type="StyleBoxEmpty" id=10]
+
+[sub_resource type="StyleBoxEmpty" id=11]
+
+[sub_resource type="StyleBoxEmpty" id=12]
+
+[sub_resource type="DynamicFont" id=13]
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=17]
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=18]
+size = 32
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 3 )
+
+[sub_resource type="StyleBoxEmpty" id=19]
+
+[sub_resource type="StyleBoxEmpty" id=20]
+
+[sub_resource type="StyleBoxEmpty" id=21]
+
+[sub_resource type="StyleBoxEmpty" id=22]
+
+[sub_resource type="StyleBoxEmpty" id=23]
+
+[sub_resource type="DynamicFont" id=24]
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=39]
+size = 32
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 3 )
+
+[sub_resource type="RichTextEffect" id=38]
+script = ExtResource( 12 )
+
+[sub_resource type="Animation" id=28]
+resource_name = "Greeting"
+length = 1.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Background/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 0.6, 0.7, 0.8, 0.9, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 20, 20, 0, 1, 2, 3, 4 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Woosh:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.8 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=29]
+resource_name = "Idle"
+length = 4.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Background/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.2, 2.4, 2.6, 2.8, 3, 3.2, 3.4, 3.6, 3.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 5, 6, 5, 6, 5, 6, 5, 6, 5, 6, 5, 6, 5, 6, 7, 8, 9, 8, 7, 6 ]
+}
+
+[sub_resource type="Animation" id=30]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Background/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 6 ]
+}
+
+[node name="LianaShopSection" type="Control"]
+pause_mode = 2
+script = ExtResource( 2 )
+next_scene_path = "res://Assets/Scenes/Sections/Section 3.tscn"
+
+[node name="BGColor" type="ColorRect" parent="."]
+margin_left = -64.0
+margin_top = -64.0
+margin_right = 576.0
+margin_bottom = 364.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="Background" type="AnimatedSprite" parent="."]
+position = Vector2( 256, 150 )
+frames = SubResource( 27 )
+frame = 1
+playing = true
+
+[node name="Sprite" type="Sprite" parent="Background"]
+texture = ExtResource( 1 )
+hframes = 4
+vframes = 6
+frame = 6
+
+[node name="Border" type="ColorRect" parent="."]
+margin_left = 512.0
+margin_right = 960.0
+margin_bottom = 300.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="Back" type="Button" parent="Border"]
+margin_left = 16.0
+margin_top = 240.0
+margin_right = 240.0
+margin_bottom = 272.0
+custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_colors/font_color_focus = Color( 1, 0.866667, 0, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 1, 0.866667, 0, 1 )
+custom_colors/font_color_pressed = Color( 1, 0.72549, 0.458824, 1 )
+custom_fonts/font = SubResource( 7 )
+custom_styles/hover = SubResource( 8 )
+custom_styles/pressed = SubResource( 9 )
+custom_styles/focus = SubResource( 10 )
+custom_styles/disabled = SubResource( 11 )
+custom_styles/normal = SubResource( 12 )
+action_mode = 0
+text = "Back"
+
+[node name="Option1" type="Control" parent="Border"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="Buy" type="Button" parent="Border/Option1"]
+margin_left = 48.0
+margin_top = 104.0
+margin_right = 208.0
+margin_bottom = 120.0
+custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_colors/font_color_focus = Color( 1, 0.866667, 0, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 1, 0.866667, 0, 1 )
+custom_colors/font_color_pressed = Color( 1, 0.72549, 0.458824, 1 )
+custom_fonts/font = SubResource( 13 )
+custom_styles/hover = SubResource( 8 )
+custom_styles/pressed = SubResource( 9 )
+custom_styles/focus = SubResource( 10 )
+custom_styles/disabled = SubResource( 11 )
+custom_styles/normal = SubResource( 12 )
+action_mode = 0
+text = "Buy"
+
+[node name="Talk" type="Button" parent="Border/Option1"]
+margin_left = 48.0
+margin_top = 128.0
+margin_right = 208.0
+margin_bottom = 144.0
+custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_colors/font_color_focus = Color( 1, 0.866667, 0, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 1, 0.866667, 0, 1 )
+custom_colors/font_color_pressed = Color( 1, 0.72549, 0.458824, 1 )
+custom_fonts/font = SubResource( 13 )
+custom_styles/hover = SubResource( 8 )
+custom_styles/pressed = SubResource( 9 )
+custom_styles/focus = SubResource( 10 )
+custom_styles/disabled = SubResource( 11 )
+custom_styles/normal = SubResource( 12 )
+action_mode = 0
+text = "Talk"
+
+[node name="Option2" type="Control" parent="Border"]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="Item1" type="Label" parent="Border/Option2"]
+margin_left = 48.0
+margin_top = 24.0
+margin_right = 240.0
+margin_bottom = 56.0
+custom_fonts/font = SubResource( 17 )
+text = "HEALING DRUG
+ (25 Cash)"
+valign = 1
+
+[node name="Icons" type="Sprite" parent="Border/Option2/Item1"]
+position = Vector2( -24, 16 )
+texture = ExtResource( 6 )
+hframes = 7
+
+[node name="Buy1" type="Button" parent="Border/Option2/Item1"]
+margin_left = 112.0
+margin_right = 208.0
+margin_bottom = 32.0
+custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_colors/font_color_focus = Color( 1, 0.866667, 0, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 1, 0.866667, 0, 1 )
+custom_colors/font_color_pressed = Color( 1, 0.72549, 0.458824, 1 )
+custom_fonts/font = SubResource( 18 )
+custom_styles/hover = SubResource( 19 )
+custom_styles/pressed = SubResource( 20 )
+custom_styles/focus = SubResource( 21 )
+custom_styles/disabled = SubResource( 22 )
+custom_styles/normal = SubResource( 23 )
+action_mode = 0
+text = "Buy"
+
+[node name="Item2" type="Label" parent="Border/Option2"]
+margin_left = 48.0
+margin_top = 72.0
+margin_right = 184.0
+margin_bottom = 104.0
+custom_fonts/font = SubResource( 17 )
+text = "SUPER HEALING DRUG
+ (85 Cash)"
+valign = 1
+
+[node name="Buy2" type="Button" parent="Border/Option2/Item2"]
+margin_left = 112.0
+margin_right = 216.0
+margin_bottom = 32.0
+custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_colors/font_color_focus = Color( 1, 0.866667, 0, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 1, 0.866667, 0, 1 )
+custom_colors/font_color_pressed = Color( 1, 0.72549, 0.458824, 1 )
+custom_fonts/font = SubResource( 18 )
+custom_styles/hover = SubResource( 19 )
+custom_styles/pressed = SubResource( 20 )
+custom_styles/focus = SubResource( 21 )
+custom_styles/disabled = SubResource( 22 )
+custom_styles/normal = SubResource( 23 )
+action_mode = 0
+text = "Buy"
+
+[node name="Icons" type="Sprite" parent="Border/Option2/Item2"]
+position = Vector2( -24, 16 )
+texture = ExtResource( 6 )
+hframes = 7
+frame = 1
+
+[node name="Item3" type="Label" parent="Border/Option2"]
+margin_left = 48.0
+margin_top = 120.0
+margin_right = 184.0
+margin_bottom = 152.0
+custom_fonts/font = SubResource( 17 )
+text = "LEG BOOST (30 Seconds)
+ (250 Cash)"
+valign = 1
+
+[node name="Buy3" type="Button" parent="Border/Option2/Item3"]
+margin_left = 112.0
+margin_right = 208.0
+margin_bottom = 32.0
+custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_colors/font_color_focus = Color( 1, 0.866667, 0, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 1, 0.866667, 0, 1 )
+custom_colors/font_color_pressed = Color( 1, 0.72549, 0.458824, 1 )
+custom_fonts/font = SubResource( 18 )
+custom_styles/hover = SubResource( 19 )
+custom_styles/pressed = SubResource( 20 )
+custom_styles/focus = SubResource( 21 )
+custom_styles/disabled = SubResource( 22 )
+custom_styles/normal = SubResource( 23 )
+action_mode = 0
+text = "Buy"
+
+[node name="Icons" type="Sprite" parent="Border/Option2/Item3"]
+position = Vector2( -24, 16 )
+texture = ExtResource( 6 )
+hframes = 7
+frame = 2
+
+[node name="Item4" type="Label" parent="Border/Option2"]
+margin_left = 48.0
+margin_top = 168.0
+margin_right = 184.0
+margin_bottom = 200.0
+custom_fonts/font = SubResource( 17 )
+text = "My IP Address
+ (100K Cash)"
+valign = 1
+
+[node name="Buy4" type="Button" parent="Border/Option2/Item4"]
+margin_left = 112.0
+margin_right = 208.0
+margin_bottom = 32.0
+custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_colors/font_color_focus = Color( 1, 0.866667, 0, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 1, 0.866667, 0, 1 )
+custom_colors/font_color_pressed = Color( 1, 0.72549, 0.458824, 1 )
+custom_fonts/font = SubResource( 18 )
+custom_styles/hover = SubResource( 19 )
+custom_styles/pressed = SubResource( 20 )
+custom_styles/focus = SubResource( 21 )
+custom_styles/disabled = SubResource( 22 )
+custom_styles/normal = SubResource( 23 )
+action_mode = 0
+text = "Buy"
+
+[node name="Icons" type="Sprite" parent="Border/Option2/Item4"]
+position = Vector2( -24, 16 )
+texture = ExtResource( 6 )
+hframes = 7
+frame = 3
+
+[node name="Cash" type="Label" parent="Border/Option2"]
+margin_left = 32.0
+margin_top = 224.0
+margin_right = 224.0
+margin_bottom = 240.0
+custom_fonts/font = SubResource( 17 )
+text = "Cash: 10000000"
+align = 1
+valign = 1
+
+[node name="Option3" type="Control" parent="Border"]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="Talk1" type="Button" parent="Border/Option3"]
+margin_left = 40.0
+margin_top = 32.0
+margin_right = 208.0
+margin_bottom = 64.0
+custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_colors/font_color_focus = Color( 1, 0.866667, 0, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 1, 0.866667, 0, 1 )
+custom_colors/font_color_pressed = Color( 1, 0.72549, 0.458824, 1 )
+custom_fonts/font = SubResource( 24 )
+custom_styles/hover = SubResource( 19 )
+custom_styles/pressed = SubResource( 20 )
+custom_styles/focus = SubResource( 21 )
+custom_styles/disabled = SubResource( 22 )
+custom_styles/normal = SubResource( 23 )
+action_mode = 0
+text = "Who are you"
+
+[node name="Talk2" type="Button" parent="Border/Option3"]
+margin_left = 40.0
+margin_top = 80.0
+margin_right = 208.0
+margin_bottom = 112.0
+custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_colors/font_color_focus = Color( 1, 0.866667, 0, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 1, 0.866667, 0, 1 )
+custom_colors/font_color_pressed = Color( 1, 0.72549, 0.458824, 1 )
+custom_fonts/font = SubResource( 24 )
+custom_styles/hover = SubResource( 19 )
+custom_styles/pressed = SubResource( 20 )
+custom_styles/focus = SubResource( 21 )
+custom_styles/disabled = SubResource( 22 )
+custom_styles/normal = SubResource( 23 )
+action_mode = 0
+text = "What are you"
+
+[node name="Talk3" type="Button" parent="Border/Option3"]
+margin_left = 40.0
+margin_top = 128.0
+margin_right = 208.0
+margin_bottom = 160.0
+custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_colors/font_color_focus = Color( 1, 0.866667, 0, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 1, 0.866667, 0, 1 )
+custom_colors/font_color_pressed = Color( 1, 0.72549, 0.458824, 1 )
+custom_fonts/font = SubResource( 24 )
+custom_styles/hover = SubResource( 19 )
+custom_styles/pressed = SubResource( 20 )
+custom_styles/focus = SubResource( 21 )
+custom_styles/disabled = SubResource( 22 )
+custom_styles/normal = SubResource( 23 )
+action_mode = 0
+text = "You look cute"
+
+[node name="Talk4" type="Button" parent="Border/Option3"]
+margin_left = 40.0
+margin_top = 176.0
+margin_right = 208.0
+margin_bottom = 208.0
+custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_colors/font_color_focus = Color( 1, 0.866667, 0, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 1, 0.866667, 0, 1 )
+custom_colors/font_color_pressed = Color( 1, 0.72549, 0.458824, 1 )
+custom_fonts/font = SubResource( 24 )
+custom_styles/hover = SubResource( 19 )
+custom_styles/pressed = SubResource( 20 )
+custom_styles/focus = SubResource( 21 )
+custom_styles/disabled = SubResource( 22 )
+custom_styles/normal = SubResource( 23 )
+action_mode = 0
+text = "Why are you here"
+
+[node name="DialogueBox" type="ColorRect" parent="."]
+margin_top = 300.0
+margin_right = 512.0
+margin_bottom = 392.0
+color = Color( 0, 0, 0, 0.392157 )
+
+[node name="Name" type="Label" parent="DialogueBox"]
+margin_top = -16.0
+margin_right = 512.0
+margin_bottom = 16.0
+custom_fonts/font = SubResource( 39 )
+align = 1
+
+[node name="Text" type="RichTextLabel" parent="DialogueBox"]
+margin_left = 16.0
+margin_top = 16.0
+margin_right = 496.0
+margin_bottom = 116.0
+rect_clip_content = false
+custom_fonts/normal_font = ExtResource( 11 )
+bbcode_enabled = true
+scroll_active = false
+custom_effects = [ SubResource( 38 ) ]
+
+[node name="Timer" type="Timer" parent="DialogueBox"]
+wait_time = 0.5
+
+[node name="BypassPress" type="Button" parent="DialogueBox"]
+margin_left = 176.0
+margin_top = 432.0
+margin_right = 400.0
+margin_bottom = 464.0
+custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_colors/font_color_focus = Color( 1, 0.866667, 0, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 1, 0.866667, 0, 1 )
+custom_colors/font_color_pressed = Color( 1, 0.72549, 0.458824, 1 )
+custom_fonts/font = SubResource( 7 )
+custom_styles/hover = SubResource( 8 )
+custom_styles/pressed = SubResource( 9 )
+custom_styles/focus = SubResource( 10 )
+custom_styles/disabled = SubResource( 11 )
+custom_styles/normal = SubResource( 12 )
+action_mode = 0
+text = "Fuck i want my milk"
+
+[node name="Camera" type="Camera2D" parent="."]
+position = Vector2( 256, 150 )
+current = true
+limit_smoothed = true
+smoothing_enabled = true
+smoothing_speed = 8.0
+script = ExtResource( 8 )
+
+[node name="Limits" type="Node" parent="Camera"]
+
+[node name="TopLeft" type="Position2D" parent="Camera/Limits"]
+
+[node name="BottomRight" type="Position2D" parent="Camera/Limits"]
+position = Vector2( 512, 300 )
+
+[node name="Tween" type="Tween" parent="Camera"]
+
+[node name="Timer" type="Timer" parent="Camera"]
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="Transition" parent="." instance=ExtResource( 4 )]
+
+[node name="BGMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+volume_db = -5.0
+
+[node name="Error" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+volume_db = -5.0
+bus = "SFX"
+
+[node name="Selecting" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
+volume_db = -15.0
+bus = "SFX"
+
+[node name="Selected" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
+volume_db = -15.0
+bus = "SFX"
+
+[node name="Woosh" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 13 )
+bus = "SFX"
+
+[node name="TextVC" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 14 )
+volume_db = -5.0
+pitch_scale = 1.5
+bus = "SFX"
+
+[node name="Animation" type="AnimationPlayer" parent="."]
+anims/Greeting = SubResource( 28 )
+anims/Idle = SubResource( 29 )
+anims/RESET = SubResource( 30 )
+
+[connection signal="focus_entered" from="Border/Back" to="." method="_on_Stuff_focus_entered"]
+[connection signal="mouse_entered" from="Border/Back" to="." method="_on_Stuff_mouse_entered"]
+[connection signal="pressed" from="Border/Back" to="." method="_on_Back_pressed"]
+[connection signal="focus_entered" from="Border/Option1/Buy" to="." method="_on_Stuff_focus_entered"]
+[connection signal="mouse_entered" from="Border/Option1/Buy" to="." method="_on_Stuff_mouse_entered"]
+[connection signal="pressed" from="Border/Option1/Buy" to="." method="_on_Buy_pressed"]
+[connection signal="focus_entered" from="Border/Option1/Talk" to="." method="_on_Stuff_focus_entered"]
+[connection signal="mouse_entered" from="Border/Option1/Talk" to="." method="_on_Stuff_mouse_entered"]
+[connection signal="pressed" from="Border/Option1/Talk" to="." method="_on_Talk_pressed"]
+[connection signal="focus_entered" from="Border/Option2/Item1/Buy1" to="." method="_on_Stuff_focus_entered"]
+[connection signal="mouse_entered" from="Border/Option2/Item1/Buy1" to="." method="_on_Stuff_mouse_entered"]
+[connection signal="pressed" from="Border/Option2/Item1/Buy1" to="." method="_on_Buy1_pressed"]
+[connection signal="mouse_entered" from="Border/Option2/Item2/Buy2" to="." method="_on_Stuff_mouse_entered"]
+[connection signal="pressed" from="Border/Option2/Item2/Buy2" to="." method="_on_Buy2_pressed"]
+[connection signal="focus_entered" from="Border/Option2/Item3/Buy3" to="." method="_on_Stuff_focus_entered"]
+[connection signal="mouse_entered" from="Border/Option2/Item3/Buy3" to="." method="_on_Stuff_mouse_entered"]
+[connection signal="pressed" from="Border/Option2/Item3/Buy3" to="." method="_on_Buy3_pressed"]
+[connection signal="focus_entered" from="Border/Option2/Item4/Buy4" to="." method="_on_Stuff_focus_entered"]
+[connection signal="mouse_entered" from="Border/Option2/Item4/Buy4" to="." method="_on_Stuff_mouse_entered"]
+[connection signal="pressed" from="Border/Option2/Item4/Buy4" to="." method="_on_Buy4_pressed"]
+[connection signal="focus_entered" from="Border/Option3/Talk1" to="." method="_on_Stuff_focus_entered"]
+[connection signal="mouse_entered" from="Border/Option3/Talk1" to="." method="_on_Stuff_mouse_entered"]
+[connection signal="pressed" from="Border/Option3/Talk1" to="." method="_on_Talk1_pressed"]
+[connection signal="focus_entered" from="Border/Option3/Talk2" to="." method="_on_Stuff_focus_entered"]
+[connection signal="mouse_entered" from="Border/Option3/Talk2" to="." method="_on_Stuff_mouse_entered"]
+[connection signal="pressed" from="Border/Option3/Talk2" to="." method="_on_Talk2_pressed"]
+[connection signal="focus_entered" from="Border/Option3/Talk3" to="." method="_on_Stuff_focus_entered"]
+[connection signal="mouse_entered" from="Border/Option3/Talk3" to="." method="_on_Stuff_mouse_entered"]
+[connection signal="pressed" from="Border/Option3/Talk3" to="." method="_on_Talk3_pressed"]
+[connection signal="focus_entered" from="Border/Option3/Talk4" to="." method="_on_Stuff_focus_entered"]
+[connection signal="mouse_entered" from="Border/Option3/Talk4" to="." method="_on_Stuff_mouse_entered"]
+[connection signal="pressed" from="Border/Option3/Talk4" to="." method="_on_Talk4_pressed"]
+[connection signal="timeout" from="DialogueBox/Timer" to="." method="_on_Timer_timeout"]
+[connection signal="timeout" from="Camera/Timer" to="Camera" method="_on_Timer_timeout"]
+[connection signal="tween_all_completed" from="Tween" to="." method="_on_Tween_tween_all_completed"]
+[connection signal="animation_finished" from="Transition/Animation" to="." method="_on_Animation_animation_finished"]
+[connection signal="animation_finished" from="Animation" to="." method="_on_CharacterAnimation_animation_finished"]
+
+[editable path="Transition"]

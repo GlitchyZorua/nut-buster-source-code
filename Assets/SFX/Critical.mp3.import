@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Critical.mp3-3534143c100751d3f265fdbef984ad8f.mp3str"
+
+[deps]
+
+source_file="res://Assets/SFX/Critical.mp3"
+dest_files=[ "res://.import/Critical.mp3-3534143c100751d3f265fdbef984ad8f.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

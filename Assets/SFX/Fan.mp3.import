@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Fan.mp3-156e04a00162884d61746708bfb8270d.mp3str"
+
+[deps]
+
+source_file="res://Assets/SFX/Fan.mp3"
+dest_files=[ "res://.import/Fan.mp3-156e04a00162884d61746708bfb8270d.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

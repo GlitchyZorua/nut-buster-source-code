@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Truce.mp3-dacb20c45b35b5bf5c8d1cbf9ccb8e19.mp3str"
+
+[deps]
+
+source_file="res://Assets/Music/Truce.mp3"
+dest_files=[ "res://.import/Truce.mp3-dacb20c45b35b5bf5c8d1cbf9ccb8e19.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

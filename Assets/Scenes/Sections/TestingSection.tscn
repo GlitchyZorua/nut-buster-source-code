@@ -1,0 +1,44 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Assets/Scenes/Characters/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Assets/Scenes/Characters/Jackeron.tscn" type="PackedScene" id=2]
+
+[sub_resource type="NavigationPolygon" id=1]
+vertices = PoolVector2Array( 24, 288, 8, 288, 8, 8, 24, 128, 504, 8, 64, 128, 504, 288, 488, 288, 488, 128, 448, 128, 448, 288, 64, 288 )
+polygons = [ PoolIntArray( 0, 1, 2, 3 ), PoolIntArray( 3, 2, 4, 5 ), PoolIntArray( 4, 6, 7, 8 ), PoolIntArray( 9, 10, 11, 5 ), PoolIntArray( 9, 5, 4 ), PoolIntArray( 9, 4, 8 ) ]
+outlines = [ PoolVector2Array( 8, 288, 8, 8, 504, 8, 504, 288, 488, 288, 488, 128, 448, 128, 448, 288, 64, 288, 64, 128, 24, 128, 24, 288 ) ]
+
+[node name="TestingSection" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_right = 512.0
+margin_bottom = 312.0
+color = Color( 0.301961, 0.301961, 0.301961, 1 )
+
+[node name="TileMap" type="TileMap" parent="."]
+format = 1
+
+[node name="Navigation" type="Navigation2D" parent="." groups=["LevelNavigation"]]
+
+[node name="NavigationPolygonInstance" type="NavigationPolygonInstance" parent="Navigation"]
+navpoly = SubResource( 1 )
+
+[node name="Jackeron" parent="." instance=ExtResource( 2 )]
+position = Vector2( 112, 216 )
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 256, 160 )
+
+[node name="BottomRight" parent="Player/Camera/Limits" index="1"]
+position = Vector2( 512, 300 )
+
+[node name="Icon" parent="Player/MiniMenu/Background/Holder/Options/Stats" index="9"]
+frame = 2
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PoolVector2Array( -8, -8, -8, 312, 528, 312, 528, -8, 8, -8, 8, 8, 512, 8, 512, 296, 8, 296, 8, -8 )
+
+[editable path="Player"]
+[editable path="Player/MiniMenu"]

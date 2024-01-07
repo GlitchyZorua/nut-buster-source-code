@@ -1,0 +1,675 @@
+[gd_scene load_steps=26 format=2]
+
+[ext_resource path="res://Assets/Sprites/Misc/Newgrounds Logo.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Fonts/m5x7.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://Assets/Codes/Opening.gd" type="Script" id=3]
+[ext_resource path="res://Assets/Music/Start New Menu.mp3" type="AudioStream" id=5]
+[ext_resource path="res://Assets/Sprites/Misc/Menu.png" type="Texture" id=6]
+[ext_resource path="res://Assets/SFX/Woosh.mp3" type="AudioStream" id=7]
+[ext_resource path="res://Assets/SFX/SuperKick.mp3" type="AudioStream" id=8]
+[ext_resource path="res://Assets/SFX/MenuSelecting.mp3" type="AudioStream" id=9]
+[ext_resource path="res://Assets/SFX/MenuSelected.mp3" type="AudioStream" id=10]
+[ext_resource path="res://Assets/Sprites/Misc/Device Selection.png" type="Texture" id=11]
+
+[sub_resource type="AtlasTexture" id=72]
+atlas = ExtResource( 6 )
+region = Rect2( 0, 1500, 512, 300 )
+
+[sub_resource type="AtlasTexture" id=73]
+atlas = ExtResource( 6 )
+region = Rect2( 512, 1500, 512, 300 )
+
+[sub_resource type="SpriteFrames" id=74]
+animations = [ {
+"frames": [ SubResource( 72 ), SubResource( 73 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="DynamicFont" id=1]
+size = 32
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=4]
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=81]
+size = 32
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=82]
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=75]
+size = 32
+outline_size = 3
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 2 )
+
+[sub_resource type="StyleBoxEmpty" id=76]
+
+[sub_resource type="StyleBoxEmpty" id=77]
+
+[sub_resource type="StyleBoxEmpty" id=78]
+
+[sub_resource type="StyleBoxEmpty" id=79]
+
+[sub_resource type="StyleBoxEmpty" id=80]
+
+[sub_resource type="Animation" id=2]
+resource_name = "Opening"
+length = 32.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("NGLogo:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 1.5, 3.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Text 2:text")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 4, 5, 6, 7, 8, 9.5, 10.5, 10.9, 18, 20, 22.0832, 23.9, 26 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ "", "", "I PRESENT YOU...", "I PRESENT YOU...", "", "", "A GAME SOLELY MADE FOR JOKES", "A GAME SOLELY MADE FOR JOKES", "NUTS", "", "A GAME THAT TOOK ME FOREVER TO MAKE", "A GAME THAT TOOK ME FOREVER TO MAKE
+
+HOLY SHIT I HOPE THIS IS WORTH IT LOL", "A GAME THAT TOOK ME FOREVER TO MAKE
+
+HOLY SHIT I HOPE THIS IS WORTH IT LOL", "" ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 32 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "teleport"
+} ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("NGLogo:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2, 2.1, 2.2, 2.3, 2.4, 2.5, 2.6, 2.7, 2.8, 2.9, 3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Text 1:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("OpeningSprite:frame")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 10.9, 11, 11.1, 11.2, 11.3, 11.4, 11.5, 11.6, 11.7, 11.8, 11.9, 12, 12.6, 12.8, 13, 13.2, 13.4, 13.6, 13.8, 14, 14.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 13, 14, 15, 16, 17, 18, 19, 20, 21 ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Text 2:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 11, 18.1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("OpeningSprite:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 15, 16 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("OpeningBackground:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 15, 16 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Impact:playing")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0, 11 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("Woosh:playing")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0, 11.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("BGMusic:playing")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("White:color")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0, 29.9, 30, 30.4, 30.5, 30.9, 31, 31.4, 31.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("NGLogo:scale")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.1, 1.1 ), Vector2( 1.1, 1.1 ), Vector2( 0.8, 0.8 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("NGLogo:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Text 2:text")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ "" ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("NGLogo:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Text 1:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("OpeningSprite:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Text 2:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("OpeningSprite:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("OpeningBackground:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("BGMusic:playing")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("White:color")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("NGLogo:scale")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+
+[node name="Opening" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )
+
+[node name="Background" type="ColorRect" parent="."]
+margin_left = -16.0
+margin_top = -16.0
+margin_right = 528.0
+margin_bottom = 316.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="OpeningBackground" type="AnimatedSprite" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+position = Vector2( 256, 150 )
+frames = SubResource( 74 )
+frame = 1
+playing = true
+
+[node name="OpeningSprite" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+position = Vector2( 256, 150 )
+texture = ExtResource( 6 )
+hframes = 5
+vframes = 6
+
+[node name="NGLogo" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+position = Vector2( 256, 152 )
+texture = ExtResource( 1 )
+hframes = 2
+frame = 1
+
+[node name="Text 1" type="Label" parent="NGLogo"]
+margin_left = -88.0
+margin_top = -104.0
+margin_right = 94.0
+margin_bottom = -78.0
+custom_fonts/font = SubResource( 1 )
+text = "A GAME MADE FOR"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Text 2" type="Label" parent="NGLogo"]
+anchor_right = 0.736111
+margin_left = -144.0
+margin_top = 80.0
+margin_right = 38.0
+margin_bottom = 106.0
+custom_fonts/font = SubResource( 1 )
+text = "EVERYTHING BY EVERYONE"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Text 1" type="Label" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+anchor_left = 0.1875
+anchor_top = 1.27666
+anchor_right = 0.1875
+anchor_bottom = 1.27666
+margin_left = -88.0
+margin_top = -104.0
+margin_right = 94.0
+margin_bottom = -78.0
+custom_colors/font_color = Color( 0.431373, 0.431373, 0.431373, 1 )
+custom_fonts/font = SubResource( 4 )
+text = "[Z] to skip"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Text 2" type="Label" parent="."]
+anchor_left = 0.171875
+anchor_top = 0.8
+anchor_right = 0.816406
+anchor_bottom = 0.8
+margin_left = -88.0
+margin_top = -104.0
+margin_right = 94.0
+margin_bottom = -78.0
+custom_fonts/font = SubResource( 1 )
+align = 1
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="White" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 1, 1, 1, 0 )
+
+[node name="WarningBorder" type="ColorRect" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="WarningTitle" type="Label" parent="WarningBorder"]
+anchor_top = 0.0296667
+anchor_bottom = 0.0296667
+margin_top = 0.0999908
+margin_right = 512.0
+margin_bottom = 26.1
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+custom_fonts/font = SubResource( 81 )
+text = "--- !!! WARNING !!! ---"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="WarningText" type="Label" parent="WarningBorder"]
+anchor_top = 0.133
+anchor_bottom = 0.889667
+margin_top = 0.0999908
+margin_right = 512.0
+margin_bottom = 26.1
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 82 )
+text = "your fat
+
+and also
+
+THIS GAME CONTAINS FLASHING LIGHTS AND A LOT OF SHIT MOVING FOR POLISH EFFECT
+IF YOUR ARE SENSITIVE TO THIS TYPE OF STUFF THEN I HIGHLY RECOMMEND YOU
+GO CONSULT YOUR DOCTOR FIRST BEFORE PLAYING THIS GAME OR YOU CAN DISABLE THOSE 
+EFFECTS IN SETTINGS
+
+I REPEAT THIS GAME HAS:
+
+-FLASHING LIGHTS
+-EPILEPSY
+-MOTION SICKNESS
+
+\"press [Z] or [Enter] to proceed UwU\""
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="DeviceBorder" type="ColorRect" parent="."]
+margin_right = 512.0
+margin_bottom = 304.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="PC" type="Sprite" parent="DeviceBorder"]
+position = Vector2( 128, 128 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 11 )
+hframes = 2
+
+[node name="PC2" type="Button" parent="DeviceBorder/PC"]
+margin_left = -24.0
+margin_top = -8.0
+margin_right = 80.0
+margin_bottom = 72.0
+rect_scale = Vector2( 0.5, 0.5 )
+focus_neighbour_top = NodePath("../Quit")
+focus_neighbour_bottom = NodePath("../Settings")
+custom_colors/font_color_disabled = Color( 1, 1, 1, 1 )
+custom_colors/font_color_focus = Color( 1, 0.74902, 0, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 1, 0.435294, 0, 1 )
+custom_colors/font_color_pressed = Color( 1, 0.74902, 0, 1 )
+custom_fonts/font = SubResource( 75 )
+custom_styles/hover = SubResource( 76 )
+custom_styles/pressed = SubResource( 77 )
+custom_styles/focus = SubResource( 78 )
+custom_styles/disabled = SubResource( 79 )
+custom_styles/normal = SubResource( 80 )
+action_mode = 0
+
+[node name="PC" type="Button" parent="DeviceBorder/PC"]
+margin_left = -16.0
+margin_top = 20.0
+margin_right = 39.0
+margin_bottom = 46.0
+rect_scale = Vector2( 0.5, 0.5 )
+focus_neighbour_top = NodePath("../Quit")
+focus_neighbour_bottom = NodePath("../Settings")
+custom_colors/font_color_disabled = Color( 1, 1, 1, 1 )
+custom_colors/font_color_focus = Color( 1, 0.74902, 0, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 1, 0.435294, 0, 1 )
+custom_colors/font_color_pressed = Color( 1, 0.74902, 0, 1 )
+custom_fonts/font = SubResource( 75 )
+custom_styles/hover = SubResource( 76 )
+custom_styles/pressed = SubResource( 77 )
+custom_styles/focus = SubResource( 78 )
+custom_styles/disabled = SubResource( 79 )
+custom_styles/normal = SubResource( 80 )
+action_mode = 0
+text = "PC"
+
+[node name="Mobile" type="Sprite" parent="DeviceBorder"]
+position = Vector2( 384, 128 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 11 )
+hframes = 2
+frame = 1
+
+[node name="Mobile2" type="Button" parent="DeviceBorder/Mobile"]
+margin_left = -24.0
+margin_top = -12.0
+margin_right = 72.0
+margin_bottom = 78.0
+rect_scale = Vector2( 0.5, 0.5 )
+focus_neighbour_top = NodePath("../Quit")
+focus_neighbour_bottom = NodePath("../Settings")
+custom_colors/font_color_disabled = Color( 1, 1, 1, 1 )
+custom_colors/font_color_focus = Color( 1, 0.74902, 0, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 1, 0.435294, 0, 1 )
+custom_colors/font_color_pressed = Color( 1, 0.74902, 0, 1 )
+custom_fonts/font = SubResource( 75 )
+custom_styles/hover = SubResource( 76 )
+custom_styles/pressed = SubResource( 77 )
+custom_styles/focus = SubResource( 78 )
+custom_styles/disabled = SubResource( 79 )
+custom_styles/normal = SubResource( 80 )
+action_mode = 0
+align = 0
+
+[node name="Mobile" type="Button" parent="DeviceBorder/Mobile"]
+margin_left = -16.0
+margin_top = 20.0
+margin_right = 48.0
+margin_bottom = 46.0
+rect_scale = Vector2( 0.5, 0.5 )
+focus_neighbour_top = NodePath("../Quit")
+focus_neighbour_bottom = NodePath("../Settings")
+custom_colors/font_color_disabled = Color( 1, 1, 1, 1 )
+custom_colors/font_color_focus = Color( 1, 0.74902, 0, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 1, 0.435294, 0, 1 )
+custom_colors/font_color_pressed = Color( 1, 0.74902, 0, 1 )
+custom_fonts/font = SubResource( 75 )
+custom_styles/hover = SubResource( 76 )
+custom_styles/pressed = SubResource( 77 )
+custom_styles/focus = SubResource( 78 )
+custom_styles/disabled = SubResource( 79 )
+custom_styles/normal = SubResource( 80 )
+action_mode = 0
+text = "Mobile"
+align = 0
+
+[node name="Animation" type="AnimationPlayer" parent="."]
+playback_process_mode = 0
+anims/Opening = SubResource( 2 )
+anims/RESET = SubResource( 3 )
+
+[node name="Impact" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+volume_db = -5.0
+bus = "SFX"
+
+[node name="Woosh" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+volume_db = -5.0
+bus = "SFX"
+
+[node name="BGMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+volume_db = -5.0
+bus = "Music"
+
+[node name="Selecting" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
+volume_db = -10.0
+bus = "SFX"
+
+[node name="Selected" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
+volume_db = -10.0
+bus = "SFX"
+
+[connection signal="focus_entered" from="DeviceBorder/PC/PC2" to="." method="_on_Stuff_focus_entered"]
+[connection signal="mouse_entered" from="DeviceBorder/PC/PC2" to="." method="_on_Stuff_mouse_entered"]
+[connection signal="pressed" from="DeviceBorder/PC/PC2" to="." method="_on_PC_pressed"]
+[connection signal="focus_entered" from="DeviceBorder/PC/PC" to="." method="_on_Stuff_focus_entered"]
+[connection signal="mouse_entered" from="DeviceBorder/PC/PC" to="." method="_on_Stuff_mouse_entered"]
+[connection signal="pressed" from="DeviceBorder/PC/PC" to="." method="_on_PC_pressed"]
+[connection signal="focus_entered" from="DeviceBorder/Mobile/Mobile2" to="." method="_on_Stuff_focus_entered"]
+[connection signal="mouse_entered" from="DeviceBorder/Mobile/Mobile2" to="." method="_on_Stuff_mouse_entered"]
+[connection signal="pressed" from="DeviceBorder/Mobile/Mobile2" to="." method="_on_Mobile_pressed"]
+[connection signal="focus_entered" from="DeviceBorder/Mobile/Mobile" to="." method="_on_Stuff_focus_entered"]
+[connection signal="mouse_entered" from="DeviceBorder/Mobile/Mobile" to="." method="_on_Stuff_mouse_entered"]
+[connection signal="pressed" from="DeviceBorder/Mobile/Mobile" to="." method="_on_Mobile_pressed"]

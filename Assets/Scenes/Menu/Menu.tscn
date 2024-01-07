@@ -1,0 +1,677 @@
+[gd_scene load_steps=36 format=2]
+
+[ext_resource path="res://Assets/Codes/Menu.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Fonts/m5x7.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://Assets/Scenes/Misc/Transition.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Assets/Sprites/Misc/StaticLines.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Sprites/Misc/Menu.png" type="Texture" id=5]
+[ext_resource path="res://Assets/SFX/MenuSelected.mp3" type="AudioStream" id=7]
+[ext_resource path="res://Assets/SFX/MenuSelecting.mp3" type="AudioStream" id=8]
+[ext_resource path="res://Assets/Sprites/Misc/AltLogo.png" type="Texture" id=9]
+[ext_resource path="res://Assets/Shaders/Shader 2.gdshader" type="Shader" id=10]
+
+[sub_resource type="AtlasTexture" id=72]
+atlas = ExtResource( 5 )
+region = Rect2( 0, 1500, 512, 300 )
+
+[sub_resource type="AtlasTexture" id=73]
+atlas = ExtResource( 5 )
+region = Rect2( 512, 1500, 512, 300 )
+
+[sub_resource type="SpriteFrames" id=74]
+animations = [ {
+"frames": [ SubResource( 72 ), SubResource( 73 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="Gradient" id=14]
+offsets = PoolRealArray( 0, 0.552486 )
+colors = PoolColorArray( 1, 1, 1, 0.588235, 1, 1, 1, 0 )
+
+[sub_resource type="AtlasTexture" id=75]
+atlas = ExtResource( 5 )
+region = Rect2( 512, 1200, 512, 300 )
+
+[sub_resource type="AtlasTexture" id=76]
+atlas = ExtResource( 5 )
+region = Rect2( 1024, 1200, 512, 300 )
+
+[sub_resource type="AtlasTexture" id=77]
+atlas = ExtResource( 5 )
+region = Rect2( 1536, 1200, 512, 300 )
+
+[sub_resource type="AtlasTexture" id=78]
+atlas = ExtResource( 5 )
+region = Rect2( 2048, 1200, 512, 300 )
+
+[sub_resource type="AtlasTexture" id=84]
+atlas = ExtResource( 5 )
+region = Rect2( 1536, 1500, 512, 300 )
+
+[sub_resource type="AtlasTexture" id=83]
+atlas = ExtResource( 5 )
+region = Rect2( 1024, 1500, 512, 300 )
+
+[sub_resource type="SpriteFrames" id=5]
+animations = [ {
+"frames": [ SubResource( 75 ), SubResource( 76 ), SubResource( 77 ), SubResource( 78 ) ],
+"loop": true,
+"name": "Default",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 84 ) ],
+"loop": true,
+"name": "Crappy",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 83 ) ],
+"loop": true,
+"name": "Burger",
+"speed": 5.0
+} ]
+
+[sub_resource type="Gradient" id=69]
+offsets = PoolRealArray( 0.110092, 1 )
+colors = PoolColorArray( 0.572549, 0.0805147, 0, 0.509804, 0, 0, 0, 0 )
+
+[sub_resource type="GradientTexture" id=79]
+gradient = SubResource( 69 )
+
+[sub_resource type="ShaderMaterial" id=70]
+shader = ExtResource( 10 )
+shader_param/gradient = SubResource( 79 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 32
+outline_size = 3
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 2 )
+
+[sub_resource type="StyleBoxEmpty" id=7]
+
+[sub_resource type="StyleBoxEmpty" id=8]
+
+[sub_resource type="StyleBoxEmpty" id=9]
+
+[sub_resource type="StyleBoxEmpty" id=10]
+
+[sub_resource type="StyleBoxEmpty" id=11]
+
+[sub_resource type="Animation" id=12]
+resource_name = "Menu"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("TitleBorder/Title:rotation_degrees")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.8, 1, 1.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 5.0, -10.0, -20.0, -10.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("TitleBorder/Title:scale")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.8, 1, 1.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.65, 0.65 ), Vector2( 0.5, 0.5 ), Vector2( 0.65, 0.65 ), Vector2( 0.5, 0.5 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Camera:zoom")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5, 0.8, 1, 1.3, 1.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.98, 0.98 ), Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 0.98, 0.98 ), Vector2( 1, 1 ), Vector2( 1, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Camera:rotation_degrees")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.8, 1, 1.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 2.0, 0.0, -2.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=80]
+resource_name = "Menu Static"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("TitleBorder/Title:rotation_degrees")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -10.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("TitleBorder/Title:scale")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0.6, 0.6 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Camera:zoom")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Camera:rotation_degrees")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+
+[sub_resource type="Animation" id=13]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("TitleBorder/Title:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("TitleBorder/Title:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 15.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Camera:zoom")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0.95, 0.95 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Camera:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Transition/TransitionFrame:color")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Transition/TransitionFrame:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=71]
+resource_name = "TransitionIn"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Camera:zoom")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2, 3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 0.1, 0.1 ), Vector2( 0.1, 0.1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Camera:rotation_degrees")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1, 2, 3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, 90.0, 90.0 ]
+}
+
+[sub_resource type="Animation" id=81]
+resource_name = "Flash"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Transition/Whiteness:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Transition/Whiteness:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("TitleBorder:position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 2, 4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -496, 0 ), Vector2( -40, 0 ), Vector2( -40, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Character:position")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 2, 4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 784, 148 ), Vector2( 285, 148 ), Vector2( 256, 148 ) ]
+}
+
+[sub_resource type="Animation" id=82]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Transition/Whiteness:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("TitleBorder:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -40, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Character:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 256, 148 ) ]
+}
+
+[node name="Menu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+
+[node name="BG" type="ParallaxBackground" parent="."]
+
+[node name="1" type="ParallaxLayer" parent="BG"]
+
+[node name="Backerground" type="ColorRect" parent="BG/1"]
+margin_left = -192.0
+margin_top = -128.0
+margin_right = 704.0
+margin_bottom = 448.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="2" type="ParallaxLayer" parent="BG"]
+motion_scale = Vector2( 2, 2 )
+motion_mirroring = Vector2( 512, 300 )
+
+[node name="Background" type="AnimatedSprite" parent="BG/2"]
+position = Vector2( 544, 312 )
+scale = Vector2( 1.0625, 1.09333 )
+frames = SubResource( 74 )
+frame = 1
+playing = true
+
+[node name="StaticLines" type="Sprite" parent="."]
+modulate = Color( 0.54902, 0.388235, 1, 0.329412 )
+position = Vector2( 256, 148 )
+scale = Vector2( 1.0625, 1.09333 )
+texture = ExtResource( 4 )
+
+[node name="FXBack" type="CPUParticles2D" parent="."]
+modulate = Color( 1, 0.345098, 0, 0.588235 )
+position = Vector2( 0.000198364, 320 )
+scale = Vector2( 1.0625, 1.09333 )
+amount = 64
+lifetime = 3.0
+lifetime_randomness = 0.1
+emission_shape = 2
+emission_rect_extents = Vector2( 300, 1 )
+gravity = Vector2( 98, -98 )
+initial_velocity = 100.0
+angular_velocity = 720.0
+angular_velocity_random = 1.0
+scale_amount = 12.0
+scale_amount_random = 0.5
+color_ramp = SubResource( 14 )
+
+[node name="Character" type="AnimatedSprite" parent="."]
+modulate = Color( 1, 0.729412, 0.854902, 1 )
+position = Vector2( 256, 148 )
+scale = Vector2( 1.0625, 1.09333 )
+frames = SubResource( 5 )
+animation = "Default"
+frame = 1
+playing = true
+
+[node name="FadeUp" type="ColorRect" parent="."]
+material = SubResource( 70 )
+margin_left = -23.0
+margin_top = 321.0
+margin_right = 152.0
+margin_bottom = 880.0
+rect_rotation = 270.0
+
+[node name="FXFront" type="CPUParticles2D" parent="."]
+modulate = Color( 1, 0.537255, 0, 1 )
+position = Vector2( 192, 320 )
+rotation = -5.07036e-06
+amount = 64
+lifetime = 3.0
+lifetime_randomness = 0.1
+emission_shape = 2
+emission_rect_extents = Vector2( 300, 1 )
+gravity = Vector2( 98, -98 )
+initial_velocity = 100.0
+angular_velocity = 720.0
+angular_velocity_random = 1.0
+scale_amount = 12.0
+scale_amount_random = 0.5
+color_ramp = SubResource( 14 )
+
+[node name="Camera" type="Camera2D" parent="."]
+position = Vector2( 256, 150 )
+rotating = true
+current = true
+zoom = Vector2( 0.95, 0.95 )
+
+[node name="TitleBorder" type="Polygon2D" parent="."]
+position = Vector2( -40, 0 )
+color = Color( 0, 0, 0, 1 )
+polygon = PoolVector2Array( -88, -32, -88, 448, 48, 448, 70.9245, 257.08, 224, 208, 73.9577, 240.541, 79.106, 212.47, 280, 152, 82.91, 193.45, 88.5449, 165.275, 184, 136, 90.9625, 153.187, 112, 48, 456, -32 )
+
+[node name="Title" type="Sprite" parent="TitleBorder"]
+position = Vector2( 176, 88 )
+rotation = 0.261799
+texture = ExtResource( 9 )
+
+[node name="Begin" type="Button" parent="TitleBorder"]
+margin_left = 80.0
+margin_top = 146.0
+margin_right = 135.0
+margin_bottom = 172.0
+rect_rotation = -15.0
+focus_neighbour_top = NodePath("../Quit")
+focus_neighbour_bottom = NodePath("../Settings")
+custom_colors/font_color_disabled = Color( 1, 1, 1, 1 )
+custom_colors/font_color_focus = Color( 1, 0.74902, 0, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 1, 0.435294, 0, 1 )
+custom_colors/font_color_pressed = Color( 1, 0.74902, 0, 1 )
+custom_fonts/font = SubResource( 6 )
+custom_styles/hover = SubResource( 7 )
+custom_styles/pressed = SubResource( 8 )
+custom_styles/focus = SubResource( 9 )
+custom_styles/disabled = SubResource( 10 )
+custom_styles/normal = SubResource( 11 )
+action_mode = 0
+text = "Begin"
+align = 0
+
+[node name="Settings" type="Button" parent="TitleBorder"]
+margin_left = 72.0
+margin_top = 189.0
+margin_right = 160.0
+margin_bottom = 215.0
+rect_rotation = -15.0
+focus_neighbour_left = NodePath("../Achievements")
+focus_neighbour_top = NodePath("../Begin")
+focus_neighbour_right = NodePath("../Achievements")
+focus_neighbour_bottom = NodePath("../Quit")
+custom_colors/font_color_disabled = Color( 1, 1, 1, 1 )
+custom_colors/font_color_focus = Color( 1, 0.74902, 0, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 1, 0.435294, 0, 1 )
+custom_colors/font_color_pressed = Color( 1, 0.74902, 0, 1 )
+custom_fonts/font = SubResource( 6 )
+custom_styles/hover = SubResource( 7 )
+custom_styles/pressed = SubResource( 8 )
+custom_styles/focus = SubResource( 9 )
+custom_styles/disabled = SubResource( 10 )
+custom_styles/normal = SubResource( 11 )
+action_mode = 0
+text = "Settings"
+align = 0
+
+[node name="Achievements" type="Button" parent="TitleBorder"]
+margin_left = 176.0
+margin_top = 162.0
+margin_right = 316.0
+margin_bottom = 188.0
+rect_rotation = -15.0
+focus_neighbour_left = NodePath("../Settings")
+focus_neighbour_top = NodePath("../Begin")
+focus_neighbour_right = NodePath("../Settings")
+focus_neighbour_bottom = NodePath("../Extra")
+custom_colors/font_color_disabled = Color( 1, 1, 1, 1 )
+custom_colors/font_color_focus = Color( 1, 0.74902, 0, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 1, 0.435294, 0, 1 )
+custom_colors/font_color_pressed = Color( 1, 0.74902, 0, 1 )
+custom_fonts/font = SubResource( 6 )
+custom_styles/hover = SubResource( 7 )
+custom_styles/pressed = SubResource( 8 )
+custom_styles/focus = SubResource( 9 )
+custom_styles/disabled = SubResource( 10 )
+custom_styles/normal = SubResource( 11 )
+action_mode = 0
+text = "Achievements"
+align = 0
+
+[node name="Extra" type="Button" parent="TitleBorder"]
+margin_left = 112.0
+margin_top = 221.0
+margin_right = 168.0
+margin_bottom = 247.0
+rect_rotation = -15.0
+focus_neighbour_left = NodePath("../Quit")
+focus_neighbour_top = NodePath("../Achievements")
+focus_neighbour_right = NodePath("../Quit")
+focus_neighbour_bottom = NodePath("../Begin")
+custom_colors/font_color_disabled = Color( 1, 1, 1, 1 )
+custom_colors/font_color_focus = Color( 1, 0.74902, 0, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 1, 0.435294, 0, 1 )
+custom_colors/font_color_pressed = Color( 1, 0.74902, 0, 1 )
+custom_fonts/font = SubResource( 6 )
+custom_styles/hover = SubResource( 7 )
+custom_styles/pressed = SubResource( 8 )
+custom_styles/focus = SubResource( 9 )
+custom_styles/disabled = SubResource( 10 )
+custom_styles/normal = SubResource( 11 )
+action_mode = 0
+text = "Extra"
+align = 0
+
+[node name="Quit" type="Button" parent="TitleBorder"]
+margin_left = 56.0
+margin_top = 237.0
+margin_right = 96.0
+margin_bottom = 263.0
+rect_rotation = -15.0
+focus_neighbour_left = NodePath("../Extra")
+focus_neighbour_top = NodePath("../Settings")
+focus_neighbour_right = NodePath("../Extra")
+focus_neighbour_bottom = NodePath("../Begin")
+custom_colors/font_color_disabled = Color( 1, 1, 1, 1 )
+custom_colors/font_color_focus = Color( 1, 0.74902, 0, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 1, 0.435294, 0, 1 )
+custom_colors/font_color_pressed = Color( 1, 0.74902, 0, 1 )
+custom_fonts/font = SubResource( 6 )
+custom_styles/hover = SubResource( 7 )
+custom_styles/pressed = SubResource( 8 )
+custom_styles/focus = SubResource( 9 )
+custom_styles/disabled = SubResource( 10 )
+custom_styles/normal = SubResource( 11 )
+action_mode = 0
+text = "Quit"
+align = 0
+
+[node name="Transition" parent="." instance=ExtResource( 3 )]
+
+[node name="Whiteness" type="ColorRect" parent="Transition"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -16.0
+margin_top = -20.0
+margin_right = 16.0
+margin_bottom = 20.0
+mouse_filter = 2
+color = Color( 1, 1, 1, 0 )
+
+[node name="Selecting" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+volume_db = -10.0
+bus = "SFX"
+
+[node name="Selected" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+volume_db = -10.0
+bus = "SFX"
+
+[node name="Animation" type="AnimationPlayer" parent="."]
+autoplay = "Menu"
+playback_speed = 2.0
+anims/Menu = SubResource( 12 )
+"anims/Menu Static" = SubResource( 80 )
+anims/RESET = SubResource( 13 )
+anims/TransitionIn = SubResource( 71 )
+
+[node name="Animation2" type="AnimationPlayer" parent="."]
+playback_speed = 2.0
+anims/Flash = SubResource( 81 )
+anims/RESET = SubResource( 82 )
+
+[connection signal="focus_entered" from="TitleBorder/Begin" to="." method="_on_Stuff_focus_entered"]
+[connection signal="mouse_entered" from="TitleBorder/Begin" to="." method="_on_Stuff_mouse_entered"]
+[connection signal="pressed" from="TitleBorder/Begin" to="." method="_on_Begin_pressed"]
+[connection signal="focus_entered" from="TitleBorder/Settings" to="." method="_on_Stuff_focus_entered"]
+[connection signal="mouse_entered" from="TitleBorder/Settings" to="." method="_on_Stuff_mouse_entered"]
+[connection signal="pressed" from="TitleBorder/Settings" to="." method="_on_Settings_pressed"]
+[connection signal="focus_entered" from="TitleBorder/Achievements" to="." method="_on_Stuff_focus_entered"]
+[connection signal="mouse_entered" from="TitleBorder/Achievements" to="." method="_on_Stuff_mouse_entered"]
+[connection signal="pressed" from="TitleBorder/Achievements" to="." method="_on_Achievements_pressed"]
+[connection signal="focus_entered" from="TitleBorder/Extra" to="." method="_on_Stuff_focus_entered"]
+[connection signal="mouse_entered" from="TitleBorder/Extra" to="." method="_on_Stuff_mouse_entered"]
+[connection signal="pressed" from="TitleBorder/Extra" to="." method="_on_Extra_pressed"]
+[connection signal="focus_entered" from="TitleBorder/Quit" to="." method="_on_Stuff_focus_entered"]
+[connection signal="mouse_entered" from="TitleBorder/Quit" to="." method="_on_Stuff_mouse_entered"]
+[connection signal="pressed" from="TitleBorder/Quit" to="." method="_on_Quit_pressed"]
+[connection signal="animation_finished" from="Transition/Animation" to="." method="_on_Animation_animation_finished"]
+
+[editable path="Transition"]

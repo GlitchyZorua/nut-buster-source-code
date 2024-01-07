@@ -1,0 +1,90 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Assets/Codes/Portal.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Scenes/Misc/Transition.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Assets/Fonts/m5x7.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://Assets/Sprites/Misc/Pointer.png" type="Texture" id=4]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 8, 256 )
+
+[sub_resource type="DynamicFont" id=2]
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 3 )
+
+[sub_resource type="Animation" id=3]
+resource_name = "Arrow"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Arrow/Pointer:offset")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 4 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Arrow/Pointer:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 2 ) ]
+}
+
+[node name="Portal" type="Area2D"]
+script = ExtResource( 1 )
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="Transition" parent="." instance=ExtResource( 2 )]
+
+[node name="Holder" type="ColorRect" parent="Transition"]
+modulate = Color( 1, 1, 1, 0 )
+margin_top = 128.0
+margin_right = 512.0
+margin_bottom = 152.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="Indicator" type="Label" parent="Transition/Holder"]
+modulate = Color( 1, 1, 1, 0 )
+margin_right = 512.0
+margin_bottom = 24.0
+custom_fonts/font = SubResource( 2 )
+text = "You need to kick 5 peoeple's nuts to dust!"
+align = 1
+valign = 1
+
+[node name="IndiTween" type="Tween" parent="Transition/Holder"]
+
+[node name="Arrow" type="AnimationPlayer" parent="."]
+autoplay = "Arrow"
+anims/Arrow = SubResource( 3 )
+anims/RESET = SubResource( 4 )
+
+[node name="Pointer" type="Sprite" parent="Arrow"]
+modulate = Color( 1, 1, 1, 0.509804 )
+position = Vector2( -32, 0 )
+rotation = -1.57079
+scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 4 )
+offset = Vector2( 0, 2 )
+
+[connection signal="body_entered" from="." to="." method="_on_Portal_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_Portal_body_exited"]
+[connection signal="animation_finished" from="Transition/Animation" to="." method="_on_Animation_animation_finished"]
+
+[editable path="Transition"]

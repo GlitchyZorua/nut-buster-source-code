@@ -1,0 +1,531 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://Assets/Scenes/Characters/PlayableGaa.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Assets/Backgrounds/GaaBG/ZakumaPrisonRoom.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Sprites/Sprite/Badman.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Scenes/Misc/DialogueInteractor.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Assets/SFX/Fan.mp3" type="AudioStream" id=5]
+[ext_resource path="res://Assets/Codes/Sections.gd" type="Script" id=6]
+[ext_resource path="res://Assets/Scenes/Misc/Portal.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Assets/Sprites/Misc/Light.png" type="Texture" id=8]
+[ext_resource path="res://Assets/SFX/Move Reverbed.mp3" type="AudioStream" id=9]
+[ext_resource path="res://Assets/SFX/DoorShut.mp3" type="AudioStream" id=10]
+[ext_resource path="res://Assets/SFX/Footsteps.mp3" type="AudioStream" id=11]
+
+[sub_resource type="AtlasTexture" id=7]
+atlas = ExtResource( 2 )
+region = Rect2( 0, 0, 512, 300 )
+
+[sub_resource type="AtlasTexture" id=8]
+atlas = ExtResource( 2 )
+region = Rect2( 512, 0, 512, 300 )
+
+[sub_resource type="SpriteFrames" id=6]
+animations = [ {
+"frames": [ SubResource( 7 ), SubResource( 8 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=11]
+extents = Vector2( 8, 11.3137 )
+
+[sub_resource type="Animation" id=9]
+resource_name = "GaaCutscene_1"
+length = 8.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("YSort/PlayableGaa:ENABLED")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 8.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("YSort/PlayableGaa:CUTSCENE")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 8.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("YSort/PlayableGaa/Shadow:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ Vector2( 2, 0.5 ), Vector2( 1, 0.5 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("YSort/PlayableGaa/Sprite:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 4, 5.5, 7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 52, 53, 54, 55 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("YSort/PlayableGaa/Sprite:offset")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 4, 4.1, 4.2, 4.3, 4.4, 4.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 16, 0 ), Vector2( -8, 0 ), Vector2( 6, 0 ), Vector2( -4, 0 ), Vector2( 2, 0 ), Vector2( 0, 0 ) ]
+}
+tracks/5/type = "method"
+tracks/5/path = NodePath(".")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 8.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "_load_dialogue"
+} ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("YSort/PlayableGaa/Camera:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.5, 1.5, 3, 4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 168, 0 ), Vector2( 168, 0 ), Vector2( 0, 0 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("YSort/Badman:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 2.5, 3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 440, 168 ), Vector2( 440, 168 ), Vector2( 464, 168 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("YSort/Badman:frame")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 2.5, 2.7, 2.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Backgrounds/4/Door:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0, 3.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("YSort/Badman:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0, 3.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("YSort/Badman:flip_h")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0, 2.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("YSort/PlayableGaa:STOP_ANIMATIONS")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0, 8.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("Cutscene/Dush:playing")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 4, 8.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, true ]
+}
+tracks/14/type = "value"
+tracks/14/path = NodePath("Cutscene/Footsteps:playing")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 0, 2.5, 2.9 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, true ]
+}
+tracks/15/type = "value"
+tracks/15/path = NodePath("Cutscene/Door:playing")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"times": PoolRealArray( 0, 3.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
+[sub_resource type="Animation" id=10]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("YSort/PlayableGaa/Sprite:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("YSort/PlayableGaa/Sprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("YSort/PlayableGaa/Camera:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("YSort/Badman:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 440, 168 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("YSort/Badman:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("YSort/Badman:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Backgrounds/4/Door:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("YSort/Badman:flip_h")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("YSort/PlayableGaa:CUTSCENE")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("YSort/PlayableGaa:ENABLED")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("YSort/PlayableGaa:STOP_ANIMATIONS")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("YSort/PlayableGaa/Shadow:scale")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 0.5 ) ]
+}
+
+[node name="Section 1" type="Node2D"]
+script = ExtResource( 6 )
+section = 1.0
+
+[node name="Backgrounds" type="ParallaxBackground" parent="."]
+
+[node name="1" type="ParallaxLayer" parent="Backgrounds"]
+
+[node name="Background" type="ColorRect" parent="Backgrounds/1"]
+margin_right = 512.0
+margin_bottom = 300.0
+color = Color( 0.733333, 0.431373, 0, 1 )
+
+[node name="2" type="ParallaxLayer" parent="Backgrounds"]
+
+[node name="3" type="ParallaxLayer" parent="Backgrounds"]
+
+[node name="4" type="ParallaxLayer" parent="Backgrounds"]
+
+[node name="Door" type="Sprite" parent="Backgrounds/4"]
+position = Vector2( 256, 150 )
+texture = ExtResource( 2 )
+hframes = 3
+frame = 2
+
+[node name="Prison" type="AnimatedSprite" parent="Backgrounds/4"]
+position = Vector2( 256, 150 )
+frames = SubResource( 6 )
+playing = true
+
+[node name="1" type="Light2D" parent="Backgrounds/4/Prison"]
+position = Vector2( 0, -62 )
+texture = ExtResource( 8 )
+texture_scale = 2.0
+color = Color( 0.921569, 1, 0, 1 )
+range_layer_min = -100
+range_layer_max = 1
+
+[node name="Walls" type="StaticBody2D" parent="."]
+
+[node name="Portal" parent="Walls" instance=ExtResource( 7 )]
+position = Vector2( 496, 184 )
+rotation = -0.785397
+next_scene_path = "res://Assets/Scenes/Gaa Section/GaaSection 2.tscn"
+player_spawn_location = Vector2( 88, 176 )
+enabled = false
+
+[node name="Collision" parent="Walls/Portal" index="0"]
+shape = SubResource( 11 )
+
+[node name="Pointer" parent="Walls/Portal/Arrow" index="0"]
+visible = false
+position = Vector2( 480, 200 )
+rotation = -2.35619
+
+[node name="Collision" type="CollisionPolygon2D" parent="Walls"]
+polygon = PoolVector2Array( 0, 256, 0, 320, -24, 320, -24, 0, 0, 0, 512, 0, 528, 0, 528, 320, 0, 320, 0, 280, 512, 280, 512, 200, 464, 152, 432, 152, 432, 160, 400, 160, 392.181, 152, 64, 152, 24, 192, 40, 200 )
+
+[node name="YSort" type="YSort" parent="."]
+
+[node name="PlayableGaa" parent="YSort" instance=ExtResource( 1 )]
+modulate = Color( 0.47451, 0.341176, 0.25098, 1 )
+position = Vector2( 96, 176 )
+ENABLED = true
+
+[node name="BottomRight" parent="YSort/PlayableGaa/Camera/Limits" index="1"]
+position = Vector2( 512, 299 )
+
+[node name="AlmostDead" parent="YSort/PlayableGaa/Misc" index="0"]
+frame = 1
+
+[node name="Icon" parent="YSort/PlayableGaa/MiniMenu/Background/Holder/Options/Stats" index="9"]
+frame = 0
+
+[node name="DialogueInteractor" parent="YSort" instance=ExtResource( 4 )]
+position = Vector2( 152, 152 )
+INDEX = 7
+ALT_INDEX = 34
+
+[node name="Indicator" parent="YSort/DialogueInteractor" index="1"]
+text = "[Z] Inspect"
+
+[node name="DialogueInteractor2" parent="YSort" instance=ExtResource( 4 )]
+position = Vector2( 80, 248 )
+INDEX = 15
+ALT_INDEX = 36
+
+[node name="Indicator" parent="YSort/DialogueInteractor2" index="1"]
+margin_top = -16.0
+margin_bottom = 8.0
+text = "[Z] Inspect"
+
+[node name="DialogueInteractor3" parent="YSort" instance=ExtResource( 4 )]
+position = Vector2( 408, 152 )
+INDEX = 21
+ALT_INDEX = 38
+
+[node name="Indicator" parent="YSort/DialogueInteractor3" index="1"]
+text = "[Z] Inspect"
+
+[node name="DialogueInteractor4" parent="YSort" instance=ExtResource( 4 )]
+position = Vector2( 488, 184 )
+INDEX = 29
+EVENT = 1
+
+[node name="Indicator" parent="YSort/DialogueInteractor4" index="1"]
+text = "[Z] Open"
+
+[node name="Badman" type="Sprite" parent="YSort"]
+visible = false
+modulate = Color( 0.47451, 0.341176, 0.25098, 1 )
+position = Vector2( 440, 168 )
+texture = ExtResource( 3 )
+flip_h = true
+hframes = 25
+frame = 1
+
+[node name="Foregrounds" type="ParallaxBackground" parent="."]
+layer = 0
+
+[node name="1" type="ParallaxLayer" parent="Foregrounds"]
+
+[node name="Ambience" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+volume_db = -5.0
+autoplay = true
+bus = "Music"
+
+[node name="Cutscene" type="AnimationPlayer" parent="."]
+anims/GaaCutscene_1 = SubResource( 9 )
+anims/RESET = SubResource( 10 )
+
+[node name="Dush" type="AudioStreamPlayer" parent="Cutscene"]
+stream = ExtResource( 9 )
+
+[node name="Footsteps" type="AudioStreamPlayer" parent="Cutscene"]
+stream = ExtResource( 11 )
+volume_db = -10.0
+pitch_scale = 0.5
+
+[node name="Door" type="AudioStreamPlayer" parent="Cutscene"]
+stream = ExtResource( 10 )
+volume_db = -5.0
+pitch_scale = 0.85
+
+[editable path="Walls/Portal"]
+[editable path="Walls/Portal/Transition"]
+[editable path="YSort/PlayableGaa"]
+[editable path="YSort/PlayableGaa/MiniMenu"]
+[editable path="YSort/DialogueInteractor"]
+[editable path="YSort/DialogueInteractor2"]
+[editable path="YSort/DialogueInteractor3"]
+[editable path="YSort/DialogueInteractor4"]

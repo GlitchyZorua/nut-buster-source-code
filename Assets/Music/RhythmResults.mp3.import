@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/RhythmResults.mp3-8ca335157c4dcf72df67a9d4e19edeeb.mp3str"
+
+[deps]
+
+source_file="res://Assets/Music/RhythmResults.mp3"
+dest_files=[ "res://.import/RhythmResults.mp3-8ca335157c4dcf72df67a9d4e19edeeb.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

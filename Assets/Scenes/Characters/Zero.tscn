@@ -1,0 +1,3439 @@
+[gd_scene load_steps=55 format=2]
+
+[ext_resource path="res://Assets/Fonts/m5x7.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Assets/Scenes/Misc/SoftCollision.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Assets/Sprites/Misc/LargeShadow.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Codes/PlayerDamageArea.gd" type="Script" id=4]
+[ext_resource path="res://Assets/Codes/Zero.gd" type="Script" id=5]
+[ext_resource path="res://Assets/Sprites/Sprite/Zero.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Music/Striker's Devil.mp3" type="AudioStream" id=8]
+[ext_resource path="res://Assets/SFX/Damage.mp3" type="AudioStream" id=9]
+[ext_resource path="res://Assets/SFX/Footsteps.mp3" type="AudioStream" id=10]
+[ext_resource path="res://Assets/Sprites/Misc/ZeroSlash.png" type="Texture" id=11]
+[ext_resource path="res://Assets/SFX/Slash.mp3" type="AudioStream" id=12]
+[ext_resource path="res://Assets/SFX/Woosh.mp3" type="AudioStream" id=13]
+[ext_resource path="res://Assets/Shaders/Color Shift.tres" type="Shader" id=14]
+[ext_resource path="res://Assets/SFX/Scythe Impact.mp3" type="AudioStream" id=15]
+[ext_resource path="res://Assets/SFX/Scythe Swing.mp3" type="AudioStream" id=16]
+[ext_resource path="res://Assets/Codes/Camera.gd" type="Script" id=17]
+[ext_resource path="res://Assets/Music/Danger Blanger.mp3" type="AudioStream" id=18]
+[ext_resource path="res://Assets/Music/Returned Zero.mp3" type="AudioStream" id=19]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 24, 8 )
+
+[sub_resource type="Animation" id=117]
+resource_name = "Alt Attack 0 - Instant Kill"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 51, 52, 53 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("DamageArea/Collision:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("DamageArea/Collision/Slash:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("DamageArea/Collision:position")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 16, -7.9 ), Vector2( 632, -7.90093 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("DamageArea/Collision/Slash:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath(".:ENABLED")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Slash:playing")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Woosh:playing")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("DamageArea/Collision:scale")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1.2, 1.3 ) ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath(".:DAMAGE")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 10 ]
+}
+
+[sub_resource type="Animation" id=118]
+resource_name = "Alt Attack 1 - Killer Spree"
+length = 2.0
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95, 1, 1.05, 1.1, 1.15, 1.2, 1.25, 1.3, 1.35, 1.4, 1.45, 1.5, 1.55, 1.6, 1.65, 1.7, 1.75, 1.8, 1.85, 1.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 49, 50, 51, 52, 56, 57, 51, 52, 56, 57, 51, 52, 56, 57, 51, 52, 56, 57, 51, 52, 56, 57, 51, 52, 56, 57, 51, 52, 56, 57, 58 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("DamageArea/Collision:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95, 1, 1.05, 1.1, 1.15, 1.2, 1.25, 1.3, 1.35, 1.4, 1.45, 1.5, 1.55, 1.6, 1.65, 1.7, 1.75, 1.8, 1.85 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 16, -8.00004 ), Vector2( 16, -8.00004 ), Vector2( 248, -8.001 ), Vector2( 16, -8.00004 ), Vector2( 248, -8.001 ), Vector2( 16, -8.00004 ), Vector2( 248, -8.001 ), Vector2( 16, -8.00004 ), Vector2( 248, -8.001 ), Vector2( 16, -8.00004 ), Vector2( 248, -8.001 ), Vector2( 16, -8.00004 ), Vector2( 248, -8.001 ), Vector2( 16, -8.00004 ), Vector2( 248, -8.001 ), Vector2( 16, -8.00004 ), Vector2( 248, -8.001 ), Vector2( 16, -8.00004 ), Vector2( 248, -8.001 ), Vector2( 16, -8.00004 ), Vector2( 248, -8.001 ), Vector2( 16, -8.00004 ), Vector2( 248, -8.001 ), Vector2( 16, -8.00004 ), Vector2( 248, -8.001 ), Vector2( 16, -8.00004 ), Vector2( 248, -8.001 ), Vector2( 16, -8.00004 ), Vector2( 248, -8.001 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("DamageArea/Collision/Slash:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95, 1, 1.05, 1.1, 1.15, 1.2, 1.25, 1.3, 1.35, 1.4, 1.45, 1.5, 1.55, 1.6, 1.65, 1.7, 1.75, 1.8, 1.85 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("DamageArea/Collision/Slash:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.5, 0.53, 0.55, 0.6, 0.63, 0.65, 0.7, 0.73, 0.75, 0.8, 0.83, 0.85, 0.9, 0.93, 0.95, 1, 1.03, 1.05, 1.1, 1.13, 1.15, 1.2, 1.23, 1.25, 1.3, 1.33, 1.35, 1.4, 1.43, 1.45, 1.5, 1.53, 1.55, 1.6, 1.63, 1.65, 1.7, 1.73, 1.75, 1.8, 1.83, 1.85 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("DamageArea/Collision:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.5, 1.85 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath(".:ENABLED")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Slash:playing")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, true, true, true, true, true, true, true, true, true, true, true, true, true ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath(".:DAMAGE")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 10 ]
+}
+tracks/8/type = "method"
+tracks/8/path = NodePath(".")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "teleport"
+} ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Color/Blackout:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("Woosh:playing")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=119]
+resource_name = "Alt Attack 2 - Knives"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 64, 65, 66, 29, 29 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 3.99467, 5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, -320 ), Vector2( 0, -320 ), Vector2( 0, 0 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 1, 1.05, 1.1, 1.15, 1.2, 1.25, 1.3, 1.35, 1.4, 1.45, 1.5, 1.55, 1.6, 1.65, 1.7, 1.75, 1.8, 1.85, 1.9, 1.95, 2, 2.05, 2.1, 2.15, 2.2, 2.25, 2.3, 2.35, 2.4, 2.45, 2.5, 2.55, 2.6, 2.65, 2.7, 2.75, 2.8, 2.85, 2.9, 2.95, 3, 3.05, 3.1, 3.15, 3.2, 3.25, 3.3, 3.35, 3.4, 3.45, 3.5, 3.55, 3.6, 3.65, 3.7, 3.75, 3.8, 3.85, 3.9, 3.95, 4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "summon_knives"
+}, {
+"args": [  ],
+"method": "summon_knives"
+}, {
+"args": [  ],
+"method": "summon_knives"
+}, {
+"args": [  ],
+"method": "summon_knives"
+}, {
+"args": [  ],
+"method": "summon_knives"
+}, {
+"args": [  ],
+"method": "summon_knives"
+}, {
+"args": [  ],
+"method": "summon_knives"
+}, {
+"args": [  ],
+"method": "summon_knives"
+}, {
+"args": [  ],
+"method": "summon_knives"
+}, {
+"args": [  ],
+"method": "summon_knives"
+}, {
+"args": [  ],
+"method": "summon_knives"
+}, {
+"args": [  ],
+"method": "summon_knives"
+}, {
+"args": [  ],
+"method": "summon_knives"
+}, {
+"args": [  ],
+"method": "summon_knives"
+}, {
+"args": [  ],
+"method": "summon_knives"
+}, {
+"args": [  ],
+"method": "summon_knives"
+}, {
+"args": [  ],
+"method": "summon_knives"
+}, {
+"args": [  ],
+"method": "summon_knives"
+}, {
+"args": [  ],
+"method": "summon_knives"
+}, {
+"args": [  ],
+"method": "summon_knives"
+}, {
+"args": [  ],
+"method": "summon_knives"
+}, {
+"args": [  ],
+"method": "summon_knives"
+}, {
+"args": [  ],
+"method": "summon_knives"
+}, {
+"args": [  ],
+"method": "summon_knives"
+}, {
+"args": [  ],
+"method": "summon_knives"
+}, {
+"args": [  ],
+"method": "summon_knives"
+}, {
+"args": [  ],
+"method": "summon_knives"
+}, {
+"args": [  ],
+"method": "summon_knives"
+}, {
+"args": [  ],
+"method": "summon_knives"
+}, {
+"args": [  ],
+"method": "summon_knives"
+}, {
+"args": [  ],
+"method": "summon_knives"
+}, {
+"args": [  ],
+"method": "summon_knives"
+}, {
+"args": [  ],
+"method": "summon_knives"
+}, {
+"args": [  ],
+"method": "summon_knives"
+}, {
+"args": [  ],
+"method": "summon_knives"
+}, {
+"args": [  ],
+"method": "summon_knives"
+}, {
+"args": [  ],
+"method": "summon_knives"
+}, {
+"args": [  ],
+"method": "summon_knives"
+}, {
+"args": [  ],
+"method": "summon_knives"
+}, {
+"args": [  ],
+"method": "summon_knives"
+}, {
+"args": [  ],
+"method": "summon_knives"
+}, {
+"args": [  ],
+"method": "summon_knives"
+}, {
+"args": [  ],
+"method": "summon_knives"
+}, {
+"args": [  ],
+"method": "summon_knives"
+}, {
+"args": [  ],
+"method": "summon_knives"
+}, {
+"args": [  ],
+"method": "summon_knives"
+}, {
+"args": [  ],
+"method": "summon_knives"
+}, {
+"args": [  ],
+"method": "summon_knives"
+}, {
+"args": [  ],
+"method": "summon_knives"
+}, {
+"args": [  ],
+"method": "summon_knives"
+}, {
+"args": [  ],
+"method": "summon_knives"
+}, {
+"args": [  ],
+"method": "summon_knives"
+}, {
+"args": [  ],
+"method": "summon_knives"
+}, {
+"args": [  ],
+"method": "summon_knives"
+}, {
+"args": [  ],
+"method": "summon_knives"
+}, {
+"args": [  ],
+"method": "summon_knives"
+}, {
+"args": [  ],
+"method": "summon_knives"
+}, {
+"args": [  ],
+"method": "summon_knives"
+}, {
+"args": [  ],
+"method": "summon_knives"
+}, {
+"args": [  ],
+"method": "summon_knives"
+}, {
+"args": [  ],
+"method": "summon_knives"
+} ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 1, 1.2, 1.4, 1.6, 1.8, 2, 2.2, 2.4, 2.6, 2.8, 3, 3.2, 3.5, 3.7, 4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "summon_explosives"
+}, {
+"args": [  ],
+"method": "summon_explosives"
+}, {
+"args": [  ],
+"method": "summon_explosives"
+}, {
+"args": [  ],
+"method": "summon_explosives"
+}, {
+"args": [  ],
+"method": "summon_explosives"
+}, {
+"args": [  ],
+"method": "summon_explosives"
+}, {
+"args": [  ],
+"method": "summon_explosives"
+}, {
+"args": [  ],
+"method": "summon_explosives"
+}, {
+"args": [  ],
+"method": "summon_explosives"
+}, {
+"args": [  ],
+"method": "summon_explosives"
+}, {
+"args": [  ],
+"method": "summon_explosives"
+}, {
+"args": [  ],
+"method": "summon_explosives"
+}, {
+"args": [  ],
+"method": "summon_explosives"
+}, {
+"args": [  ],
+"method": "summon_explosives"
+}, {
+"args": [  ],
+"method": "summon_explosives"
+} ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath(".:ENABLED")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("HPBar:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.2, 4.5, 5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("STMBar:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.2, 4.5, 5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Woosh:playing")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Collision:disabled")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 0.4, 5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+
+[sub_resource type="Animation" id=120]
+resource_name = "Alt Attack 3 - Soul"
+length = 8.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 0.6, 0.7, 0.8, 2.5, 3, 3.1, 3.2, 3.3, 5, 5.5, 5.6, 5.7, 5.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 54, 55, 56, 57, 58, 54, 55, 56, 57, 58, 54, 55, 56, 57, 58 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("DamageArea/Collision:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.6, 2, 2.5, 3.1, 4.5, 5, 5.6, 7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 8, -3.5 ), Vector2( 8, -3.5 ), Vector2( 760, -3.5 ), Vector2( 8, -3.5 ), Vector2( 8, -3.5 ), Vector2( 760, -3.5 ), Vector2( 8, -3.5 ), Vector2( 8, -3.5 ), Vector2( 760, -3.5 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("DamageArea/Collision:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 2.5, 5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1.4, 6 ), Vector2( 1.4, 6 ), Vector2( 1.4, 6 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("DamageArea/Collision/Slash:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.6, 2, 3.1, 4.5, 5.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false, true, false, true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("DamageArea/Collision/Slash:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.6, 2, 2.5, 3.1, 4.5, 5, 5.6, 7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("DamageArea/Collision:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.6, 2, 2.5, 3.1, 4.5, 5, 5.6, 7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true, true, false, true, true, false, true ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath(".:ENABLED")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 2.5, 5, 8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ false, false, false, true ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Slash:playing")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.6, 2.5, 3.1, 5, 5.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false, true, false, true ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath(".:DAMAGE")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 2.5, 5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 25, 25, 25 ]
+}
+tracks/9/type = "method"
+tracks/9/path = NodePath(".")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0, 2.5, 5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "teleport"
+}, {
+"args": [  ],
+"method": "teleport"
+}, {
+"args": [  ],
+"method": "teleport"
+} ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("Color/Blackout:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0, 0.1, 2.5, 2.6, 5, 5.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true, false, true, false ]
+}
+
+[sub_resource type="Animation" id=121]
+resource_name = "Alt Attack 4 - Genocidal Intent"
+length = 2.0
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 59, 60, 61, 62, 63, 59, 60, 61, 62, 63, 59, 60, 61, 62, 63, 59, 60, 61, 62, 63 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Color/ColorFX:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2, 0.5, 0.7, 1, 1.2, 1.5, 1.7, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false, true, false, true, false, true, false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Color/ColorFX:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.2, 0.5, 0.7, 1, 1.2, 1.5, 1.7, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.2, 0.23, 0.25, 0.28, 0.3, 0.32, 0.35, 0.38, 0.4, 0.42, 0.45, 0.7, 0.73, 0.75, 0.78, 0.8, 0.82, 0.85, 0.88, 0.9, 0.92, 0.95, 1.2, 1.23, 1.25, 1.28, 1.3, 1.32, 1.35, 1.38, 1.4, 1.42, 1.45, 1.7, 1.73, 1.75, 1.78, 1.8, 1.82, 1.85, 1.88, 1.9, 1.92, 1.95 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "summon_explosives"
+}, {
+"args": [  ],
+"method": "summon_explosives"
+}, {
+"args": [  ],
+"method": "summon_explosives"
+}, {
+"args": [  ],
+"method": "summon_explosives"
+}, {
+"args": [  ],
+"method": "summon_explosives"
+}, {
+"args": [  ],
+"method": "summon_explosives"
+}, {
+"args": [  ],
+"method": "summon_explosives"
+}, {
+"args": [  ],
+"method": "summon_explosives"
+}, {
+"args": [  ],
+"method": "summon_explosives"
+}, {
+"args": [  ],
+"method": "summon_explosives"
+}, {
+"args": [  ],
+"method": "summon_explosives"
+}, {
+"args": [  ],
+"method": "summon_explosives"
+}, {
+"args": [  ],
+"method": "summon_explosives"
+}, {
+"args": [  ],
+"method": "summon_explosives"
+}, {
+"args": [  ],
+"method": "summon_explosives"
+}, {
+"args": [  ],
+"method": "summon_explosives"
+}, {
+"args": [  ],
+"method": "summon_explosives"
+}, {
+"args": [  ],
+"method": "summon_explosives"
+}, {
+"args": [  ],
+"method": "summon_explosives"
+}, {
+"args": [  ],
+"method": "summon_explosives"
+}, {
+"args": [  ],
+"method": "summon_explosives"
+}, {
+"args": [  ],
+"method": "summon_explosives"
+}, {
+"args": [  ],
+"method": "summon_explosives"
+}, {
+"args": [  ],
+"method": "summon_explosives"
+}, {
+"args": [  ],
+"method": "summon_explosives"
+}, {
+"args": [  ],
+"method": "summon_explosives"
+}, {
+"args": [  ],
+"method": "summon_explosives"
+}, {
+"args": [  ],
+"method": "summon_explosives"
+}, {
+"args": [  ],
+"method": "summon_explosives"
+}, {
+"args": [  ],
+"method": "summon_explosives"
+}, {
+"args": [  ],
+"method": "summon_explosives"
+}, {
+"args": [  ],
+"method": "summon_explosives"
+}, {
+"args": [  ],
+"method": "summon_explosives"
+}, {
+"args": [  ],
+"method": "summon_explosives"
+}, {
+"args": [  ],
+"method": "summon_explosives"
+}, {
+"args": [  ],
+"method": "summon_explosives"
+}, {
+"args": [  ],
+"method": "summon_explosives"
+}, {
+"args": [  ],
+"method": "summon_explosives"
+}, {
+"args": [  ],
+"method": "summon_explosives"
+}, {
+"args": [  ],
+"method": "summon_explosives"
+}, {
+"args": [  ],
+"method": "summon_explosives"
+}, {
+"args": [  ],
+"method": "summon_explosives"
+}, {
+"args": [  ],
+"method": "summon_explosives"
+}, {
+"args": [  ],
+"method": "summon_explosives"
+} ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("DamageArea/Collision:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 8, -3.5 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("DamageArea/Collision:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1.4, 0.8 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("DamageArea/Collision:disabled")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.2, 0.3, 0.5, 0.7, 0.8, 1, 1.2, 1.3, 1.5, 1.7, 1.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true, true, false, true, true, false, true, true, false, true ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath(".:ENABLED")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Woosh2:playing")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 0.15, 0.7, 1.2, 1.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, true, true, true ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Impact:playing")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0, 0.2, 0.75, 1.25, 1.75 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, true, true, true ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath(".:DAMAGE")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 25 ]
+}
+
+[sub_resource type="Animation" id=122]
+resource_name = "Alt Tired"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 68, 69, 68, 69, 68, 69 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("DamageArea/Collision:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Color/ColorFX:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Color/ColorFX:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Sprite:offset")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 4, 0 ), Vector2( -2, 0 ), Vector2( 1, 0 ), Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=108]
+resource_name = "Attack 0 - Instant Kill"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 12, 13, 14 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("DamageArea/Collision:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("DamageArea/Collision/Slash:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("DamageArea/Collision:position")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 16, -7.9 ), Vector2( 248, -7.9 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("DamageArea/Collision/Slash:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath(".:ENABLED")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Slash:playing")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Woosh:playing")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("DamageArea/Collision:scale")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1.2, 1.25 ) ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath(".:DAMAGE")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 5 ]
+}
+
+[sub_resource type="Animation" id=15]
+resource_name = "Attack 1 - Slasher Danger"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 0.6, 0.7, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 10, 11, 12, 13, 14 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("DamageArea/Collision:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.6, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("DamageArea/Collision/Slash:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("DamageArea/Collision:position")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.6, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 16, -8.00004 ), Vector2( 16, -8 ), Vector2( 248, 0 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("DamageArea/Collision/Slash:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.9, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath(".:ENABLED")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Slash:playing")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Woosh:playing")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("DamageArea/Collision:scale")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1.2, 1.25 ) ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath(".:DAMAGE")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 20 ]
+}
+
+[sub_resource type="Animation" id=16]
+resource_name = "Attack 2 - Slasher Blasher"
+length = 1.8
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 0.6, 0.7, 0.8, 1, 1.2, 1.3, 1.4, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 10, 11, 12, 13, 14, 15, 16, 17, 18, 19 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("DamageArea/Collision:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.6, 1, 1.3, 1.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true, false, true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("DamageArea/Collision/Slash:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.6, 1, 1.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false, true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("DamageArea/Collision:position")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.6, 1, 1.1, 1.3, 1.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 16, -8 ), Vector2( 16, -8 ), Vector2( 248, -8 ), Vector2( 16, -8 ), Vector2( 16, -8 ), Vector2( 248, -8 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("DamageArea/Collision/Slash:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.9, 1, 1.1, 1.6, 1.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath(".:ENABLED")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 1.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Slash:playing")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.6, 1.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, true ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Woosh:playing")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.5, 1.1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, true ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("DamageArea/Collision:scale")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1.2, 1.25 ) ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath(".:DAMAGE")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 20 ]
+}
+
+[sub_resource type="Animation" id=110]
+resource_name = "Attack 3 - Knives"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 25, 26, 27, 28, 29 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 3.99467, 5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, -320 ), Vector2( 0, -320 ), Vector2( 0, 0 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 1, 1.05, 1.1, 1.15, 1.2, 1.25, 1.3, 1.35, 1.4, 1.45, 1.5, 1.55, 1.6, 1.65, 1.7, 1.75, 1.8, 1.85, 1.9, 1.95, 2, 2.05, 2.1, 2.15, 2.2, 2.25, 2.3, 2.35, 2.4, 2.45, 2.5, 2.55, 2.6, 2.65, 2.7, 2.75, 2.8, 2.85, 2.9, 2.95, 3, 3.05, 3.1, 3.15, 3.2, 3.25, 3.3, 3.35, 3.4, 3.45, 3.5, 3.55, 3.6, 3.65, 3.7, 3.75, 3.8, 3.85, 3.9, 3.95, 4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "summon_knives"
+}, {
+"args": [  ],
+"method": "summon_knives"
+}, {
+"args": [  ],
+"method": "summon_knives"
+}, {
+"args": [  ],
+"method": "summon_knives"
+}, {
+"args": [  ],
+"method": "summon_knives"
+}, {
+"args": [  ],
+"method": "summon_knives"
+}, {
+"args": [  ],
+"method": "summon_knives"
+}, {
+"args": [  ],
+"method": "summon_knives"
+}, {
+"args": [  ],
+"method": "summon_knives"
+}, {
+"args": [  ],
+"method": "summon_knives"
+}, {
+"args": [  ],
+"method": "summon_knives"
+}, {
+"args": [  ],
+"method": "summon_knives"
+}, {
+"args": [  ],
+"method": "summon_knives"
+}, {
+"args": [  ],
+"method": "summon_knives"
+}, {
+"args": [  ],
+"method": "summon_knives"
+}, {
+"args": [  ],
+"method": "summon_knives"
+}, {
+"args": [  ],
+"method": "summon_knives"
+}, {
+"args": [  ],
+"method": "summon_knives"
+}, {
+"args": [  ],
+"method": "summon_knives"
+}, {
+"args": [  ],
+"method": "summon_knives"
+}, {
+"args": [  ],
+"method": "summon_knives"
+}, {
+"args": [  ],
+"method": "summon_knives"
+}, {
+"args": [  ],
+"method": "summon_knives"
+}, {
+"args": [  ],
+"method": "summon_knives"
+}, {
+"args": [  ],
+"method": "summon_knives"
+}, {
+"args": [  ],
+"method": "summon_knives"
+}, {
+"args": [  ],
+"method": "summon_knives"
+}, {
+"args": [  ],
+"method": "summon_knives"
+}, {
+"args": [  ],
+"method": "summon_knives"
+}, {
+"args": [  ],
+"method": "summon_knives"
+}, {
+"args": [  ],
+"method": "summon_knives"
+}, {
+"args": [  ],
+"method": "summon_knives"
+}, {
+"args": [  ],
+"method": "summon_knives"
+}, {
+"args": [  ],
+"method": "summon_knives"
+}, {
+"args": [  ],
+"method": "summon_knives"
+}, {
+"args": [  ],
+"method": "summon_knives"
+}, {
+"args": [  ],
+"method": "summon_knives"
+}, {
+"args": [  ],
+"method": "summon_knives"
+}, {
+"args": [  ],
+"method": "summon_knives"
+}, {
+"args": [  ],
+"method": "summon_knives"
+}, {
+"args": [  ],
+"method": "summon_knives"
+}, {
+"args": [  ],
+"method": "summon_knives"
+}, {
+"args": [  ],
+"method": "summon_knives"
+}, {
+"args": [  ],
+"method": "summon_knives"
+}, {
+"args": [  ],
+"method": "summon_knives"
+}, {
+"args": [  ],
+"method": "summon_knives"
+}, {
+"args": [  ],
+"method": "summon_knives"
+}, {
+"args": [  ],
+"method": "summon_knives"
+}, {
+"args": [  ],
+"method": "summon_knives"
+}, {
+"args": [  ],
+"method": "summon_knives"
+}, {
+"args": [  ],
+"method": "summon_knives"
+}, {
+"args": [  ],
+"method": "summon_knives"
+}, {
+"args": [  ],
+"method": "summon_knives"
+}, {
+"args": [  ],
+"method": "summon_knives"
+}, {
+"args": [  ],
+"method": "summon_knives"
+}, {
+"args": [  ],
+"method": "summon_knives"
+}, {
+"args": [  ],
+"method": "summon_knives"
+}, {
+"args": [  ],
+"method": "summon_knives"
+}, {
+"args": [  ],
+"method": "summon_knives"
+}, {
+"args": [  ],
+"method": "summon_knives"
+}, {
+"args": [  ],
+"method": "summon_knives"
+} ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath(".:ENABLED")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("HPBar:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.2, 4.5, 5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("STMBar:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.2, 4.5, 5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Woosh:playing")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Collision:disabled")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.4, 5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+
+[sub_resource type="Animation" id=17]
+resource_name = "Attack 4 - Special Strike"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 0.6, 0.7, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 20, 21, 22, 23, 24 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:ENABLED")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.6, 0.7, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "shake"
+}, {
+"args": [  ],
+"method": "shake"
+}, {
+"args": [  ],
+"method": "shake"
+}, {
+"args": [  ],
+"method": "shake"
+} ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Color/ColorFX:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.6, 0.65, 0.7, 0.8, 1, 1.2, 1.5, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false, true, false, true, false, true, false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Color/ColorFX:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 1.5, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/5/type = "method"
+tracks/5/path = NodePath(".")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0.6, 0.61, 0.62, 0.63, 0.64, 0.7, 0.74, 0.78, 1, 1.1, 1.5, 1.58, 1.66, 1.74, 1.82, 1.9, 1.98 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "summon_explosives"
+}, {
+"args": [  ],
+"method": "summon_explosives"
+}, {
+"args": [  ],
+"method": "summon_explosives"
+}, {
+"args": [  ],
+"method": "summon_explosives"
+}, {
+"args": [  ],
+"method": "summon_explosives"
+}, {
+"args": [  ],
+"method": "summon_explosives"
+}, {
+"args": [  ],
+"method": "summon_explosives"
+}, {
+"args": [  ],
+"method": "summon_explosives"
+}, {
+"args": [  ],
+"method": "summon_explosives"
+}, {
+"args": [  ],
+"method": "summon_explosives"
+}, {
+"args": [  ],
+"method": "summon_explosives"
+}, {
+"args": [  ],
+"method": "summon_explosives"
+}, {
+"args": [  ],
+"method": "summon_explosives"
+}, {
+"args": [  ],
+"method": "summon_explosives"
+}, {
+"args": [  ],
+"method": "summon_explosives"
+}, {
+"args": [  ],
+"method": "summon_explosives"
+}, {
+"args": [  ],
+"method": "summon_explosives"
+} ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Impact:playing")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Woosh2:playing")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath(".:DAMAGE")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 20 ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("DamageArea/Collision:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 8, -3.5 ) ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("DamageArea/Collision:scale")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1.4, 0.8 ) ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("DamageArea/Collision:disabled")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true ]
+}
+
+[sub_resource type="Animation" id=113]
+resource_name = "Attack 5 - Whirlwind"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2, 2.1, 2.2, 2.3, 2.4, 2.5, 2.6, 2.7, 2.8, 2.9, 3, 3.1, 3.2, 3.3, 3.4, 3.5, 3.6, 3.7, 3.8, 3.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 30, 31, 32, 33, 32, 33, 32, 33, 32, 33, 32, 33, 32, 33, 32, 33, 32, 33, 32, 33, 32, 33, 32, 33, 32, 33, 32, 33, 32, 33, 32, 33, 32, 33, 32, 33, 32, 33, 26, 25 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("DamageArea/Collision:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -2.09808e-05, -8 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("DamageArea/Collision:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 2, 0.62 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("DamageArea/Collision:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2, 2.1, 2.2, 2.3, 2.4, 2.5, 2.6, 2.7, 2.8, 2.9, 3, 3.1, 3.2, 3.3, 3.4, 3.5, 3.6, 3.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath(".:BOUNCE")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.2, 3.7 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath(".:ENABLED")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath(".:DAMAGE")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 5 ]
+}
+
+[sub_resource type="Animation" id=114]
+resource_name = "Attack 6 - Killer Spree"
+length = 2.0
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95, 1, 1.05, 1.1, 1.15, 1.2, 1.25, 1.3, 1.31, 1.35, 1.36, 1.4, 1.41, 1.45, 1.46, 1.5, 1.55, 1.6, 1.65, 1.7, 1.75, 1.8, 1.85, 1.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 15, 16, 17, 18, 12, 13, 17, 18, 12, 13, 17, 18, 12, 13, 17, 18, 12, 13, 18, 17, 19, 18, 13, 12, 14, 13, 17, 18, 12, 13, 17, 18, 12, 13, 14 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("DamageArea/Collision:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95, 1, 1.05, 1.1, 1.15, 1.2, 1.25, 1.3, 1.35, 1.4, 1.45, 1.5, 1.55, 1.6, 1.65, 1.7, 1.75, 1.8, 1.85 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 16, -8.00004 ), Vector2( 16, -8.00004 ), Vector2( 248, -8.001 ), Vector2( 16, -8.00004 ), Vector2( 248, -8.001 ), Vector2( 16, -8.00004 ), Vector2( 248, -8.001 ), Vector2( 16, -8.00004 ), Vector2( 248, -8.001 ), Vector2( 16, -8.00004 ), Vector2( 248, -8.001 ), Vector2( 16, -8.00004 ), Vector2( 248, -8.001 ), Vector2( 16, -8.00004 ), Vector2( 248, -8.001 ), Vector2( 16, -8.00004 ), Vector2( 248, -8.001 ), Vector2( 16, -8.00004 ), Vector2( 248, -8.001 ), Vector2( 16, -8.00004 ), Vector2( 248, -8.001 ), Vector2( 16, -8.00004 ), Vector2( 248, -8.001 ), Vector2( 16, -8.00004 ), Vector2( 248, -8.001 ), Vector2( 16, -8.00004 ), Vector2( 248, -8.001 ), Vector2( 16, -8.00004 ), Vector2( 248, -8.001 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("DamageArea/Collision/Slash:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95, 1, 1.05, 1.1, 1.15, 1.2, 1.25, 1.3, 1.35, 1.4, 1.45, 1.5, 1.55, 1.6, 1.65, 1.7, 1.75, 1.8, 1.85 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("DamageArea/Collision/Slash:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.5, 0.53, 0.55, 0.6, 0.63, 0.65, 0.7, 0.73, 0.75, 0.8, 0.83, 0.85, 0.9, 0.93, 0.95, 1, 1.03, 1.05, 1.1, 1.13, 1.15, 1.2, 1.23, 1.25, 1.3, 1.33, 1.35, 1.4, 1.43, 1.45, 1.5, 1.53, 1.55, 1.6, 1.63, 1.65, 1.7, 1.73, 1.75, 1.8, 1.83, 1.85 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("DamageArea/Collision:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.5, 1.85 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath(".:ENABLED")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Slash:playing")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, true, true, true, true, true, true, true, true, true, true, true, true, true ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath(".:DAMAGE")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 5 ]
+}
+
+[sub_resource type="Animation" id=116]
+resource_name = "Attack 7 - Sike"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 0.6, 0.7, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 15, 16, 17, 18, 19 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("DamageArea/Collision:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.6, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 8, -3.5 ), Vector2( 8, -3.5 ), Vector2( 760, -3.5 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("DamageArea/Collision:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1.4, 6 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("DamageArea/Collision/Slash:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("DamageArea/Collision/Slash:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.6, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("DamageArea/Collision:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.6, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath(".:ENABLED")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Slash:playing")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath(".:DAMAGE")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 20 ]
+}
+
+[sub_resource type="Animation" id=115]
+resource_name = "Attack 8 - Genocidal Intent"
+length = 2.0
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 20, 21, 22, 23, 24, 20, 21, 22, 23, 24, 20, 21, 22, 23, 24, 20, 21, 22, 23, 24 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Color/ColorFX:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2, 0.5, 0.7, 1, 1.2, 1.5, 1.7, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false, true, false, true, false, true, false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Color/ColorFX:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.2, 0.5, 0.7, 1, 1.2, 1.5, 1.7, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95, 1.2, 1.25, 1.3, 1.35, 1.4, 1.45, 1.7, 1.75, 1.8, 1.85, 1.9, 1.95 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "summon_explosives"
+}, {
+"args": [  ],
+"method": "summon_explosives"
+}, {
+"args": [  ],
+"method": "summon_explosives"
+}, {
+"args": [  ],
+"method": "summon_explosives"
+}, {
+"args": [  ],
+"method": "summon_explosives"
+}, {
+"args": [  ],
+"method": "summon_explosives"
+}, {
+"args": [  ],
+"method": "summon_explosives"
+}, {
+"args": [  ],
+"method": "summon_explosives"
+}, {
+"args": [  ],
+"method": "summon_explosives"
+}, {
+"args": [  ],
+"method": "summon_explosives"
+}, {
+"args": [  ],
+"method": "summon_explosives"
+}, {
+"args": [  ],
+"method": "summon_explosives"
+}, {
+"args": [  ],
+"method": "summon_explosives"
+}, {
+"args": [  ],
+"method": "summon_explosives"
+}, {
+"args": [  ],
+"method": "summon_explosives"
+}, {
+"args": [  ],
+"method": "summon_explosives"
+}, {
+"args": [  ],
+"method": "summon_explosives"
+}, {
+"args": [  ],
+"method": "summon_explosives"
+}, {
+"args": [  ],
+"method": "summon_explosives"
+}, {
+"args": [  ],
+"method": "summon_explosives"
+}, {
+"args": [  ],
+"method": "summon_explosives"
+}, {
+"args": [  ],
+"method": "summon_explosives"
+}, {
+"args": [  ],
+"method": "summon_explosives"
+}, {
+"args": [  ],
+"method": "summon_explosives"
+} ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("DamageArea/Collision:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 8, -3.5 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("DamageArea/Collision:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1.4, 0.8 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("DamageArea/Collision:disabled")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.2, 0.3, 0.5, 0.7, 0.8, 1, 1.2, 1.3, 1.5, 1.7, 1.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true, true, false, true, true, false, true, true, false, true ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath(".:ENABLED")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Woosh2:playing")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 0.15, 0.7, 1.2, 1.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, true, true, true ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Impact:playing")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0, 0.2, 0.75, 1.25, 1.75 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, true, true, true ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath(".:DAMAGE")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 25 ]
+}
+
+[sub_resource type="Animation" id=123]
+resource_name = "Defeat"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 70 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("DamageArea/Collision:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Color/ColorFX:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Color/Blackout:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=14]
+resource_name = "Hurt"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 8 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 32, 0 ), Vector2( -16, 0 ), Vector2( 8, 0 ), Vector2( -6, 0 ), Vector2( 4, 0 ), Vector2( 0, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath(".:ENABLED")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("DamageArea/Collision:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("DamageArea/Collision/Slash:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=11]
+resource_name = "Idle"
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("DamageArea/Collision:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:offset")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprite:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("DamageArea/Collision/Slash:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=111]
+resource_name = "Idle Phase 2"
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 41, 42, 43, 44 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("DamageArea/Collision:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:offset")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprite:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("DamageArea/Collision/Slash:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=12]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath(".:ENABLED")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("DamageArea/Collision:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("DamageArea/Collision/Slash:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("DamageArea/Collision:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 15, -5.24521e-06 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("DamageArea/Collision/Slash:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Slash:playing")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Color/ColorFX:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("Color/ColorFX:modulate")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("DamageArea/Collision:scale")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 0.8 ) ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("HPBar:modulate")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("STMBar:modulate")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/14/type = "value"
+tracks/14/path = NodePath(".:BOUNCE")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/15/type = "value"
+tracks/15/path = NodePath("Collision:disabled")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/16/type = "value"
+tracks/16/path = NodePath("Color/Blackout:visible")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=13]
+resource_name = "Run"
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 4, 5, 6, 7 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Footsteps:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("DamageArea/Collision:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprite:offset")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Sprite:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("DamageArea/Collision/Slash:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=112]
+resource_name = "Run Phase 2"
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 45, 46, 47, 48 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Footsteps:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("DamageArea/Collision:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprite:offset")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Sprite:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("DamageArea/Collision/Slash:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=109]
+resource_name = "Tired"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 9 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("DamageArea/Collision:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Color/ColorFX:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Color/ColorFX:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Sprite:offset")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 4, 0 ), Vector2( -2, 0 ), Vector2( 1, 0 ), Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="DynamicFont" id=2]
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 1, 0, 0, 1 )
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0.482353, 0, 0.305882, 1 )
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 0, 0.960784, 1, 1 )
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 0.0588235, 0.301961, 0.941176, 1 )
+
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 5.9375, 25.6 )
+
+[sub_resource type="CircleShape2D" id=8]
+radius = 8.0
+
+[sub_resource type="RectangleShape2D" id=9]
+extents = Vector2( 1888, 1072 )
+
+[sub_resource type="CircleShape2D" id=10]
+radius = 24.0
+
+[sub_resource type="Gradient" id=106]
+offsets = PoolRealArray( 0.010989, 0.384615, 0.604396, 0.993789 )
+colors = PoolColorArray( 0.179688, 0, 0.0210571, 1, 1, 0, 0.164063, 1, 0.992188, 1, 0, 1, 1, 1, 1, 1 )
+
+[sub_resource type="GradientTexture" id=105]
+gradient = SubResource( 106 )
+
+[sub_resource type="ShaderMaterial" id=107]
+shader = ExtResource( 14 )
+shader_param/gradient = SubResource( 105 )
+
+[node name="Zero" type="KinematicBody2D" groups=["Enemy"]]
+collision_layer = 4
+script = ExtResource( 5 )
+SPEED = 200
+
+[node name="Shadow" type="Sprite" parent="."]
+position = Vector2( 0, 16 )
+scale = Vector2( 1.25, 0.8 )
+texture = ExtResource( 3 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 6 )
+hframes = 12
+vframes = 6
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 8 )
+shape = SubResource( 1 )
+
+[node name="Animation" type="AnimationPlayer" parent="."]
+"anims/Alt Attack 0 - Instant Kill" = SubResource( 117 )
+"anims/Alt Attack 1 - Killer Spree" = SubResource( 118 )
+"anims/Alt Attack 2 - Knives" = SubResource( 119 )
+"anims/Alt Attack 3 - Soul" = SubResource( 120 )
+"anims/Alt Attack 4 - Genocidal Intent" = SubResource( 121 )
+"anims/Alt Tired" = SubResource( 122 )
+"anims/Attack 0 - Instant Kill" = SubResource( 108 )
+"anims/Attack 1 - Slasher Danger" = SubResource( 15 )
+"anims/Attack 2 - Slasher Blasher" = SubResource( 16 )
+"anims/Attack 3 - Knives" = SubResource( 110 )
+"anims/Attack 4 - Special Strike" = SubResource( 17 )
+"anims/Attack 5 - Whirlwind" = SubResource( 113 )
+"anims/Attack 6 - Killer Spree" = SubResource( 114 )
+"anims/Attack 7 - Sike" = SubResource( 116 )
+"anims/Attack 8 - Genocidal Intent" = SubResource( 115 )
+anims/Defeat = SubResource( 123 )
+anims/Hurt = SubResource( 14 )
+anims/Idle = SubResource( 11 )
+"anims/Idle Phase 2" = SubResource( 111 )
+anims/RESET = SubResource( 12 )
+anims/Run = SubResource( 13 )
+"anims/Run Phase 2" = SubResource( 112 )
+anims/Tired = SubResource( 109 )
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="HPBar" type="ProgressBar" parent="."]
+margin_left = -16.0
+margin_top = -27.0
+margin_right = 16.0
+margin_bottom = -25.0
+custom_fonts/font = SubResource( 2 )
+custom_styles/fg = SubResource( 3 )
+custom_styles/bg = SubResource( 4 )
+max_value = 200.0
+value = 150.0
+percent_visible = false
+
+[node name="STMBar" type="ProgressBar" parent="."]
+margin_left = -16.0
+margin_top = -23.0
+margin_right = 16.0
+margin_bottom = -22.0
+custom_fonts/font = SubResource( 2 )
+custom_styles/fg = SubResource( 5 )
+custom_styles/bg = SubResource( 6 )
+value = 100.0
+percent_visible = false
+
+[node name="ShakeTimer" type="Timer" parent="."]
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="DamageArea" type="Area2D" parent="."]
+position = Vector2( 0, -8 )
+rotation = -3.14159
+script = ExtResource( 4 )
+
+[node name="Collision" type="CollisionShape2D" parent="DamageArea"]
+position = Vector2( 15, -5.24521e-06 )
+scale = Vector2( 1, 0.8 )
+shape = SubResource( 7 )
+disabled = true
+
+[node name="Slash" type="Sprite" parent="DamageArea/Collision"]
+visible = false
+position = Vector2( 0.833313, 0.000358582 )
+rotation = -3.14159
+scale = Vector2( 0.833333, 1.17647 )
+texture = ExtResource( 11 )
+
+[node name="NoticeArea" type="Area2D" parent="."]
+position = Vector2( 0, -8 )
+
+[node name="Collision" type="CollisionShape2D" parent="NoticeArea"]
+position = Vector2( 0, 8 )
+shape = SubResource( 8 )
+
+[node name="PlayerFinder" type="Area2D" parent="."]
+visible = false
+
+[node name="Collision" type="CollisionShape2D" parent="PlayerFinder"]
+shape = SubResource( 9 )
+
+[node name="SoftCollision" parent="." instance=ExtResource( 2 )]
+visible = false
+
+[node name="SoftCollision" parent="SoftCollision" index="0"]
+shape = SubResource( 10 )
+
+[node name="Camera" type="Camera2D" parent="."]
+current = true
+zoom = Vector2( 0.8, 0.8 )
+smoothing_enabled = true
+smoothing_speed = 8.0
+script = ExtResource( 17 )
+
+[node name="Limits" type="Node" parent="Camera"]
+
+[node name="TopLeft" type="Position2D" parent="Camera/Limits"]
+
+[node name="BottomRight" type="Position2D" parent="Camera/Limits"]
+
+[node name="Tween" type="Tween" parent="Camera"]
+
+[node name="Timer" type="Timer" parent="Camera"]
+
+[node name="SpawnArea" type="Node" parent="."]
+
+[node name="BottomRight" type="Position2D" parent="SpawnArea"]
+
+[node name="TopLeft" type="Position2D" parent="SpawnArea"]
+
+[node name="Color" type="CanvasLayer" parent="."]
+
+[node name="ColorFX" type="ColorRect" parent="Color"]
+visible = false
+material = SubResource( 107 )
+margin_left = -24.0
+margin_top = -32.0
+margin_right = 536.0
+margin_bottom = 320.0
+
+[node name="Blackout" type="ColorRect" parent="Color"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="BGMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+volume_db = -5.0
+bus = "Music"
+
+[node name="AltBGMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 18 )
+volume_db = -5.0
+bus = "Music"
+
+[node name="FinalBGMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 19 )
+volume_db = -5.0
+bus = "Music"
+
+[node name="Hurt" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
+volume_db = -5.0
+bus = "SFX"
+
+[node name="Slash" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 12 )
+volume_db = -5.0
+bus = "SFX"
+
+[node name="Impact" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 15 )
+volume_db = -5.0
+bus = "SFX"
+
+[node name="Woosh" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 13 )
+bus = "SFX"
+
+[node name="Woosh2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 16 )
+bus = "SFX"
+
+[node name="Footsteps" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
+volume_db = -10.0
+pitch_scale = 0.8
+bus = "SFX"
+
+[connection signal="animation_finished" from="Animation" to="." method="_on_Animation_animation_finished"]
+[connection signal="value_changed" from="HPBar" to="." method="_on_HPBar_value_changed"]
+[connection signal="timeout" from="ShakeTimer" to="." method="_on_ShakeTimer_timeout"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="body_entered" from="DamageArea" to="." method="_on_DamageArea_body_entered"]
+[connection signal="body_entered" from="NoticeArea" to="." method="_on_NoticeArea_body_entered"]
+[connection signal="body_entered" from="PlayerFinder" to="." method="_on_PlayerFinder_body_entered"]
+[connection signal="timeout" from="Camera/Timer" to="Camera" method="_on_Timer_timeout"]
+
+[editable path="SoftCollision"]

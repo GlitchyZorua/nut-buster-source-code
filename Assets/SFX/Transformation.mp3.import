@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Transformation.mp3-eab8c4d31a27332fe6777be78b11eb5d.mp3str"
+
+[deps]
+
+source_file="res://Assets/SFX/Transformation.mp3"
+dest_files=[ "res://.import/Transformation.mp3-eab8c4d31a27332fe6777be78b11eb5d.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

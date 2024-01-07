@@ -1,0 +1,2735 @@
+[gd_scene load_steps=66 format=2]
+
+[ext_resource path="res://Assets/Scenes/Characters/PlayableGaa.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Assets/Scenes/Misc/DialogueInteractor.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Assets/Sprites/Misc/LargeShadow.png" type="Texture" id=3]
+[ext_resource path="res://Assets/SFX/Fan.mp3" type="AudioStream" id=4]
+[ext_resource path="res://Assets/Sprites/Sprite/JankTopKai.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Codes/Sections.gd" type="Script" id=6]
+[ext_resource path="res://Assets/Scenes/Misc/Portal.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Assets/Sprites/Cutscene/GaaCutscene 3.png" type="Texture" id=8]
+[ext_resource path="res://Assets/Backgrounds/GaaBG/ZakumaHallwayPassage2.1.png" type="Texture" id=9]
+[ext_resource path="res://Assets/Sprites/Sprite/Zackaria.png" type="Texture" id=11]
+[ext_resource path="res://Assets/Music/Zakaria.mp3" type="AudioStream" id=12]
+[ext_resource path="res://Assets/Fonts/m5x7.ttf" type="DynamicFontData" id=13]
+[ext_resource path="res://Assets/SFX/Footsteps.mp3" type="AudioStream" id=14]
+[ext_resource path="res://Assets/SFX/Super Impact.mp3" type="AudioStream" id=15]
+[ext_resource path="res://Assets/SFX/SuperKick.mp3" type="AudioStream" id=16]
+[ext_resource path="res://Assets/Sprites/Sprite/Shticker.png" type="Texture" id=17]
+[ext_resource path="res://Assets/Sprites/Sprite/Decker.png" type="Texture" id=18]
+[ext_resource path="res://Assets/SFX/Move.mp3" type="AudioStream" id=19]
+[ext_resource path="res://Assets/SFX/Woosh.mp3" type="AudioStream" id=20]
+
+[sub_resource type="AtlasTexture" id=23]
+atlas = ExtResource( 9 )
+region = Rect2( 0, 0, 1024, 300 )
+
+[sub_resource type="AtlasTexture" id=24]
+atlas = ExtResource( 9 )
+region = Rect2( 1024, 0, 1024, 300 )
+
+[sub_resource type="SpriteFrames" id=9]
+animations = [ {
+"frames": [ SubResource( 23 ), SubResource( 24 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=44]
+extents = Vector2( 4, 39.9999 )
+
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Top:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, -224 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Bottom:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 160 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "TransitionIn"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Top:rect_position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -356 ), Vector2( 0, -356 ), Vector2( 0, -224 ), Vector2( 0, -224 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Bottom:rect_position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 272 ), Vector2( 0, 272 ), Vector2( 0, 160 ), Vector2( 0, 160 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "TransitionOut"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Top:rect_position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -224 ), Vector2( 0, -224 ), Vector2( 0, -356 ), Vector2( 0, -356 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Bottom:rect_position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 160 ), Vector2( 0, 160 ), Vector2( 0, 272 ), Vector2( 0, 272 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "Arrow"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Arrow/Pointer:offset")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 4 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Arrow/Pointer:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 2 ) ]
+}
+
+[sub_resource type="RectangleShape2D" id=45]
+extents = Vector2( 4, 40.0001 )
+
+[sub_resource type="Animation" id=26]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Top:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, -224 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Bottom:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 160 ) ]
+}
+
+[sub_resource type="Animation" id=27]
+resource_name = "StaticTransitionOut"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Top:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, -356 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Bottom:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 272 ) ]
+}
+
+[sub_resource type="Animation" id=28]
+resource_name = "TransitionIn"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Top:rect_position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -356 ), Vector2( 0, -356 ), Vector2( 0, -224 ), Vector2( 0, -224 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Bottom:rect_position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 272 ), Vector2( 0, 272 ), Vector2( 0, 160 ), Vector2( 0, 160 ) ]
+}
+
+[sub_resource type="Animation" id=29]
+resource_name = "TransitionOut"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Top:rect_position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -224 ), Vector2( 0, -224 ), Vector2( 0, -356 ), Vector2( 0, -356 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Bottom:rect_position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 160 ), Vector2( 0, 160 ), Vector2( 0, 272 ), Vector2( 0, 272 ) ]
+}
+
+[sub_resource type="Animation" id=30]
+resource_name = "Arrow"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Arrow/Pointer:offset")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 4 ) ]
+}
+
+[sub_resource type="Animation" id=31]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Arrow/Pointer:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 2 ) ]
+}
+
+[sub_resource type="RectangleShape2D" id=12]
+extents = Vector2( 6.00006, 48 )
+
+[sub_resource type="Animation" id=32]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Top:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, -224 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Bottom:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 160 ) ]
+}
+
+[sub_resource type="Animation" id=33]
+resource_name = "StaticTransitionOut"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Top:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, -356 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Bottom:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 272 ) ]
+}
+
+[sub_resource type="Animation" id=34]
+resource_name = "TransitionIn"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Top:rect_position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -356 ), Vector2( 0, -356 ), Vector2( 0, -224 ), Vector2( 0, -224 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Bottom:rect_position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 272 ), Vector2( 0, 272 ), Vector2( 0, 160 ), Vector2( 0, 160 ) ]
+}
+
+[sub_resource type="Animation" id=35]
+resource_name = "TransitionOut"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Top:rect_position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -224 ), Vector2( 0, -224 ), Vector2( 0, -356 ), Vector2( 0, -356 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Bottom:rect_position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 160 ), Vector2( 0, 160 ), Vector2( 0, 272 ), Vector2( 0, 272 ) ]
+}
+
+[sub_resource type="Animation" id=36]
+resource_name = "Arrow"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Arrow/Pointer:offset")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 4 ) ]
+}
+
+[sub_resource type="Animation" id=37]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Arrow/Pointer:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 2 ) ]
+}
+
+[sub_resource type="Animation" id=38]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Top:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, -224 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Bottom:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 160 ) ]
+}
+
+[sub_resource type="Animation" id=39]
+resource_name = "StaticTransitionOut"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Top:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, -356 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Bottom:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 272 ) ]
+}
+
+[sub_resource type="Animation" id=40]
+resource_name = "TransitionIn"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Top:rect_position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -356 ), Vector2( 0, -356 ), Vector2( 0, -224 ), Vector2( 0, -224 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Bottom:rect_position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 272 ), Vector2( 0, 272 ), Vector2( 0, 160 ), Vector2( 0, 160 ) ]
+}
+
+[sub_resource type="Animation" id=41]
+resource_name = "TransitionOut"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Top:rect_position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -224 ), Vector2( 0, -224 ), Vector2( 0, -356 ), Vector2( 0, -356 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Bottom:rect_position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 160 ), Vector2( 0, 160 ), Vector2( 0, 272 ), Vector2( 0, 272 ) ]
+}
+
+[sub_resource type="Animation" id=42]
+resource_name = "Arrow"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Arrow/Pointer:offset")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 4 ) ]
+}
+
+[sub_resource type="Animation" id=43]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Arrow/Pointer:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 2 ) ]
+}
+
+[sub_resource type="RectangleShape2D" id=46]
+extents = Vector2( 7.00003, 72 )
+
+[sub_resource type="Animation" id=13]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Top:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, -224 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Bottom:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 160 ) ]
+}
+
+[sub_resource type="Animation" id=14]
+resource_name = "StaticTransitionOut"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Top:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, -356 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Bottom:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 272 ) ]
+}
+
+[sub_resource type="Animation" id=15]
+resource_name = "TransitionIn"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Top:rect_position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -356 ), Vector2( 0, -356 ), Vector2( 0, -224 ), Vector2( 0, -224 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Bottom:rect_position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 272 ), Vector2( 0, 272 ), Vector2( 0, 160 ), Vector2( 0, 160 ) ]
+}
+
+[sub_resource type="Animation" id=16]
+resource_name = "TransitionOut"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Top:rect_position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -224 ), Vector2( 0, -224 ), Vector2( 0, -356 ), Vector2( 0, -356 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Bottom:rect_position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 160 ), Vector2( 0, 160 ), Vector2( 0, 272 ), Vector2( 0, 272 ) ]
+}
+
+[sub_resource type="Animation" id=17]
+resource_name = "Arrow"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Arrow/Pointer:offset")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 4 ) ]
+}
+
+[sub_resource type="Animation" id=18]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Arrow/Pointer:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 2 ) ]
+}
+
+[sub_resource type="GDScript" id=53]
+script/source = "extends AudioStreamPlayer
+
+export var sfx = false
+export var music = true
+
+export var off = 0
+ 
+
+func _ready():
+	if music:
+		self.volume_db = GlobalSettings.volume - off
+	elif sfx:
+		self.volume_db = GlobalSettings.sfx - off
+
+
+func _process(_delta):
+	if music:
+		self.volume_db = GlobalSettings.volume - off
+	elif sfx:
+		self.volume_db = GlobalSettings.sfx - off
+
+"
+
+[sub_resource type="RectangleShape2D" id=25]
+extents = Vector2( 16, 78 )
+
+[sub_resource type="DynamicFont" id=48]
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 13 )
+
+[sub_resource type="Animation" id=22]
+resource_name = "GaaCutscene_4"
+length = 28.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("YSort/Zackaria/BGMusic:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CutsceneLayer/Blackness:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2, 0.3, 0.5, 11.2, 14.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("YSort/PlayableGaa:ENABLED")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("YSort/PlayableGaa:CUTSCENE")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("YSort/PlayableGaa:STOP_ANIMATIONS")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("YSort/PlayableGaa/Sprite:frame")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.2, 2.4, 2.6, 2.8, 3, 3.2, 3.4, 3.6, 3.8, 4, 4.2, 4.4, 4.6, 4.8, 5, 5.2, 5.4, 5.6, 5.8, 6, 6.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 72, 73, 74, 75, 72, 73, 74, 75, 72, 73, 74, 75, 72, 73, 74, 75, 72, 73, 74, 75, 72, 73, 74, 75, 72, 73, 74, 75, 72, 73, 74 ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("YSort/PlayableGaa/Sprite:flip_h")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0.2 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("YSort/JankTopKai:flip_h")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.2, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("YSort/PlayableGaa:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0.2 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Vector2( 304, 200 ) ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("YSort/PlayableGaa/Camera:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0, 2, 4, 21, 25 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 608, 0 ), Vector2( 608, 0 ), Vector2( 82, 0 ) ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("CutsceneLayer/Blackness:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0, 0.5, 11.2, 14.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true, false ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("CutsceneLayer/Blackness:color")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ Color( 0, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("YSort/JankTopKai:frame")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.2, 2.4, 2.6, 2.8, 3, 3.2, 3.4, 3.6, 3.8, 4, 4.2, 4.4, 4.6, 4.8, 5, 5.2, 5.4, 5.6, 5.8, 6, 6.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3 ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("YSort/PlayableGaa:ATTACKING")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0, 10 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/14/type = "method"
+tracks/14/path = NodePath(".")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 0, 1, 27 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "stop_music"
+}, {
+"args": [  ],
+"method": "_load_dialogue"
+}, {
+"args": [  ],
+"method": "_load_dialogue"
+} ]
+}
+tracks/15/type = "value"
+tracks/15/path = NodePath("CutsceneLayer/FadeLeft:position")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"times": PoolRealArray( 0, 3, 4.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 768, 150 ), Vector2( 768, 150 ), Vector2( -256, 150 ) ]
+}
+tracks/16/type = "value"
+tracks/16/path = NodePath("CutsceneLayer/FadeRight:position")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/keys = {
+"times": PoolRealArray( 0, 3.5, 5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 768, 150 ), Vector2( 768, 150 ), Vector2( -256, 150 ) ]
+}
+tracks/17/type = "value"
+tracks/17/path = NodePath("CutsceneLayer/Cutscene:visible")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/keys = {
+"times": PoolRealArray( 0, 4, 20.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/18/type = "value"
+tracks/18/path = NodePath("CutsceneLayer/Cutscene:position")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/keys = {
+"times": PoolRealArray( 0, 13.6, 18.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 256, 150 ), Vector2( 256, 150 ), Vector2( 256, 300 ) ]
+}
+tracks/19/type = "value"
+tracks/19/path = NodePath("CutsceneLayer/Cutscene:scale")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/keys = {
+"times": PoolRealArray( 0, 13.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ Vector2( 1, 1 ), Vector2( 1.5, 1.5 ) ]
+}
+tracks/20/type = "value"
+tracks/20/path = NodePath("CutsceneLayer/Cutscene:offset")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/keys = {
+"times": PoolRealArray( 0, 13.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ Vector2( 0, 0 ), Vector2( 0, -50 ) ]
+}
+tracks/21/type = "value"
+tracks/21/path = NodePath("CutsceneLayer/Cutscene:frame")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/keys = {
+"times": PoolRealArray( 0, 6, 6.1, 6.2, 6.3, 6.4, 6.5, 6.6, 6.7, 6.8, 6.9, 7, 7.1, 7.2, 7.3, 7.4, 7.5, 7.6, 7.7, 7.8, 7.9, 8, 8.1, 8.2, 8.3, 8.4, 8.5, 8.6, 8.7, 8.8, 8.9, 9, 10.9, 11, 11.1, 11.2, 11.3, 11.4, 11.5, 13.6, 13.7, 13.8, 13.9, 14, 14.1, 14.2, 14.3, 14.4, 14.5, 14.6, 14.7, 14.8, 14.9, 15, 15.1, 15.2, 15.3, 15.4, 15.5, 15.6, 15.7, 15.8, 15.9, 16, 16.1, 16.2, 16.3, 16.4, 16.5, 16.6, 16.7, 16.8, 16.9, 17, 17.1, 17.2, 17.3, 17.4, 17.5, 17.6, 17.7, 17.8, 17.9, 18, 18.1, 18.2, 18.3, 18.4, 18.5, 18.6, 18.7, 18.8, 18.9, 19, 19.1, 19.2, 19.3, 19.4, 19.5, 19.6, 19.7, 19.8, 19.9, 20, 20.1, 20.2, 20.3, 20.4, 20.5, 20.6, 20.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 7, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 34, 35, 36, 37, 38, 39, 40, 41, 42, 41, 42, 41, 42, 41, 42, 41, 42, 41, 42, 41, 42, 41, 42, 41, 42, 41, 42, 41, 42, 41, 42, 41, 42, 41, 42, 41, 42, 41, 42, 41, 42, 41, 42, 41, 42, 41, 42, 41, 42, 41, 42, 41, 42, 41, 42, 41, 42, 41, 42, 41, 42, 41, 42, 41, 42, 41, 42, 41, 42, 41, 42, 41, 42, 41, 42, 41, 42, 41, 42 ]
+}
+tracks/22/type = "value"
+tracks/22/path = NodePath("CutsceneLayer/Cutscene/Subtitle:text")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/keys = {
+"times": PoolRealArray( 0, 5.2, 7.3, 10 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ "", "Ugh that meeting was so BORING", "I'm gonna go check on the newbie, you two go fetch me some of the meat at the cafeteria", "" ]
+}
+tracks/23/type = "value"
+tracks/23/path = NodePath("YSort/Zackaria/Footstep:playing")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/keys = {
+"times": PoolRealArray( 0, 6.4, 6.8, 7.2, 7.6, 8.1, 8.7, 9.3, 10.1, 10.5, 10.7, 10.8, 12, 21, 21.4, 21.8, 22.2, 22.6, 23, 23.4, 23.8, 24.2, 24.6, 25, 25.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, true, true, true, true, true, true, true, true, true, true, false, true, true, true, true, true, true, true, true, true, true, true, true ]
+}
+tracks/24/type = "value"
+tracks/24/path = NodePath("YSort/Zackaria/Damage:playing")
+tracks/24/interp = 1
+tracks/24/loop_wrap = true
+tracks/24/imported = false
+tracks/24/enabled = true
+tracks/24/keys = {
+"times": PoolRealArray( 0, 9.1, 11.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/25/type = "value"
+tracks/25/path = NodePath("YSort/Zackaria/Kick:playing")
+tracks/25/interp = 1
+tracks/25/loop_wrap = true
+tracks/25/imported = false
+tracks/25/enabled = true
+tracks/25/keys = {
+"times": PoolRealArray( 0, 11.2, 15 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/26/type = "value"
+tracks/26/path = NodePath("YSort/Zackaria:position")
+tracks/26/interp = 1
+tracks/26/loop_wrap = true
+tracks/26/imported = false
+tracks/26/enabled = true
+tracks/26/keys = {
+"times": PoolRealArray( 0, 14, 16, 21, 25 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1048, 168 ), Vector2( 1048, 168 ), Vector2( 920, 168 ), Vector2( 920, 168 ), Vector2( 416, 168 ) ]
+}
+tracks/27/type = "value"
+tracks/27/path = NodePath("YSort/Zackaria:frame")
+tracks/27/interp = 1
+tracks/27/loop_wrap = true
+tracks/27/imported = false
+tracks/27/enabled = true
+tracks/27/keys = {
+"times": PoolRealArray( 20, 20.1, 20.2, 20.3, 20.4, 20.5, 20.6, 20.7, 20.8, 20.9, 21, 21.2, 21.4, 21.6, 21.8, 22, 22.2, 22.4, 22.6, 22.8, 23, 23.2, 23.4, 23.6, 23.8, 24, 24.2, 24.4, 24.6, 24.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 5, 6, 7, 8, 5, 6, 7, 8, 5, 6, 7, 8, 5, 6, 7, 8, 5, 6, 7, 8 ]
+}
+tracks/28/type = "value"
+tracks/28/path = NodePath("YSort/JankTopKai:position")
+tracks/28/interp = 1
+tracks/28/loop_wrap = true
+tracks/28/imported = false
+tracks/28/enabled = true
+tracks/28/keys = {
+"times": PoolRealArray( 0, 23 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 360, 200 ), Vector2( 360, 200 ) ]
+}
+tracks/29/type = "value"
+tracks/29/path = NodePath("YSort/Shticker:position")
+tracks/29/interp = 1
+tracks/29/loop_wrap = true
+tracks/29/imported = false
+tracks/29/enabled = true
+tracks/29/keys = {
+"times": PoolRealArray( 0, 13.9, 16, 22.2, 25.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1128, 168 ), Vector2( 1128, 168 ), Vector2( 904, 192 ), Vector2( 904, 192 ), Vector2( 456, 200 ) ]
+}
+tracks/30/type = "value"
+tracks/30/path = NodePath("YSort/Decker:position")
+tracks/30/interp = 1
+tracks/30/loop_wrap = true
+tracks/30/imported = false
+tracks/30/enabled = true
+tracks/30/keys = {
+"times": PoolRealArray( 0, 13.9, 16, 22.4, 25.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1152, 224 ), Vector2( 1152, 224 ), Vector2( 896, 128 ), Vector2( 896, 128 ), Vector2( 464, 136 ) ]
+}
+tracks/31/type = "value"
+tracks/31/path = NodePath("YSort/Decker:frame")
+tracks/31/interp = 1
+tracks/31/loop_wrap = true
+tracks/31/imported = false
+tracks/31/enabled = true
+tracks/31/keys = {
+"times": PoolRealArray( 20, 20.1, 20.2, 20.3, 20.4, 20.5, 20.6, 20.7, 20.8, 20.9, 21, 21.1, 21.2, 21.3, 21.4, 21.5, 21.6, 21.7, 21.8, 21.9, 22, 22.1, 22.2, 22.3, 22.4, 22.5, 22.6, 22.7, 22.8, 22.9, 23, 23.1, 23.2, 23.3, 23.4, 23.5, 23.6, 23.7, 23.8, 23.9, 24, 24.1, 24.2, 24.3, 24.4, 24.5, 24.6, 24.7, 24.8, 24.9, 25, 25.1, 25.2, 25.3, 25.4, 25.5, 25.6, 25.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 0, 4, 5, 6, 7, 4, 5, 6, 7, 4, 5, 6, 7, 4, 5, 6, 7, 4, 5, 6, 7, 4, 5, 6, 7, 4, 5, 6, 7, 4, 5, 6, 7, 0 ]
+}
+tracks/32/type = "value"
+tracks/32/path = NodePath("YSort/Shticker:frame")
+tracks/32/interp = 1
+tracks/32/loop_wrap = true
+tracks/32/imported = false
+tracks/32/enabled = true
+tracks/32/keys = {
+"times": PoolRealArray( 20, 20.1, 20.2, 20.3, 20.4, 20.5, 20.6, 20.7, 20.8, 20.9, 21, 21.1, 21.2, 21.3, 21.4, 21.5, 21.6, 21.7, 21.8, 21.9, 22, 22.1, 22.2, 22.3, 22.4, 22.5, 22.6, 22.7, 22.8, 22.9, 23, 23.1, 23.2, 23.3, 23.4, 23.5, 23.6, 23.7, 23.8, 23.9, 24, 24.1, 24.2, 24.3, 24.4, 24.5, 24.6, 24.7, 24.8, 24.9, 25, 25.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 4, 5, 6, 7, 4, 5, 6, 7, 4, 5, 6, 7, 4, 5, 6, 7, 4, 5, 6, 7, 4, 5, 6, 7, 4, 5, 6, 7, 0 ]
+}
+tracks/33/type = "value"
+tracks/33/path = NodePath("YSort/Zackaria/BGMusic:off")
+tracks/33/interp = 2
+tracks/33/loop_wrap = true
+tracks/33/imported = false
+tracks/33/enabled = true
+tracks/33/keys = {
+"times": PoolRealArray( 0, 20, 26 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 5, 5, 15 ]
+}
+tracks/34/type = "value"
+tracks/34/path = NodePath("YSort/Shticker/Footstep:playing")
+tracks/34/interp = 1
+tracks/34/loop_wrap = true
+tracks/34/imported = false
+tracks/34/enabled = true
+tracks/34/keys = {
+"times": PoolRealArray( 22.3, 22.5, 22.7, 22.9, 23.1, 23.3, 23.5, 23.7, 23.9, 24.1, 24.3, 24.5, 24.7, 24.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ true, true, true, true, true, true, true, true, true, true, true, true, true, true ]
+}
+tracks/35/type = "value"
+tracks/35/path = NodePath("YSort/Decker/Footstep:playing")
+tracks/35/interp = 1
+tracks/35/loop_wrap = true
+tracks/35/imported = false
+tracks/35/enabled = true
+tracks/35/keys = {
+"times": PoolRealArray( 22.5, 22.7, 22.9, 23.1, 23.3, 23.5, 23.7, 23.9, 24.1, 24.3, 24.5, 24.7, 24.9, 25.1, 25.3, 25.5, 25.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true ]
+}
+tracks/36/type = "value"
+tracks/36/path = NodePath("YSort/Shticker:flip_h")
+tracks/36/interp = 1
+tracks/36/loop_wrap = true
+tracks/36/imported = false
+tracks/36/enabled = true
+tracks/36/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/37/type = "value"
+tracks/37/path = NodePath("YSort/Decker:flip_h")
+tracks/37/interp = 1
+tracks/37/loop_wrap = true
+tracks/37/imported = false
+tracks/37/enabled = true
+tracks/37/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/38/type = "value"
+tracks/38/path = NodePath("YSort/Zackaria:flip_h")
+tracks/38/interp = 1
+tracks/38/loop_wrap = true
+tracks/38/imported = false
+tracks/38/enabled = true
+tracks/38/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/39/type = "value"
+tracks/39/path = NodePath("YSort/DialogueInteractor:position")
+tracks/39/interp = 1
+tracks/39/loop_wrap = true
+tracks/39/imported = false
+tracks/39/enabled = true
+tracks/39/keys = {
+"times": PoolRealArray( 2 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 320, 504 ) ]
+}
+tracks/40/type = "value"
+tracks/40/path = NodePath(".:no_music")
+tracks/40/interp = 1
+tracks/40/loop_wrap = true
+tracks/40/imported = false
+tracks/40/enabled = true
+tracks/40/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=49]
+resource_name = "GaaCutscene_4_1"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("YSort/Zackaria:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 10, 11, 12, 13, 14, 15 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("YSort/JankTopKai:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("YSort/JankTopKai:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 360, 200 ), Vector2( 356, 200 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("YSort/JankTopKai:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 4, 3 ]
+}
+tracks/4/type = "method"
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "_load_dialogue"
+} ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("YSort/Zackaria/Whoops:playing")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("YSort/JankTopKai/Dush:playing")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
+[sub_resource type="Animation" id=50]
+resource_name = "GaaCutscene_4_2"
+length = 6.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("YSort/Zackaria:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.2, 2.4, 2.6, 2.8, 3, 3.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 14, 15, 13, 12, 10, 5, 6, 7, 8, 5, 6, 7, 8, 5, 6, 0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("YSort/JankTopKai:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("YSort/JankTopKai:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("YSort/JankTopKai:offset")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 0, -32 ), Vector2( 16, -32 ), Vector2( -8, -32 ), Vector2( 6, -32 ), Vector2( -4, -32 ), Vector2( 2, -32 ), Vector2( 0, -32 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("YSort/Zackaria:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 1.2, 2.2, 3.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 416, 168 ), Vector2( 416, 168 ), Vector2( 528, 200 ), Vector2( 560, 352 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("YSort/Zackaria:flip_h")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 1.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("YSort/Shticker:flip_h")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 1.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("YSort/Shticker:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 2.5, 3, 3.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 456, 200 ), Vector2( 456, 200 ), Vector2( 560, 240 ), Vector2( 568, 304 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("YSort/Decker:flip_h")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 1.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("YSort/Decker:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0, 2.7, 4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 464, 136 ), Vector2( 464, 136 ), Vector2( 584, 304 ) ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("YSort/Shticker:frame")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2, 2.1, 2.2, 2.3, 2.4, 2.5, 2.6, 2.7, 2.8, 2.9, 3, 3.1, 3.2, 3.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 4, 5, 6, 7, 4, 5, 6, 7 ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("YSort/Decker:frame")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2, 2.1, 2.2, 2.3, 2.4, 2.5, 2.6, 2.7, 2.8, 2.9, 3, 3.1, 3.2, 3.3, 3.4, 3.5, 3.6, 3.7, 3.8, 3.9, 4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 5, 6, 7, 4, 5, 6, 7, 4, 5, 6, 7, 4, 5, 0 ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("YSort/Zackaria/Footstep:playing")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0, 1.2, 1.6, 2, 2.4, 2.8, 3.2, 4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, true, true, true, true, true, false ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("YSort/Shticker/Footstep:playing")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0, 2.6, 2.8, 3, 3.2, 3.4, 3.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, true, true, true, true, true ]
+}
+tracks/14/type = "value"
+tracks/14/path = NodePath("YSort/Decker/Footstep:playing")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 0, 2.8, 3, 3.2, 3.4, 3.6, 3.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, true, true, true, true, true ]
+}
+tracks/15/type = "value"
+tracks/15/path = NodePath("YSort/JankTopKai/Dush:playing")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"times": PoolRealArray( 0, 0.2, 4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/16/type = "method"
+tracks/16/path = NodePath(".")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/keys = {
+"times": PoolRealArray( 5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "_load_dialogue"
+} ]
+}
+tracks/17/type = "value"
+tracks/17/path = NodePath("YSort/Zackaria/BGMusic:off")
+tracks/17/interp = 2
+tracks/17/loop_wrap = true
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/keys = {
+"times": PoolRealArray( 0, 5.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 15, 100 ]
+}
+tracks/18/type = "value"
+tracks/18/path = NodePath("YSort/Zackaria/BGMusic:playing")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/keys = {
+"times": PoolRealArray( 5.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/19/type = "value"
+tracks/19/path = NodePath("CutsceneLayer/Blackness:visible")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/keys = {
+"times": PoolRealArray( 0, 4.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/20/type = "value"
+tracks/20/path = NodePath("CutsceneLayer/Blackness:modulate")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/keys = {
+"times": PoolRealArray( 0, 4.5, 5, 5.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/21/type = "value"
+tracks/21/path = NodePath("CutsceneLayer/Blackness:color")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 1 ) ]
+}
+tracks/22/type = "value"
+tracks/22/path = NodePath("YSort/PlayableGaa/Sprite:frame")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2, 2.1, 2.2, 2.3, 2.4, 2.5, 2.6, 2.7, 2.8, 2.9, 3, 3.1, 3.2, 3.3, 3.4, 3.5, 3.6, 3.7, 3.8, 3.9, 4, 4.1, 4.2, 4.3, 4.4, 4.5, 4.6, 4.7, 4.8, 4.9, 5, 5.1, 5.2, 5.3, 5.4, 5.5, 5.6, 5.7, 5.8, 5.9, 6, 6.1, 6.2, 6.3, 6.4, 6.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 72, 73, 74, 75, 72, 73, 74, 75, 72, 73, 74, 75, 72, 73, 74, 75, 72, 73, 74, 75, 72, 73, 74, 75, 72, 73, 74, 75, 72, 73, 74, 75, 72, 73, 74, 75, 72, 73, 74, 75, 72, 73, 74, 75, 72, 73, 74, 75, 72, 73, 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3 ]
+}
+
+[sub_resource type="Animation" id=51]
+resource_name = "GaaCutscene_4_3"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("YSort/JankTopKai:flip_h")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("YSort/JankTopKai:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.2, 2.4, 2.6, 2.8, 3, 3.2, 3.4, 3.6, 3.8, 4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 4, 5, 6, 5, 4, 5, 6, 5, 4, 5, 6, 5, 4, 5, 6, 5, 4, 5, 6, 5, 4 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("YSort/JankTopKai:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 360, 200 ), Vector2( -192, 200 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("YSort/JankTopKai/Footstep:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.4, 0.8, 1.2, 1.6, 2, 2.4, 2.8, 3.2, 3.6, 4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ true, true, true, true, true, true, true, true, true, true, true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("YSort/JankTopKai/Footstep:off")
+tracks/4/interp = 2
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("YSort/PlayableGaa:ENABLED")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("YSort/PlayableGaa:CUTSCENE")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("YSort/PlayableGaa:STOP_ANIMATIONS")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/8/type = "method"
+tracks/8/path = NodePath(".")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0.5, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "play_music"
+}, {
+"args": [  ],
+"method": "_load_dialogue"
+} ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("YSort/PlayableGaa/Camera:position")
+tracks/9/interp = 2
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 82, 0 ), Vector2( 0, 0 ) ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("YSort/PlayableGaa:ATTACKING")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath(".:no_music")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=52]
+resource_name = "Has_Played"
+tracks/0/type = "value"
+tracks/0/path = NodePath("YSort/JankTopKai:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -160, 200 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("YSort/Zackaria:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 560, 352 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("YSort/Shticker:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 568, 304 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("YSort/Decker:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 584, 304 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("YSort/DialogueInteractor:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 320, 504 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("YSort/PlayableGaa:ATTACKING")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath(".:no_music")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=19]
+resource_name = "KaiIdle"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("YSort/JankTopKai:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("YSort/PlayableGaa:ATTACKING")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=21]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("YSort/JankTopKai:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CutsceneLayer/Blackness:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("YSort/PlayableGaa/Sprite:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 73 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("YSort/JankTopKai:flip_h")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("YSort/PlayableGaa/Camera:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("YSort/PlayableGaa:ENABLED")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("YSort/PlayableGaa:CUTSCENE")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("YSort/PlayableGaa:STOP_ANIMATIONS")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("YSort/PlayableGaa:ATTACKING")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("CutsceneLayer/FadeLeft:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 768, 142 ) ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("CutsceneLayer/FadeRight:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 768, 150 ) ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("CutsceneLayer/Cutscene:frame")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("CutsceneLayer/Cutscene:position")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 256, 224 ) ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("CutsceneLayer/Cutscene/Subtitle:text")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ "" ]
+}
+tracks/14/type = "value"
+tracks/14/path = NodePath("YSort/PlayableGaa/Footstep:playing")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/15/type = "value"
+tracks/15/path = NodePath("YSort/Zackaria/Footstep:playing")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/16/type = "value"
+tracks/16/path = NodePath("YSort/Zackaria:position")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1048, 168 ) ]
+}
+tracks/17/type = "value"
+tracks/17/path = NodePath("YSort/Zackaria:frame")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1 ]
+}
+tracks/18/type = "value"
+tracks/18/path = NodePath("YSort/PlayableGaa:position")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 56, 208 ) ]
+}
+tracks/19/type = "value"
+tracks/19/path = NodePath("YSort/Decker:position")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1152, 224 ) ]
+}
+tracks/20/type = "value"
+tracks/20/path = NodePath("YSort/Shticker:position")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1128, 168 ) ]
+}
+tracks/21/type = "value"
+tracks/21/path = NodePath("YSort/Shticker:frame")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1 ]
+}
+tracks/22/type = "value"
+tracks/22/path = NodePath("YSort/Decker:frame")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1 ]
+}
+tracks/23/type = "value"
+tracks/23/path = NodePath("CutsceneLayer/Cutscene:visible")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/24/type = "value"
+tracks/24/path = NodePath("YSort/Zackaria/BGMusic:off")
+tracks/24/interp = 1
+tracks/24/loop_wrap = true
+tracks/24/imported = false
+tracks/24/enabled = true
+tracks/24/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 5 ]
+}
+tracks/25/type = "value"
+tracks/25/path = NodePath("YSort/JankTopKai:visible")
+tracks/25/interp = 1
+tracks/25/loop_wrap = true
+tracks/25/imported = false
+tracks/25/enabled = true
+tracks/25/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+tracks/26/type = "value"
+tracks/26/path = NodePath("YSort/JankTopKai:position")
+tracks/26/interp = 1
+tracks/26/loop_wrap = true
+tracks/26/imported = false
+tracks/26/enabled = true
+tracks/26/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 360, 200 ) ]
+}
+tracks/27/type = "value"
+tracks/27/path = NodePath("YSort/JankTopKai:offset")
+tracks/27/interp = 1
+tracks/27/loop_wrap = true
+tracks/27/imported = false
+tracks/27/enabled = true
+tracks/27/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, -32 ) ]
+}
+tracks/28/type = "value"
+tracks/28/path = NodePath("YSort/Zackaria:flip_h")
+tracks/28/interp = 1
+tracks/28/loop_wrap = true
+tracks/28/imported = false
+tracks/28/enabled = true
+tracks/28/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/29/type = "value"
+tracks/29/path = NodePath("YSort/Decker/Footstep:playing")
+tracks/29/interp = 1
+tracks/29/loop_wrap = true
+tracks/29/imported = false
+tracks/29/enabled = true
+tracks/29/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+tracks/30/type = "value"
+tracks/30/path = NodePath("YSort/JankTopKai/Footstep:playing")
+tracks/30/interp = 1
+tracks/30/loop_wrap = true
+tracks/30/imported = false
+tracks/30/enabled = true
+tracks/30/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+tracks/31/type = "value"
+tracks/31/path = NodePath("YSort/JankTopKai/Footstep:off")
+tracks/31/interp = 1
+tracks/31/loop_wrap = true
+tracks/31/imported = false
+tracks/31/enabled = true
+tracks/31/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 100 ]
+}
+tracks/32/type = "value"
+tracks/32/path = NodePath("YSort/DialogueInteractor:position")
+tracks/32/interp = 1
+tracks/32/loop_wrap = true
+tracks/32/imported = false
+tracks/32/enabled = true
+tracks/32/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 336, 216 ) ]
+}
+tracks/33/type = "value"
+tracks/33/path = NodePath(".:no_music")
+tracks/33/interp = 1
+tracks/33/loop_wrap = true
+tracks/33/imported = false
+tracks/33/enabled = true
+tracks/33/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[node name="Section 5" type="Node2D"]
+script = ExtResource( 6 )
+section = 5.0
+shaking = true
+no_music = true
+music = "res://Assets/Music/Hey Warden!.mp3"
+
+[node name="Backgrounds" type="ParallaxBackground" parent="."]
+
+[node name="1" type="ParallaxLayer" parent="Backgrounds"]
+
+[node name="2" type="ParallaxLayer" parent="Backgrounds"]
+
+[node name="3" type="ParallaxLayer" parent="Backgrounds"]
+
+[node name="4" type="ParallaxLayer" parent="Backgrounds"]
+
+[node name="Sprite" type="AnimatedSprite" parent="Backgrounds/4"]
+position = Vector2( 512, 150 )
+frames = SubResource( 9 )
+playing = true
+
+[node name="Sprite2" type="Sprite" parent="Backgrounds/4"]
+position = Vector2( 512, 150 )
+texture = ExtResource( 9 )
+hframes = 2
+vframes = 2
+frame = 2
+
+[node name="Walls" type="StaticBody2D" parent="."]
+
+[node name="Collision" type="CollisionPolygon2D" parent="Walls"]
+polygon = PoolVector2Array( -16, -16, 1040, -16, 1040, 312, -16, 320, -16, 144, -8, 144, -8, 288, 512, 288, 512, 296, 608, 296, 608, 288, 736, 288, 736, 296, 832, 296, 832, 288, 1016, 288, 1000, 208, 1000, 184, 976, 96, 976, 104, 968, 80, 848, 80, 840, 72, 824, 72, 824, 64, 744, 64, 744, 72, 728, 72, 728, 88, 672, 88, 672, 72, 600, 72, 600, 64, 520, 64, 520.433, 72, 400, 72, 400, 96, 424, 144, 408, 168, 392, 184, 360, 184, 344, 176, 328, 144, -16, 144 )
+
+[node name="Portal" parent="Walls" instance=ExtResource( 7 )]
+position = Vector2( 784, 68 )
+rotation = 1.57079
+next_scene_path = "res://Assets/Scenes/Gaa Section/GaaSection 5.tscn"
+player_spawn_location = Vector2( 512, 208 )
+
+[node name="Collision" parent="Walls/Portal" index="0"]
+shape = SubResource( 44 )
+
+[node name="Animation" parent="Walls/Portal/Transition" index="2"]
+anims/RESET = SubResource( 2 )
+anims/TransitionIn = SubResource( 3 )
+anims/TransitionOut = SubResource( 4 )
+
+[node name="Arrow" parent="Walls/Portal" index="2"]
+anims/Arrow = SubResource( 5 )
+anims/RESET = SubResource( 6 )
+
+[node name="Pointer" parent="Walls/Portal/Arrow" index="0"]
+position = Vector2( 784, 96 )
+rotation = -3.14159
+
+[node name="Portal3" parent="Walls" instance=ExtResource( 7 )]
+position = Vector2( 560, 68 )
+rotation = 1.57079
+next_scene_path = "res://Assets/Scenes/Gaa Section/GaaSection 5.tscn"
+player_spawn_location = Vector2( 512, 208 )
+
+[node name="Collision" parent="Walls/Portal3" index="0"]
+shape = SubResource( 45 )
+
+[node name="Animation" parent="Walls/Portal3/Transition" index="2"]
+anims/RESET = SubResource( 26 )
+anims/StaticTransitionOut = SubResource( 27 )
+anims/TransitionIn = SubResource( 28 )
+anims/TransitionOut = SubResource( 29 )
+
+[node name="Arrow" parent="Walls/Portal3" index="2"]
+anims/Arrow = SubResource( 30 )
+anims/RESET = SubResource( 31 )
+
+[node name="Pointer" parent="Walls/Portal3/Arrow" index="0"]
+position = Vector2( 560, 96 )
+rotation = -3.14159
+
+[node name="Portal4" parent="Walls" instance=ExtResource( 7 )]
+position = Vector2( 560, 296 )
+rotation = 1.57079
+next_scene_path = "res://Assets/Scenes/Gaa Section/GaaSection 6.tscn"
+player_spawn_location = Vector2( 864, 184 )
+
+[node name="Collision" parent="Walls/Portal4" index="0"]
+position = Vector2( -2.00012, 0 )
+shape = SubResource( 12 )
+
+[node name="Animation" parent="Walls/Portal4/Transition" index="2"]
+anims/RESET = SubResource( 32 )
+anims/StaticTransitionOut = SubResource( 33 )
+anims/TransitionIn = SubResource( 34 )
+anims/TransitionOut = SubResource( 35 )
+
+[node name="Arrow" parent="Walls/Portal4" index="2"]
+anims/Arrow = SubResource( 36 )
+anims/RESET = SubResource( 37 )
+
+[node name="Pointer" parent="Walls/Portal4/Arrow" index="0"]
+position = Vector2( 560, 264 )
+rotation = -6.28318
+
+[node name="Portal5" parent="Walls" instance=ExtResource( 7 )]
+position = Vector2( 784, 296 )
+rotation = 1.57079
+next_scene_path = "res://Assets/Scenes/Gaa Section/GaaSection 5.tscn"
+player_spawn_location = Vector2( 512, 208 )
+
+[node name="Collision" parent="Walls/Portal5" index="0"]
+position = Vector2( -2.00012, 0 )
+shape = SubResource( 12 )
+
+[node name="Animation" parent="Walls/Portal5/Transition" index="2"]
+anims/RESET = SubResource( 38 )
+anims/StaticTransitionOut = SubResource( 39 )
+anims/TransitionIn = SubResource( 40 )
+anims/TransitionOut = SubResource( 41 )
+
+[node name="Arrow" parent="Walls/Portal5" index="2"]
+anims/Arrow = SubResource( 42 )
+anims/RESET = SubResource( 43 )
+
+[node name="Pointer" parent="Walls/Portal5/Arrow" index="0"]
+position = Vector2( 784, 264 )
+rotation = 0.0
+
+[node name="Portal2" parent="Walls" instance=ExtResource( 7 )]
+position = Vector2( -8, 232 )
+next_scene_path = "res://Assets/Scenes/Gaa Section/GaaSection 4.tscn"
+player_spawn_location = Vector2( 480, 208 )
+
+[node name="Collision" parent="Walls/Portal2" index="0"]
+position = Vector2( 0.999969, -16 )
+shape = SubResource( 46 )
+
+[node name="Animation" parent="Walls/Portal2/Transition" index="2"]
+anims/RESET = SubResource( 13 )
+anims/StaticTransitionOut = SubResource( 14 )
+anims/TransitionIn = SubResource( 15 )
+anims/TransitionOut = SubResource( 16 )
+
+[node name="Arrow" parent="Walls/Portal2" index="2"]
+anims/Arrow = SubResource( 17 )
+anims/RESET = SubResource( 18 )
+
+[node name="Pointer" parent="Walls/Portal2/Arrow" index="0"]
+position = Vector2( 24, 216 )
+rotation = -4.71238
+
+[node name="Shadow" type="Sprite" parent="."]
+position = Vector2( 360, 216 )
+scale = Vector2( 1.8, 0.65 )
+texture = ExtResource( 3 )
+
+[node name="Shadow2" type="Sprite" parent="."]
+position = Vector2( 1048, 216 )
+scale = Vector2( 1.8, 0.65 )
+texture = ExtResource( 3 )
+
+[node name="Shadow3" type="Sprite" parent="."]
+position = Vector2( 1126, 224 )
+scale = Vector2( 1.4, 0.8 )
+texture = ExtResource( 3 )
+
+[node name="Shadow4" type="Sprite" parent="."]
+position = Vector2( 1152, 272 )
+scale = Vector2( 1.2, 0.8 )
+texture = ExtResource( 3 )
+
+[node name="YSort" type="YSort" parent="."]
+
+[node name="PlayableGaa" parent="YSort" instance=ExtResource( 1 )]
+modulate = Color( 1, 0.611765, 0.694118, 1 )
+position = Vector2( 56, 208 )
+ATTACKING = false
+
+[node name="Reflection" parent="YSort/PlayableGaa" index="3"]
+modulate = Color( 0.788235, 0.764706, 1, 0.313726 )
+
+[node name="BottomRight" parent="YSort/PlayableGaa/Camera/Limits" index="1"]
+position = Vector2( 1024, 300 )
+
+[node name="AlmostDead" parent="YSort/PlayableGaa/Misc" index="0"]
+frame = 1
+
+[node name="Icon" parent="YSort/PlayableGaa/MiniMenu/Background/Holder/Options/Stats" index="9"]
+frame = 0
+
+[node name="JankTopKai" type="Sprite" parent="YSort"]
+modulate = Color( 1, 0.611765, 0.694118, 1 )
+position = Vector2( 360, 200 )
+texture = ExtResource( 5 )
+offset = Vector2( 0, -32 )
+hframes = 9
+frame = 1
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="YSort/JankTopKai"]
+position = Vector2( 0, 16 )
+scale = Vector2( 1.8, 0.65 )
+remote_path = NodePath("../../../Shadow")
+
+[node name="Dush" type="AudioStreamPlayer" parent="YSort/JankTopKai"]
+stream = ExtResource( 19 )
+script = SubResource( 53 )
+sfx = true
+music = false
+
+[node name="Footstep" type="AudioStreamPlayer" parent="YSort/JankTopKai"]
+stream = ExtResource( 14 )
+pitch_scale = 0.8
+script = SubResource( 53 )
+sfx = true
+music = false
+off = 100
+
+[node name="Zackaria" type="Sprite" parent="YSort"]
+modulate = Color( 1, 0.611765, 0.694118, 1 )
+position = Vector2( 1048, 168 )
+texture = ExtResource( 11 )
+hframes = 16
+frame = 1
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="YSort/Zackaria"]
+position = Vector2( 0, 48 )
+scale = Vector2( 1.8, 0.65 )
+remote_path = NodePath("../../../Shadow2")
+
+[node name="Footstep" type="AudioStreamPlayer" parent="YSort/Zackaria"]
+stream = ExtResource( 14 )
+pitch_scale = 0.8
+script = SubResource( 53 )
+sfx = true
+music = false
+off = 5
+
+[node name="Whoops" type="AudioStreamPlayer" parent="YSort/Zackaria"]
+stream = ExtResource( 20 )
+script = SubResource( 53 )
+sfx = true
+music = false
+
+[node name="Damage" type="AudioStreamPlayer" parent="YSort/Zackaria"]
+stream = ExtResource( 15 )
+script = SubResource( 53 )
+sfx = true
+music = false
+off = 5
+
+[node name="Kick" type="AudioStreamPlayer" parent="YSort/Zackaria"]
+stream = ExtResource( 16 )
+script = SubResource( 53 )
+sfx = true
+music = false
+off = 5
+
+[node name="BGMusic" type="AudioStreamPlayer" parent="YSort/Zackaria"]
+stream = ExtResource( 12 )
+pitch_scale = 1.1
+script = SubResource( 53 )
+off = 5
+
+[node name="Shticker" type="Sprite" parent="YSort"]
+modulate = Color( 1, 0.611765, 0.694118, 1 )
+position = Vector2( 1128, 168 )
+texture = ExtResource( 17 )
+offset = Vector2( 0, 24 )
+flip_h = true
+hframes = 8
+frame = 1
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="YSort/Shticker"]
+position = Vector2( -2, 56 )
+scale = Vector2( 1.4, 0.8 )
+remote_path = NodePath("../../../Shadow3")
+
+[node name="Footstep" type="AudioStreamPlayer" parent="YSort/Shticker"]
+stream = ExtResource( 14 )
+pitch_scale = 1.2
+script = SubResource( 53 )
+sfx = true
+music = false
+off = 5
+
+[node name="Decker" type="Sprite" parent="YSort"]
+modulate = Color( 1, 0.611765, 0.694118, 1 )
+position = Vector2( 1152, 224 )
+texture = ExtResource( 18 )
+offset = Vector2( 0, 32 )
+flip_h = true
+hframes = 8
+frame = 1
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="YSort/Decker"]
+position = Vector2( 0, 48 )
+scale = Vector2( 1.2, 0.8 )
+remote_path = NodePath("../../../Shadow4")
+
+[node name="Footstep" type="AudioStreamPlayer" parent="YSort/Decker"]
+stream = ExtResource( 14 )
+pitch_scale = 1.6
+script = SubResource( 53 )
+sfx = true
+music = false
+off = 5
+
+[node name="DialogueInteractor" parent="YSort" instance=ExtResource( 2 )]
+position = Vector2( 336, 216 )
+DIALOGUE = 3
+CUTSCENE = true
+
+[node name="Collision" parent="YSort/DialogueInteractor" index="0"]
+position = Vector2( 0, 6 )
+shape = SubResource( 25 )
+
+[node name="Foregrounds" type="ParallaxBackground" parent="."]
+layer = 0
+
+[node name="1" type="ParallaxLayer" parent="Foregrounds"]
+motion_scale = Vector2( 1.1, 1 )
+
+[node name="Pillar" type="Sprite" parent="Foregrounds/1"]
+modulate = Color( 0.321569, 0.258824, 0.215686, 1 )
+position = Vector2( 200, 149 )
+scale = Vector2( 1, 1.00667 )
+texture = ExtResource( 9 )
+hframes = 4
+vframes = 2
+frame = 6
+
+[node name="CutsceneLayer" type="CanvasLayer" parent="."]
+
+[node name="Cutscene" type="Sprite" parent="CutsceneLayer"]
+visible = false
+position = Vector2( 256, 224 )
+texture = ExtResource( 8 )
+hframes = 6
+vframes = 8
+
+[node name="Subtitle" type="Label" parent="CutsceneLayer/Cutscene"]
+anchor_left = 0.1875
+anchor_top = 1.27666
+anchor_right = 0.511719
+anchor_bottom = 1.27666
+margin_left = -352.0
+margin_top = -268.331
+margin_right = -6.0
+margin_bottom = -242.331
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 48 )
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="FadeLeft" type="Sprite" parent="CutsceneLayer"]
+position = Vector2( 768, 142 )
+texture = ExtResource( 8 )
+hframes = 6
+vframes = 8
+frame = 43
+
+[node name="FadeRight" type="Sprite" parent="CutsceneLayer"]
+position = Vector2( 768, 150 )
+texture = ExtResource( 8 )
+hframes = 6
+vframes = 8
+frame = 44
+
+[node name="Blackness" type="ColorRect" parent="CutsceneLayer"]
+modulate = Color( 1, 1, 1, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -16.0
+margin_top = -16.0
+margin_right = 16.0
+margin_bottom = 16.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="Ambience" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+pitch_scale = 0.5
+autoplay = true
+bus = "SFX"
+script = SubResource( 53 )
+sfx = true
+music = false
+off = 15
+
+[node name="Cutscene" type="AnimationPlayer" parent="."]
+autoplay = "KaiIdle"
+anims/GaaCutscene_4 = SubResource( 22 )
+anims/GaaCutscene_4_1 = SubResource( 49 )
+anims/GaaCutscene_4_2 = SubResource( 50 )
+anims/GaaCutscene_4_3 = SubResource( 51 )
+anims/Has_Played = SubResource( 52 )
+anims/KaiIdle = SubResource( 19 )
+anims/RESET = SubResource( 21 )
+
+[connection signal="animation_finished" from="Cutscene" to="." method="_on_Cutscene_animation_finished"]
+
+[editable path="Walls/Portal"]
+[editable path="Walls/Portal/Transition"]
+[editable path="Walls/Portal3"]
+[editable path="Walls/Portal3/Transition"]
+[editable path="Walls/Portal4"]
+[editable path="Walls/Portal4/Transition"]
+[editable path="Walls/Portal5"]
+[editable path="Walls/Portal5/Transition"]
+[editable path="Walls/Portal2"]
+[editable path="Walls/Portal2/Transition"]
+[editable path="YSort/PlayableGaa"]
+[editable path="YSort/PlayableGaa/MiniMenu"]
+[editable path="YSort/DialogueInteractor"]

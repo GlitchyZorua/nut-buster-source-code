@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/No Hit.mp3-e185a6af1b768f2f31e785304a15a0d4.mp3str"
+
+[deps]
+
+source_file="res://Assets/SFX/No Hit.mp3"
+dest_files=[ "res://.import/No Hit.mp3-e185a6af1b768f2f31e785304a15a0d4.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

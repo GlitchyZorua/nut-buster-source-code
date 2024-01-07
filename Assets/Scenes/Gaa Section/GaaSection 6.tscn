@@ -1,0 +1,486 @@
+[gd_scene load_steps=23 format=2]
+
+[ext_resource path="res://Assets/Scenes/Characters/PlayableGaa.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Assets/Backgrounds/GaaBG/ZakumaOutsideEntrance1.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Codes/MovingBackgrounds.gd" type="Script" id=3]
+[ext_resource path="res://Assets/SFX/Ambience.mp3" type="AudioStream" id=4]
+[ext_resource path="res://Assets/SFX/Falling.mp3" type="AudioStream" id=5]
+[ext_resource path="res://Assets/Codes/Sections.gd" type="Script" id=6]
+[ext_resource path="res://Assets/Scenes/Misc/Portal.tscn" type="PackedScene" id=7]
+
+[sub_resource type="RectangleShape2D" id=44]
+extents = Vector2( 4, 39.9999 )
+
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Top:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, -224 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Bottom:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 160 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "TransitionIn"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Top:rect_position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -356 ), Vector2( 0, -356 ), Vector2( 0, -224 ), Vector2( 0, -224 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Bottom:rect_position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 272 ), Vector2( 0, 272 ), Vector2( 0, 160 ), Vector2( 0, 160 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "TransitionOut"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Top:rect_position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -224 ), Vector2( 0, -224 ), Vector2( 0, -356 ), Vector2( 0, -356 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Bottom:rect_position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 160 ), Vector2( 0, 160 ), Vector2( 0, 272 ), Vector2( 0, 272 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "Arrow"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Arrow/Pointer:offset")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 4 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Arrow/Pointer:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 2 ) ]
+}
+
+[sub_resource type="RectangleShape2D" id=45]
+extents = Vector2( 4, 40.0001 )
+
+[sub_resource type="Animation" id=26]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Top:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, -224 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Bottom:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 160 ) ]
+}
+
+[sub_resource type="Animation" id=27]
+resource_name = "StaticTransitionOut"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Top:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, -356 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Bottom:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 272 ) ]
+}
+
+[sub_resource type="Animation" id=28]
+resource_name = "TransitionIn"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Top:rect_position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -356 ), Vector2( 0, -356 ), Vector2( 0, -224 ), Vector2( 0, -224 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Bottom:rect_position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 272 ), Vector2( 0, 272 ), Vector2( 0, 160 ), Vector2( 0, 160 ) ]
+}
+
+[sub_resource type="Animation" id=29]
+resource_name = "TransitionOut"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Top:rect_position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -224 ), Vector2( 0, -224 ), Vector2( 0, -356 ), Vector2( 0, -356 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Bottom:rect_position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 160 ), Vector2( 0, 160 ), Vector2( 0, 272 ), Vector2( 0, 272 ) ]
+}
+
+[sub_resource type="Animation" id=30]
+resource_name = "Arrow"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Arrow/Pointer:offset")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 4 ) ]
+}
+
+[sub_resource type="Animation" id=31]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Arrow/Pointer:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 2 ) ]
+}
+
+[sub_resource type="Animation" id=46]
+resource_name = "CameraZoomOut"
+length = 12.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("YSort/PlayableGaa/Camera:zoom")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1.8, 1.8 ), Vector2( 1.75, 1.75 ) ]
+}
+
+[sub_resource type="Animation" id=47]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("YSort/PlayableGaa/Camera:zoom")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1.8, 1.8 ) ]
+}
+
+[node name="Section 6" type="Node2D"]
+script = ExtResource( 6 )
+section = 6.0
+shaking = true
+music = "res://Assets/Music/Calming Night.mp3"
+
+[node name="Backgrounds" type="ParallaxBackground" parent="."]
+
+[node name="0" type="ParallaxLayer" parent="Backgrounds"]
+
+[node name="Sprite" type="Sprite" parent="Backgrounds/0"]
+position = Vector2( 512, 0 )
+texture = ExtResource( 2 )
+hframes = 3
+vframes = 3
+frame = 6
+
+[node name="1" type="ParallaxLayer" parent="Backgrounds"]
+
+[node name="Sprite" type="Sprite" parent="Backgrounds/1"]
+position = Vector2( 512, 0 )
+texture = ExtResource( 2 )
+hframes = 3
+vframes = 3
+frame = 5
+
+[node name="2" type="ParallaxLayer" parent="Backgrounds"]
+motion_scale = Vector2( 1.1, 1.1 )
+motion_mirroring = Vector2( 1024, 0 )
+
+[node name="Sprite" type="Sprite" parent="Backgrounds/2"]
+modulate = Color( 0.788235, 0.862745, 1, 1 )
+position = Vector2( 512, 0 )
+texture = ExtResource( 2 )
+hframes = 3
+vframes = 3
+frame = 4
+
+[node name="3" type="ParallaxLayer" parent="Backgrounds"]
+motion_scale = Vector2( 1.15, 1.15 )
+motion_mirroring = Vector2( 1024, 0 )
+script = ExtResource( 3 )
+scrolling_speed = 5.0
+ENABLED = true
+
+[node name="Sprite" type="Sprite" parent="Backgrounds/3"]
+modulate = Color( 0.788235, 0.862745, 1, 1 )
+position = Vector2( 512, 0 )
+texture = ExtResource( 2 )
+hframes = 3
+vframes = 3
+frame = 3
+
+[node name="4" type="ParallaxLayer" parent="Backgrounds"]
+motion_scale = Vector2( 1.2, 1.2 )
+motion_mirroring = Vector2( 1024, 0 )
+
+[node name="Sprite" type="Sprite" parent="Backgrounds/4"]
+modulate = Color( 0.788235, 0.862745, 1, 1 )
+position = Vector2( 512, 0 )
+texture = ExtResource( 2 )
+hframes = 3
+vframes = 3
+frame = 2
+
+[node name="5" type="ParallaxLayer" parent="Backgrounds"]
+
+[node name="Sprite" type="Sprite" parent="Backgrounds/5"]
+modulate = Color( 0.788235, 0.862745, 1, 1 )
+position = Vector2( 512, 0 )
+texture = ExtResource( 2 )
+hframes = 3
+vframes = 3
+frame = 1
+
+[node name="Walls" type="StaticBody2D" parent="."]
+
+[node name="Collision" type="CollisionPolygon2D" parent="Walls"]
+polygon = PoolVector2Array( -16, 304, 1040, 304, 1040, 144, 952, 72, 952, 224, 984, 248, 864, 248, 832, 224, 192, 224, 168, 248, 48, 248, 72, 224, 72, 144, 120, 112, 120, 184, 152, 160, 208, 160, 208, 184, 816, 184, 816, 168, 808, 160, 872, 160, 904, 184, 904, 112, 952, 144, 952, 72, 904, 48, 856, 40, 856, 136, 792, 136, 192, 136, 192, -320, -16, -320 )
+
+[node name="Portal" parent="Walls" instance=ExtResource( 7 )]
+position = Vector2( 928, 195 )
+rotation = 2.19761
+next_scene_path = "res://Assets/Scenes/Gaa Section/GaaSection 5.tscn"
+player_spawn_location = Vector2( 560, 248 )
+
+[node name="Collision" parent="Walls/Portal" index="0"]
+shape = SubResource( 44 )
+
+[node name="Animation" parent="Walls/Portal/Transition" index="2"]
+anims/RESET = SubResource( 2 )
+anims/TransitionIn = SubResource( 3 )
+anims/TransitionOut = SubResource( 4 )
+
+[node name="Arrow" parent="Walls/Portal" index="2"]
+anims/Arrow = SubResource( 5 )
+anims/RESET = SubResource( 6 )
+
+[node name="Pointer" parent="Walls/Portal/Arrow" index="0"]
+position = Vector2( 904, 192 )
+
+[node name="Portal2" parent="Walls" instance=ExtResource( 7 )]
+position = Vector2( 96, 195 )
+rotation = 0.931764
+next_scene_path = "res://Assets/Scenes/Gaa Section/GaaSection 5.tscn"
+player_spawn_location = Vector2( 512, 208 )
+
+[node name="Collision" parent="Walls/Portal2" index="0"]
+shape = SubResource( 45 )
+
+[node name="Animation" parent="Walls/Portal2/Transition" index="2"]
+anims/RESET = SubResource( 26 )
+anims/StaticTransitionOut = SubResource( 27 )
+anims/TransitionIn = SubResource( 28 )
+anims/TransitionOut = SubResource( 29 )
+
+[node name="Arrow" parent="Walls/Portal2" index="2"]
+anims/Arrow = SubResource( 30 )
+anims/RESET = SubResource( 31 )
+
+[node name="Pointer" parent="Walls/Portal2/Arrow" index="0"]
+position = Vector2( 120, 192 )
+rotation = -4.71238
+
+[node name="YSort" type="YSort" parent="."]
+
+[node name="PlayableGaa" parent="YSort" instance=ExtResource( 1 )]
+modulate = Color( 0.666667, 0.729412, 1, 1 )
+position = Vector2( 864, 184 )
+ATTACKING = false
+
+[node name="Reflection" parent="YSort/PlayableGaa" index="3"]
+modulate = Color( 0.788235, 0.764706, 1, 0.313726 )
+
+[node name="Camera" parent="YSort/PlayableGaa" index="6"]
+zoom = Vector2( 1.8, 1.8 )
+
+[node name="TopLeft" parent="YSort/PlayableGaa/Camera/Limits" index="0"]
+position = Vector2( 0, -300 )
+
+[node name="BottomRight" parent="YSort/PlayableGaa/Camera/Limits" index="1"]
+position = Vector2( 1024, 300 )
+
+[node name="AlmostDead" parent="YSort/PlayableGaa/Misc" index="0"]
+frame = 1
+
+[node name="Icon" parent="YSort/PlayableGaa/MiniMenu/Background/Holder/Options/Stats" index="9"]
+frame = 2
+
+[node name="Foregrounds" type="ParallaxBackground" parent="."]
+layer = 0
+
+[node name="1" type="ParallaxLayer" parent="Foregrounds"]
+
+[node name="Sprite" type="Sprite" parent="Foregrounds/1"]
+modulate = Color( 0.788235, 0.862745, 1, 1 )
+position = Vector2( 512, 0 )
+texture = ExtResource( 2 )
+hframes = 3
+vframes = 3
+
+[node name="Ambience" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+pitch_scale = 0.4
+autoplay = true
+
+[node name="Ambience2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+autoplay = true
+
+[node name="Camera" type="AnimationPlayer" parent="."]
+autoplay = "CameraZoomOut"
+playback_speed = 2.0
+anims/CameraZoomOut = SubResource( 46 )
+anims/RESET = SubResource( 47 )
+
+[editable path="Walls/Portal"]
+[editable path="Walls/Portal/Transition"]
+[editable path="Walls/Portal2"]
+[editable path="Walls/Portal2/Transition"]
+[editable path="YSort/PlayableGaa"]
+[editable path="YSort/PlayableGaa/MiniMenu"]

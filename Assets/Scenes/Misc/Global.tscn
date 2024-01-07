@@ -1,0 +1,277 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://Assets/Codes/Global.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Music/Newer Menu.mp3" type="AudioStream" id=2]
+[ext_resource path="res://Assets/Music/Sychokentel Remixed.mp3" type="AudioStream" id=4]
+[ext_resource path="res://Assets/Fonts/m5x7.ttf" type="DynamicFontData" id=7]
+[ext_resource path="res://Assets/Fonts/NiceFont.tres" type="DynamicFont" id=8]
+[ext_resource path="res://Assets/Sprites/Misc/Trophies.png" type="Texture" id=9]
+[ext_resource path="res://Assets/SFX/Wooup.mp3" type="AudioStream" id=10]
+[ext_resource path="res://Assets/SFX/Notification.mp3" type="AudioStream" id=11]
+[ext_resource path="res://Assets/Sprites/Misc/GuideBorder.png" type="Texture" id=15]
+[ext_resource path="res://Assets/Sprites/Misc/Light.png" type="Texture" id=17]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Goes In"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Achieved/CanvasLayer/Border:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 4, 5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 576, 32 ), Vector2( 304, 32 ), Vector2( 304, 32 ), Vector2( 576, 32 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Achieved/Notification:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Achieved/Riser:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Achieved/CanvasLayer/Border:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 100, 100, 100, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Achieved/CanvasLayer/Border:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 576, 32 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Achieved/Riser:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Achieved/CanvasLayer/Border:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 100, 1, 1, 1 ) ]
+}
+
+[sub_resource type="DynamicFont" id=3]
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 7 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 32
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 7 )
+
+[sub_resource type="Animation" id=5]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Border:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1.5 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "Timer"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Border:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1, 1.5 ), Vector2( 1.125, 1.5 ), Vector2( 1.15625, 0.5 ) ]
+}
+
+[sub_resource type="DynamicFont" id=7]
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 7 )
+
+[node name="Global" type="Node"]
+pause_mode = 2
+script = ExtResource( 1 )
+
+[node name="Menu" type="AudioStreamPlayer" parent="."]
+pause_mode = 1
+stream = ExtResource( 2 )
+volume_db = -5.0
+bus = "Music"
+
+[node name="Battle" type="AudioStreamPlayer" parent="."]
+pause_mode = 1
+stream = ExtResource( 4 )
+volume_db = -5.0
+bus = "Music"
+
+[node name="Achieved" type="AnimationPlayer" parent="."]
+playback_speed = 0.6
+"anims/Goes In" = SubResource( 1 )
+anims/RESET = SubResource( 2 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Achieved"]
+layer = 128
+
+[node name="Border" type="ColorRect" parent="Achieved/CanvasLayer"]
+modulate = Color( 100, 1, 1, 1 )
+margin_left = 576.0
+margin_top = 32.0
+margin_right = 896.006
+margin_bottom = 96.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="Trophies" type="Sprite" parent="Achieved/CanvasLayer/Border"]
+position = Vector2( 32, 24 )
+scale = Vector2( 0.4, 0.4 )
+texture = ExtResource( 9 )
+hframes = 11
+frame = 3
+
+[node name="Description" type="RichTextLabel" parent="Achieved/CanvasLayer/Border"]
+margin_left = 64.0
+margin_top = 16.0
+margin_right = 192.0
+margin_bottom = 64.0
+custom_fonts/normal_font = ExtResource( 8 )
+text = "You watched MHA season six you monster"
+
+[node name="Title" type="Label" parent="Achieved/CanvasLayer/Border"]
+margin_top = -8.0
+margin_right = 192.0
+margin_bottom = 8.0
+custom_colors/font_color = Color( 0.992157, 1, 0, 1 )
+custom_fonts/font = SubResource( 3 )
+text = "Bokura No"
+align = 1
+valign = 1
+
+[node name="Notification" type="AudioStreamPlayer" parent="Achieved"]
+stream = ExtResource( 11 )
+volume_db = -5.0
+bus = "SFX"
+
+[node name="Riser" type="AudioStreamPlayer" parent="Achieved"]
+stream = ExtResource( 10 )
+volume_db = -5.0
+pitch_scale = 0.6
+bus = "SFX"
+
+[node name="CountingTime" type="CanvasLayer" parent="."]
+pause_mode = 1
+layer = 128
+
+[node name="Border" type="Sprite" parent="CountingTime"]
+visible = false
+position = Vector2( 256, 24 )
+scale = Vector2( 1, 1.5 )
+texture = ExtResource( 15 )
+
+[node name="TimeCount" type="Label" parent="CountingTime/Border"]
+margin_left = -224.0
+margin_top = -19.0
+margin_right = 224.0
+margin_bottom = 15.0
+custom_colors/font_color = Color( 1, 0, 0.117647, 1 )
+custom_fonts/font = SubResource( 4 )
+text = "TIME LEFT: "
+align = 1
+valign = 1
+
+[node name="Timer" type="Timer" parent="CountingTime"]
+wait_time = 30.0
+
+[node name="TimerAnimation" type="AnimationPlayer" parent="CountingTime"]
+anims/RESET = SubResource( 5 )
+anims/Timer = SubResource( 6 )
+
+[node name="Brightness" type="CanvasLayer" parent="."]
+layer = 128
+
+[node name="Brightner" type="Light2D" parent="Brightness"]
+position = Vector2( 256, 160 )
+scale = Vector2( 96.75, 81 )
+texture = ExtResource( 17 )
+color = Color( 1, 1, 1, 0.470588 )
+range_layer_min = -512
+range_layer_max = 512
+
+[node name="FPSCounter" type="Label" parent="Brightness"]
+anchor_left = 0.1875
+anchor_top = 1.27666
+anchor_right = 0.1875
+anchor_bottom = 1.27666
+margin_left = -88.0
+margin_top = -382.998
+margin_right = 94.0
+margin_bottom = -356.998
+custom_colors/font_color = Color( 1, 0.772549, 0, 1 )
+custom_fonts/font = SubResource( 7 )
+text = "FPS: 60"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[connection signal="timeout" from="CountingTime/Timer" to="." method="_on_Timer_timeout"]

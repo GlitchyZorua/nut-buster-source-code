@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Final Meeting.mp3-d759c5534546a7738a344b8c96511f58.mp3str"
+
+[deps]
+
+source_file="res://Assets/Music/Final Meeting.mp3"
+dest_files=[ "res://.import/Final Meeting.mp3-d759c5534546a7738a344b8c96511f58.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

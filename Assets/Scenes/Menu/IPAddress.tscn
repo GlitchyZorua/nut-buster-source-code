@@ -1,0 +1,95 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://Assets/Sprites/Misc/IPAddress.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Fonts/m5x7.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://Assets/Scenes/Misc/Transition.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Assets/Codes/IPAddress.gd" type="Script" id=4]
+[ext_resource path="res://Assets/Music/Simplety.mp3" type="AudioStream" id=6]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 0, 512, 300 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 1 )
+region = Rect2( 512, 0, 512, 300 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 300, 512, 300 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 1 )
+region = Rect2( 512, 300, 512, 300 )
+
+[sub_resource type="SpriteFrames" id=5]
+animations = [ {
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ) ],
+"loop": true,
+"name": "default",
+"speed": 20.0
+} ]
+
+[sub_resource type="DynamicFont" id=6]
+outline_size = 2
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=7]
+outline_size = 2
+font_data = ExtResource( 2 )
+
+[node name="IPAddress" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 4 )
+
+[node name="Sprite" type="AnimatedSprite" parent="."]
+position = Vector2( 256, 150 )
+frames = SubResource( 5 )
+playing = true
+
+[node name="Text" type="Label" parent="Sprite"]
+anchor_top = 0.047
+anchor_right = 1.00028
+anchor_bottom = 0.119667
+margin_left = -256.0
+margin_top = -134.1
+margin_right = -256.144
+margin_bottom = -139.9
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 6 )
+text = "964.02.325.1954"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Text2" type="Label" parent="Sprite"]
+anchor_top = 0.047
+anchor_right = 1.00028
+anchor_bottom = 0.119667
+margin_left = -256.0
+margin_top = -118.1
+margin_right = -256.144
+margin_bottom = -123.9
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 7 )
+text = "I am coming for you"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Transition" parent="." instance=ExtResource( 3 )]
+
+[node name="BGMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+volume_db = -5.0
+autoplay = true
+bus = "Music"
+
+[connection signal="animation_finished" from="Transition/Animation" to="." method="_on_Animation_animation_finished"]
+
+[editable path="Transition"]

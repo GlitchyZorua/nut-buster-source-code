@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Notification.mp3-5358615508c8fb27603cd87444367024.mp3str"
+
+[deps]
+
+source_file="res://Assets/SFX/Notification.mp3"
+dest_files=[ "res://.import/Notification.mp3-5358615508c8fb27603cd87444367024.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

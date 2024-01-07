@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/RhythmBeat.mp3-916095e7e6f9b459088869edd64fb70d.mp3str"
+
+[deps]
+
+source_file="res://Assets/SFX/RhythmBeat.mp3"
+dest_files=[ "res://.import/RhythmBeat.mp3-916095e7e6f9b459088869edd64fb70d.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

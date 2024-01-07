@@ -1,0 +1,391 @@
+[gd_scene load_steps=22 format=2]
+
+[ext_resource path="res://Assets/Sprites/Sprite/Gaa.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Shaders/Shader 2.gdshader" type="Shader" id=2]
+[ext_resource path="res://Assets/Sprites/Misc/Diamond.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Music/Final Meeting.mp3" type="AudioStream" id=4]
+[ext_resource path="res://Assets/SFX/Riser.mp3" type="AudioStream" id=5]
+[ext_resource path="res://Assets/Codes/Sections.gd" type="Script" id=6]
+[ext_resource path="res://Assets/Scenes/Misc/Portal.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Assets/Scenes/Characters/Player.tscn" type="PackedScene" id=8]
+
+[sub_resource type="Curve" id=71]
+_data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.505747, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="Gradient" id=72]
+offsets = PoolRealArray( 0, 0.552486 )
+colors = PoolColorArray( 1, 1, 1, 0.588235, 1, 1, 1, 0 )
+
+[sub_resource type="Gradient" id=73]
+offsets = PoolRealArray( 0.192661, 1 )
+colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0 )
+
+[sub_resource type="GradientTexture" id=83]
+gradient = SubResource( 73 )
+
+[sub_resource type="ShaderMaterial" id=70]
+shader = ExtResource( 2 )
+shader_param/gradient = SubResource( 83 )
+
+[sub_resource type="AtlasTexture" id=75]
+atlas = ExtResource( 1 )
+region = Rect2( 1280, 0, 128, 128 )
+
+[sub_resource type="AtlasTexture" id=76]
+atlas = ExtResource( 1 )
+region = Rect2( 1408, 0, 128, 128 )
+
+[sub_resource type="AtlasTexture" id=77]
+atlas = ExtResource( 1 )
+region = Rect2( 1536, 0, 128, 128 )
+
+[sub_resource type="AtlasTexture" id=78]
+atlas = ExtResource( 1 )
+region = Rect2( 1664, 0, 128, 128 )
+
+[sub_resource type="SpriteFrames" id=79]
+animations = [ {
+"frames": [ SubResource( 75 ), SubResource( 76 ), SubResource( 77 ), SubResource( 78 ), SubResource( 75 ), SubResource( 76 ), SubResource( 75 ), SubResource( 76 ), SubResource( 75 ), SubResource( 76 ), SubResource( 75 ), SubResource( 76 ), SubResource( 75 ), SubResource( 76 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="Animation" id=80]
+resource_name = "Cutscene 2_7"
+length = 6.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("YSort/Them/Camera:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2, 4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -128 ), Vector2( 0, -128 ), Vector2( 0, 0 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 4.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "_load_dialogue"
+} ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("YSort/Player:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 544, -176 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("YSort/Player:STOP_ANIMATIONS")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("YSort/Player:CUTSCENE")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("YSort/Player:ENABLED")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("YSort/Them/Camera:current")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=82]
+resource_name = "Cutscene 2_8"
+length = 6.0
+tracks/0/type = "method"
+tracks/0/path = NodePath("Walls/Portal")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 4 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "teleport"
+} ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Foregrounds/1/Light:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 2, 6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Riser:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("BGMusic:volume_db")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 2, 4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ -5.0, -20.0, -80.0 ]
+}
+
+[sub_resource type="Animation" id=81]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("YSort/Them/Camera:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, -128 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Foregrounds/1/Light:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("BGMusic:off")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 100 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("BGMusic:volume_db")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -5.0 ]
+}
+
+[node name="Section 5_5" type="Node2D"]
+script = ExtResource( 6 )
+section = 5.5
+
+[node name="Backgrounds" type="ParallaxBackground" parent="."]
+
+[node name="1" type="ParallaxLayer" parent="Backgrounds"]
+motion_scale = Vector2( 0.2, 1 )
+motion_mirroring = Vector2( 512, 0 )
+
+[node name="2" type="ParallaxLayer" parent="Backgrounds"]
+motion_scale = Vector2( 0.6, 1 )
+motion_mirroring = Vector2( 512, 0 )
+
+[node name="3" type="ParallaxLayer" parent="Backgrounds"]
+motion_scale = Vector2( 0.8, 1 )
+motion_mirroring = Vector2( 512, 0 )
+
+[node name="4" type="ParallaxLayer" parent="Backgrounds"]
+
+[node name="Memory2" type="ColorRect" parent="Backgrounds/4"]
+margin_top = -24.0
+margin_right = 1024.0
+margin_bottom = 140.0
+
+[node name="Cloud" type="CPUParticles2D" parent="Backgrounds/4/Memory2"]
+position = Vector2( 512, 152 )
+rotation = 3.14159
+amount = 320
+lifetime = 4.0
+speed_scale = 4.0
+lifetime_randomness = 0.1
+texture = ExtResource( 3 )
+emission_shape = 2
+emission_rect_extents = Vector2( 1024, 1 )
+spread = 180.0
+initial_velocity = 1.0
+angular_velocity_random = 1.0
+scale_amount = 0.1
+scale_amount_random = 1.0
+scale_amount_curve = SubResource( 71 )
+color_ramp = SubResource( 72 )
+
+[node name="Memory" type="ColorRect" parent="Backgrounds/4"]
+margin_top = 128.0
+margin_right = 1024.0
+margin_bottom = 300.0
+color = Color( 0.764706, 0.776471, 1, 1 )
+
+[node name="FadeUp" type="ColorRect" parent="Backgrounds/4"]
+material = SubResource( 70 )
+margin_left = 1024.0
+margin_top = 128.0
+margin_right = 1047.0
+margin_bottom = 1152.0
+rect_rotation = 90.0
+
+[node name="Walls" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Walls"]
+visible = false
+position = Vector2( 0, -8 )
+polygon = PoolVector2Array( 0, 160, 1024, 160, 1024, 308, 1088, 308, 1088, 8, -64, 8, -65, 309, -64, 352, 1088, 360, 1088, 308, 1024, 308, 0, 308 )
+
+[node name="Portal" parent="Walls" instance=ExtResource( 7 )]
+visible = false
+position = Vector2( 256, -72 )
+rotation = -1.57079
+scale = Vector2( 0.950049, 0.965431 )
+next_scene_path = "res://Assets/Scenes/Sections/Section 6.tscn"
+player_spawn_location = Vector2( 160, 160 )
+max_nutted = 2
+
+[node name="Pointer" parent="Walls/Portal/Arrow" index="0"]
+position = Vector2( -8, -72 )
+
+[node name="YSort" type="YSort" parent="."]
+
+[node name="Them" type="AnimatedSprite" parent="YSort"]
+position = Vector2( 512, 184 )
+frames = SubResource( 79 )
+frame = 11
+speed_scale = 0.5
+playing = true
+
+[node name="Camera" type="Camera2D" parent="YSort/Them"]
+position = Vector2( 0, -128 )
+current = true
+zoom = Vector2( 0.5, 0.5 )
+smoothing_enabled = true
+
+[node name="Reflection" type="AnimatedSprite" parent="YSort"]
+modulate = Color( 1, 1, 1, 0.352941 )
+position = Vector2( 512, 216 )
+frames = SubResource( 79 )
+frame = 5
+speed_scale = 0.5
+playing = true
+flip_v = true
+
+[node name="Player" parent="YSort" instance=ExtResource( 8 )]
+position = Vector2( 544, -176 )
+STOP_ANIMATIONS = true
+
+[node name="Camera" parent="YSort/Player" index="12"]
+current = false
+
+[node name="Icon" parent="YSort/Player/MiniMenu/Background/Holder/Options/Stats" index="9"]
+frame = 3
+
+[node name="Foregrounds" type="ParallaxBackground" parent="."]
+layer = 0
+
+[node name="1" type="ParallaxLayer" parent="Foregrounds"]
+motion_scale = Vector2( 1.5, 1 )
+motion_mirroring = Vector2( 512, 0 )
+
+[node name="Light" type="ColorRect" parent="Foregrounds/1"]
+margin_right = 512.0
+margin_bottom = 300.0
+color = Color( 1, 1, 1, 0 )
+
+[node name="Cutscene" type="AnimationPlayer" parent="."]
+autoplay = "Cutscene 2_7"
+"anims/Cutscene 2_7" = SubResource( 80 )
+"anims/Cutscene 2_8" = SubResource( 82 )
+anims/RESET = SubResource( 81 )
+
+[node name="BGMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+volume_db = -5.0
+autoplay = true
+bus = "Music"
+
+[node name="Riser" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+volume_db = -5.0
+bus = "SFX"
+
+[editable path="Walls/Portal"]
+[editable path="Walls/Portal/Transition"]
+[editable path="YSort/Player"]
+[editable path="YSort/Player/MiniMenu"]

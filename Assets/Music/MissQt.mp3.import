@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/MissQt.mp3-caa16ed9303e0e317c5448305327be65.mp3str"
+
+[deps]
+
+source_file="res://Assets/Music/MissQt.mp3"
+dest_files=[ "res://.import/MissQt.mp3-caa16ed9303e0e317c5448305327be65.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

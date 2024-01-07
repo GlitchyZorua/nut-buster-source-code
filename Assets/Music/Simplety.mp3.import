@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Simplety.mp3-aa8ccc2dde1a0f99829bc991495b5371.mp3str"
+
+[deps]
+
+source_file="res://Assets/Music/Simplety.mp3"
+dest_files=[ "res://.import/Simplety.mp3-aa8ccc2dde1a0f99829bc991495b5371.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

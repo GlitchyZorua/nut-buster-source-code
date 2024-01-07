@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Serious Nuts.mp3-3686fc49791091bc607e075f0904dbbf.mp3str"
+
+[deps]
+
+source_file="res://Assets/Music/Serious Nuts.mp3"
+dest_files=[ "res://.import/Serious Nuts.mp3-3686fc49791091bc607e075f0904dbbf.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

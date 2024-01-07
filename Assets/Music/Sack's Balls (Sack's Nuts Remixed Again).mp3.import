@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Sack's Balls (Sack's Nuts Remixed Again).mp3-5573b9afade1487c9436489658d569b3.mp3str"
+
+[deps]
+
+source_file="res://Assets/Music/Sack's Balls (Sack's Nuts Remixed Again).mp3"
+dest_files=[ "res://.import/Sack's Balls (Sack's Nuts Remixed Again).mp3-5573b9afade1487c9436489658d569b3.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

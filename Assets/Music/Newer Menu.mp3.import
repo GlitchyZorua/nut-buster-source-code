@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Newer Menu.mp3-ee272a6cfadcadc2624aafd5776eb7a2.mp3str"
+
+[deps]
+
+source_file="res://Assets/Music/Newer Menu.mp3"
+dest_files=[ "res://.import/Newer Menu.mp3-ee272a6cfadcadc2624aafd5776eb7a2.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

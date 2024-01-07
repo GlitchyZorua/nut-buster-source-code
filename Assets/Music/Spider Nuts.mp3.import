@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Spider Nuts.mp3-a690cff147a184c98ae459ab0bd609ae.mp3str"
+
+[deps]
+
+source_file="res://Assets/Music/Spider Nuts.mp3"
+dest_files=[ "res://.import/Spider Nuts.mp3-a690cff147a184c98ae459ab0bd609ae.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

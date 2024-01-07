@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Striker's Devil.mp3-cbfcc20f37d92df839719358cdb5f01b.mp3str"
+
+[deps]
+
+source_file="res://Assets/Music/Striker's Devil.mp3"
+dest_files=[ "res://.import/Striker's Devil.mp3-cbfcc20f37d92df839719358cdb5f01b.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

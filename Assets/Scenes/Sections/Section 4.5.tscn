@@ -1,0 +1,208 @@
+[gd_scene load_steps=19 format=2]
+
+[ext_resource path="res://Assets/Codes/Sections.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Backgrounds/BaaBG/RightRoadBackground.png" type="Texture" id=2]
+[ext_resource path="res://Assets/SFX/Ambience.mp3" type="AudioStream" id=3]
+[ext_resource path="res://Assets/Backgrounds/BaaBG/ParkBackground.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Backgrounds/BaaBG/Sky.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Backgrounds/BaaBG/CityBackground 2.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Scenes/Misc/Portal.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Assets/Scenes/Characters/Player.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Assets/Sprites/Sprite/OldmanSal.png" type="Texture" id=10]
+[ext_resource path="res://Assets/Scenes/Misc/MemoryInteractor.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Assets/Codes/MovingBackgrounds.gd" type="Script" id=12]
+[ext_resource path="res://Assets/Sprites/Misc/LargeShadow.png" type="Texture" id=13]
+
+[sub_resource type="AtlasTexture" id=33]
+atlas = ExtResource( 2 )
+region = Rect2( 0, 0, 1024, 300 )
+
+[sub_resource type="AtlasTexture" id=34]
+atlas = ExtResource( 2 )
+region = Rect2( 1024, 0, 1024, 300 )
+
+[sub_resource type="SpriteFrames" id=32]
+animations = [ {
+"frames": [ SubResource( 33 ), SubResource( 34 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=35]
+extents = Vector2( 2.91251, 22.1299 )
+
+[sub_resource type="Animation" id=36]
+resource_name = "OldManSal"
+length = 0.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("OldmanSal:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2 ]
+}
+
+[sub_resource type="Animation" id=37]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("OldmanSal:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 3 ]
+}
+
+[node name="Section 4_5" type="Node2D"]
+script = ExtResource( 1 )
+section = 4.5
+
+[node name="Backgrounds" type="ParallaxBackground" parent="."]
+
+[node name="1" type="ParallaxLayer" parent="Backgrounds"]
+motion_scale = Vector2( 0.2, 1 )
+motion_mirroring = Vector2( 512, 0 )
+script = ExtResource( 12 )
+scrolling_speed = 25.0
+ENABLED = true
+
+[node name="Sky" type="Sprite" parent="Backgrounds/1"]
+position = Vector2( 256, 118 )
+scale = Vector2( 1, 1.21333 )
+texture = ExtResource( 5 )
+hframes = 3
+frame = 2
+
+[node name="2" type="ParallaxLayer" parent="Backgrounds"]
+motion_scale = Vector2( 0.6, 1 )
+motion_mirroring = Vector2( 512, 0 )
+
+[node name="City" type="Sprite" parent="Backgrounds/2"]
+modulate = Color( 0.113725, 0.27451, 1, 1 )
+position = Vector2( 256, 150 )
+texture = ExtResource( 6 )
+hframes = 4
+frame = 1
+
+[node name="3" type="ParallaxLayer" parent="Backgrounds"]
+motion_scale = Vector2( 0.8, 1 )
+motion_mirroring = Vector2( 512, 0 )
+
+[node name="City" type="Sprite" parent="Backgrounds/3"]
+modulate = Color( 0.0980392, 0.223529, 0.803922, 1 )
+position = Vector2( 256, 150 )
+texture = ExtResource( 6 )
+hframes = 4
+
+[node name="4" type="ParallaxLayer" parent="Backgrounds"]
+
+[node name="Street" type="AnimatedSprite" parent="Backgrounds/4"]
+modulate = Color( 0.619608, 0.733333, 1, 1 )
+position = Vector2( 512, 150 )
+frames = SubResource( 32 )
+playing = true
+
+[node name="Walls" type="StaticBody2D" parent="."]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Walls"]
+position = Vector2( 0, -8 )
+polygon = PoolVector2Array( 16, 8, 184, 200, 192, 176, 320, 176, 512, 256, 952, 256, 1024, 304, 1024, 8 )
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Walls"]
+position = Vector2( 0, -8 )
+polygon = PoolVector2Array( -16, 8, -16, 328, 1040, 328, 1040, 308, 0, 308, 0, 8 )
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="Walls"]
+position = Vector2( 0, -8 )
+polygon = PoolVector2Array( 0, 36, 171, 236, 168, 248, 127, 248, 121, 241, 0, 241 )
+
+[node name="Portal" parent="Walls" instance=ExtResource( 8 )]
+position = Vector2( 176, 210 )
+rotation = 0.344429
+scale = Vector2( 0.950049, 0.965431 )
+next_scene_path = "res://Assets/Scenes/Sections/Section 4.tscn"
+player_spawn_location = Vector2( 968, 208 )
+
+[node name="Collision" parent="Walls/Portal" index="0"]
+position = Vector2( 1.52588e-05, 0 )
+rotation = 2.98023e-08
+shape = SubResource( 35 )
+
+[node name="Pointer" parent="Walls/Portal/Arrow" index="0"]
+position = Vector2( 192, 208 )
+rotation = -4.71238
+
+[node name="YSort" type="YSort" parent="."]
+
+[node name="Player" parent="YSort" instance=ExtResource( 9 )]
+modulate = Color( 0.482353, 0.611765, 1, 1 )
+position = Vector2( 208, 200 )
+
+[node name="Camera" parent="YSort/Player" index="11"]
+zoom = Vector2( 0.6, 0.6 )
+smoothing_speed = 15.0
+
+[node name="BottomRight" parent="YSort/Player/Camera/Limits" index="1"]
+position = Vector2( 1024, 300 )
+
+[node name="MemoryInteractor" parent="YSort" instance=ExtResource( 11 )]
+position = Vector2( 928, 264 )
+MEMORY = 1
+
+[node name="Indicator" parent="YSort/MemoryInteractor" index="1"]
+text = "[Z] Give Money"
+
+[node name="OldmanSal" type="Sprite" parent="YSort/MemoryInteractor"]
+modulate = Color( 0.505882, 0.584314, 1, 1 )
+texture = ExtResource( 10 )
+hframes = 5
+frame = 3
+
+[node name="Animation" type="AnimationPlayer" parent="YSort/MemoryInteractor"]
+anims/OldManSal = SubResource( 36 )
+anims/RESET = SubResource( 37 )
+
+[node name="Foregrounds" type="ParallaxBackground" parent="."]
+layer = 0
+
+[node name="1" type="ParallaxLayer" parent="Foregrounds"]
+motion_scale = Vector2( 1.5, 1 )
+motion_mirroring = Vector2( 1024, 0 )
+
+[node name="Sprite" type="Sprite" parent="Foregrounds/1"]
+modulate = Color( 0.0313726, 0.145098, 0.733333, 0.509804 )
+position = Vector2( 512, 150 )
+texture = ExtResource( 4 )
+hframes = 3
+frame = 2
+
+[node name="Ambience" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+volume_db = -10.0
+autoplay = true
+bus = "SFX"
+
+[node name="LargeShadow" type="Sprite" parent="."]
+position = Vector2( 929, 280 )
+scale = Vector2( 1, 0.4 )
+texture = ExtResource( 13 )
+
+[editable path="Walls/Portal"]
+[editable path="Walls/Portal/Transition"]
+[editable path="YSort/Player"]
+[editable path="YSort/Player/MiniMenu"]
+[editable path="YSort/MemoryInteractor"]

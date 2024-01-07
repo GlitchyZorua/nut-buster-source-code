@@ -1,0 +1,261 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://Assets/Sprites/Sprite/Jackeron.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Codes/Jackeron.gd" type="Script" id=2]
+[ext_resource path="res://Assets/Sprites/Misc/LargeShadow.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Fonts/m5x7.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://Assets/SFX/Footsteps.mp3" type="AudioStream" id=6]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 16, 8 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "Idle"
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "Miss Left"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 15 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:rotation_degrees")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, -360.0, -360.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( -32, 0 ), Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=10]
+resource_name = "Miss Right"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 15 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:rotation_degrees")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 360.0, 360.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 32, 0 ), Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 5 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Footsteps:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "Walk"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 4, 5, 6, 7 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Footsteps:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, true ]
+}
+
+[sub_resource type="DynamicFont" id=6]
+font_data = ExtResource( 4 )
+
+[sub_resource type="StyleBoxFlat" id=7]
+bg_color = Color( 0.231373, 0.501961, 0.423529, 1 )
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+
+[sub_resource type="StyleBoxFlat" id=8]
+bg_color = Color( 0.105882, 0.188235, 0.203922, 1 )
+
+[sub_resource type="CircleShape2D" id=5]
+radius = 32.0
+
+[node name="Jackeron" type="KinematicBody2D" groups=["Enemy"]]
+collision_layer = 4
+script = ExtResource( 2 )
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 8 )
+shape = SubResource( 1 )
+
+[node name="Shadow" type="Sprite" parent="."]
+position = Vector2( 0, 16 )
+scale = Vector2( 1.5, 0.6 )
+texture = ExtResource( 3 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+hframes = 16
+frame = 5
+
+[node name="Animation" type="AnimationPlayer" parent="."]
+anims/Idle = SubResource( 2 )
+"anims/Miss Left" = SubResource( 9 )
+"anims/Miss Right" = SubResource( 10 )
+anims/RESET = SubResource( 3 )
+anims/Walk = SubResource( 4 )
+
+[node name="HPBar" type="ProgressBar" parent="."]
+visible = false
+margin_left = -16.0
+margin_top = -40.0
+margin_right = 16.0
+margin_bottom = -36.0
+custom_fonts/font = SubResource( 6 )
+custom_styles/fg = SubResource( 7 )
+custom_styles/bg = SubResource( 8 )
+max_value = 1.0
+value = 1.0
+percent_visible = false
+
+[node name="Line2D" type="Line2D" parent="."]
+visible = false
+width = 2.0
+default_color = Color( 0.4, 0.501961, 1, 1 )
+
+[node name="Close" type="Area2D" parent="."]
+visible = false
+
+[node name="Collision" type="CollisionShape2D" parent="Close"]
+shape = SubResource( 5 )
+
+[node name="Footsteps" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+volume_db = -10.0
+pitch_scale = 0.8
+bus = "SFX"
+
+[connection signal="animation_finished" from="Animation" to="." method="_on_Animation_animation_finished"]
+[connection signal="value_changed" from="HPBar" to="." method="_on_HPBar_value_changed"]
+[connection signal="body_entered" from="Close" to="." method="_on_Close_body_entered"]
+[connection signal="body_exited" from="Close" to="." method="_on_Close_body_exited"]

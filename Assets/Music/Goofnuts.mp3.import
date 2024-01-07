@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Goofnuts.mp3-56df26a7f3e7b3ef5c87f212e035bb19.mp3str"
+
+[deps]
+
+source_file="res://Assets/Music/Goofnuts.mp3"
+dest_files=[ "res://.import/Goofnuts.mp3-56df26a7f3e7b3ef5c87f212e035bb19.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

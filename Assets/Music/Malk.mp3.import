@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Malk.mp3-b8b6f3f0d2cdfb79784e839cc375f39f.mp3str"
+
+[deps]
+
+source_file="res://Assets/Music/Malk.mp3"
+dest_files=[ "res://.import/Malk.mp3-b8b6f3f0d2cdfb79784e839cc375f39f.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

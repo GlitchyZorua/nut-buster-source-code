@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/KilroSlash.mp3-7ac123d7b2748e4d39b43b00b55ea76b.mp3str"
+
+[deps]
+
+source_file="res://Assets/SFX/KilroSlash.mp3"
+dest_files=[ "res://.import/KilroSlash.mp3-7ac123d7b2748e4d39b43b00b55ea76b.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

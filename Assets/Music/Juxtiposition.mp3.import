@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Juxtiposition.mp3-0ce734143c6ef398c06a9aaf821b8495.mp3str"
+
+[deps]
+
+source_file="res://Assets/Music/Juxtiposition.mp3"
+dest_files=[ "res://.import/Juxtiposition.mp3-0ce734143c6ef398c06a9aaf821b8495.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

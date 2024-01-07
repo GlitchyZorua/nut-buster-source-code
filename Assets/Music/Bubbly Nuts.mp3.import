@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Bubbly Nuts.mp3-0e0f6f85b4e5adf782e480e845f52893.mp3str"
+
+[deps]
+
+source_file="res://Assets/Music/Bubbly Nuts.mp3"
+dest_files=[ "res://.import/Bubbly Nuts.mp3-0e0f6f85b4e5adf782e480e845f52893.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

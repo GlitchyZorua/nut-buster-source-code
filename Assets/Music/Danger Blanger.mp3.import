@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Danger Blanger.mp3-e59176161682577cfade944981f989c4.mp3str"
+
+[deps]
+
+source_file="res://Assets/Music/Danger Blanger.mp3"
+dest_files=[ "res://.import/Danger Blanger.mp3-e59176161682577cfade944981f989c4.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -1,0 +1,851 @@
+[gd_scene load_steps=54 format=2]
+
+[ext_resource path="res://Assets/Sprites/Misc/CharacterSelection.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Sprites/Misc/Menu.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Codes/CharacterSelection.gd" type="Script" id=3]
+[ext_resource path="res://Assets/Fonts/m5x7.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://Assets/SFX/MenuSelected.mp3" type="AudioStream" id=6]
+[ext_resource path="res://Assets/SFX/MenuSelecting.mp3" type="AudioStream" id=7]
+[ext_resource path="res://Assets/Scenes/Misc/Transition.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Assets/Sprites/Misc/StaticLines.png" type="Texture" id=9]
+[ext_resource path="res://Assets/Fonts/TooltipFont.tres" type="Theme" id=10]
+[ext_resource path="res://Assets/SFX/Error.mp3" type="AudioStream" id=11]
+
+[sub_resource type="AtlasTexture" id=72]
+atlas = ExtResource( 2 )
+region = Rect2( 0, 1500, 512, 300 )
+
+[sub_resource type="AtlasTexture" id=73]
+atlas = ExtResource( 2 )
+region = Rect2( 512, 1500, 512, 300 )
+
+[sub_resource type="SpriteFrames" id=74]
+animations = [ {
+"frames": [ SubResource( 72 ), SubResource( 73 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="AtlasTexture" id=90]
+atlas = ExtResource( 1 )
+region = Rect2( 448, 0, 112, 192 )
+
+[sub_resource type="AtlasTexture" id=91]
+atlas = ExtResource( 1 )
+region = Rect2( 560, 0, 112, 192 )
+
+[sub_resource type="AtlasTexture" id=88]
+atlas = ExtResource( 1 )
+region = Rect2( 672, 0, 112, 192 )
+
+[sub_resource type="AtlasTexture" id=89]
+atlas = ExtResource( 1 )
+region = Rect2( 784, 0, 112, 192 )
+
+[sub_resource type="AtlasTexture" id=92]
+atlas = ExtResource( 1 )
+region = Rect2( 224, 0, 112, 192 )
+
+[sub_resource type="AtlasTexture" id=93]
+atlas = ExtResource( 1 )
+region = Rect2( 336, 0, 112, 192 )
+
+[sub_resource type="AtlasTexture" id=94]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 0, 112, 192 )
+
+[sub_resource type="AtlasTexture" id=95]
+atlas = ExtResource( 1 )
+region = Rect2( 112, 0, 112, 192 )
+
+[sub_resource type="SpriteFrames" id=96]
+animations = [ {
+"frames": [ SubResource( 90 ), SubResource( 91 ) ],
+"loop": true,
+"name": "SeeGaa",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 88 ), SubResource( 89 ) ],
+"loop": true,
+"name": "SeeBaa",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 92 ), SubResource( 93 ) ],
+"loop": true,
+"name": "SeeSack",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 94 ), SubResource( 95 ) ],
+"loop": true,
+"name": "Default",
+"speed": 5.0
+} ]
+
+[sub_resource type="DynamicFont" id=75]
+size = 32
+outline_size = 3
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 4 )
+
+[sub_resource type="StyleBoxEmpty" id=80]
+
+[sub_resource type="StyleBoxEmpty" id=76]
+
+[sub_resource type="StyleBoxEmpty" id=77]
+
+[sub_resource type="StyleBoxEmpty" id=78]
+
+[sub_resource type="StyleBoxEmpty" id=79]
+
+[sub_resource type="AtlasTexture" id=99]
+atlas = ExtResource( 1 )
+region = Rect2( 672, 192, 112, 192 )
+
+[sub_resource type="AtlasTexture" id=100]
+atlas = ExtResource( 1 )
+region = Rect2( 784, 192, 112, 192 )
+
+[sub_resource type="AtlasTexture" id=97]
+atlas = ExtResource( 1 )
+region = Rect2( 224, 192, 112, 192 )
+
+[sub_resource type="AtlasTexture" id=98]
+atlas = ExtResource( 1 )
+region = Rect2( 336, 192, 112, 192 )
+
+[sub_resource type="AtlasTexture" id=101]
+atlas = ExtResource( 1 )
+region = Rect2( 448, 192, 112, 192 )
+
+[sub_resource type="AtlasTexture" id=102]
+atlas = ExtResource( 1 )
+region = Rect2( 560, 192, 112, 192 )
+
+[sub_resource type="AtlasTexture" id=103]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 192, 112, 192 )
+
+[sub_resource type="AtlasTexture" id=104]
+atlas = ExtResource( 1 )
+region = Rect2( 112, 192, 112, 192 )
+
+[sub_resource type="SpriteFrames" id=105]
+animations = [ {
+"frames": [ SubResource( 99 ), SubResource( 100 ) ],
+"loop": true,
+"name": "SeeGaa",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 97 ), SubResource( 98 ) ],
+"loop": true,
+"name": "SeeBaa",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 101 ), SubResource( 102 ) ],
+"loop": true,
+"name": "SeeSack",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 103 ), SubResource( 104 ) ],
+"loop": true,
+"name": "Default",
+"speed": 5.0
+} ]
+
+[sub_resource type="AtlasTexture" id=108]
+atlas = ExtResource( 1 )
+region = Rect2( 224, 384, 112, 192 )
+
+[sub_resource type="AtlasTexture" id=109]
+atlas = ExtResource( 1 )
+region = Rect2( 336, 384, 112, 192 )
+
+[sub_resource type="AtlasTexture" id=106]
+atlas = ExtResource( 1 )
+region = Rect2( 448, 384, 112, 192 )
+
+[sub_resource type="AtlasTexture" id=107]
+atlas = ExtResource( 1 )
+region = Rect2( 560, 384, 112, 192 )
+
+[sub_resource type="AtlasTexture" id=110]
+atlas = ExtResource( 1 )
+region = Rect2( 672, 384, 112, 192 )
+
+[sub_resource type="AtlasTexture" id=111]
+atlas = ExtResource( 1 )
+region = Rect2( 784, 384, 112, 192 )
+
+[sub_resource type="AtlasTexture" id=112]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 384, 112, 192 )
+
+[sub_resource type="AtlasTexture" id=113]
+atlas = ExtResource( 1 )
+region = Rect2( 112, 384, 112, 192 )
+
+[sub_resource type="SpriteFrames" id=114]
+animations = [ {
+"frames": [ SubResource( 108 ), SubResource( 109 ) ],
+"loop": true,
+"name": "SeeGaa",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 106 ), SubResource( 107 ) ],
+"loop": true,
+"name": "SeeBaa",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 110 ), SubResource( 111 ) ],
+"loop": true,
+"name": "SeeSack",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 112 ), SubResource( 113 ) ],
+"loop": true,
+"name": "Default",
+"speed": 5.0
+} ]
+
+[sub_resource type="DynamicFont" id=81]
+size = 32
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=87]
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=86]
+outline_size = 3
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 4 )
+
+[sub_resource type="Animation" id=82]
+resource_name = "Menu"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("TitleBorder/Title:rotation_degrees")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.8, 1, 1.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 5.0, -10.0, -20.0, -10.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("TitleBorder/Title:scale")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.8, 1, 1.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.65, 0.65 ), Vector2( 0.5, 0.5 ), Vector2( 0.65, 0.65 ), Vector2( 0.5, 0.5 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Camera:zoom")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.3, 0.8, 1, 1.3, 1.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.98, 0.98 ), Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 0.98, 0.98 ), Vector2( 1, 1 ), Vector2( 1, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Camera:rotation_degrees")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.8, 1, 1.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 2.0, 0.0, -2.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=85]
+resource_name = "Menu Static"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("TitleBorder/Title:rotation_degrees")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -10.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("TitleBorder/Title:scale")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0.5, 0.5 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Camera:zoom")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Camera:rotation_degrees")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+
+[sub_resource type="Animation" id=83]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("TitleBorder/Title:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("TitleBorder/Title:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 15.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Camera:zoom")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0.95, 0.95 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Camera:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Transition/TransitionFrame:color")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Transition/TransitionFrame:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Transition/ColorRect:color")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Transition/ColorRect:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=84]
+resource_name = "Transition In"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Transition/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Transition/ColorRect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Camera:zoom")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 0.1, 0.1 ) ]
+}
+
+[node name="CharacterSelection" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )
+
+[node name="Background" type="AnimatedSprite" parent="."]
+modulate = Color( 0.376471, 0.780392, 1, 1 )
+position = Vector2( 256, 149.5 )
+scale = Vector2( 1.0625, 1.10333 )
+frames = SubResource( 74 )
+playing = true
+
+[node name="StaticLines" type="Sprite" parent="."]
+modulate = Color( 0.694118, 0, 0.145098, 0.329412 )
+position = Vector2( 256, 148 )
+scale = Vector2( 1.0625, 1.09333 )
+texture = ExtResource( 9 )
+
+[node name="BlackBridge" type="ColorRect" parent="."]
+margin_left = 104.0
+margin_top = 128.0
+margin_right = 384.0
+margin_bottom = 192.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="Baa" type="AnimatedSprite" parent="."]
+position = Vector2( 96, 160 )
+frames = SubResource( 96 )
+animation = "Default"
+frame = 1
+playing = true
+
+[node name="Button" type="Label" parent="Baa"]
+margin_left = -24.0
+margin_top = 88.0
+margin_right = 16.0
+margin_bottom = 114.0
+rect_rotation = -15.0
+focus_neighbour_left = NodePath("../Extra")
+focus_neighbour_top = NodePath("../Settings")
+focus_neighbour_right = NodePath("../Extra")
+focus_neighbour_bottom = NodePath("../Begin")
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 75 )
+custom_styles/normal = SubResource( 80 )
+text = "Baa"
+
+[node name="Button2" type="Button" parent="Baa"]
+margin_left = -56.0
+margin_top = -96.0
+margin_right = 56.0
+margin_bottom = 96.0
+focus_neighbour_left = NodePath("../../Sack/Button2")
+focus_neighbour_top = NodePath("../../Back")
+focus_neighbour_right = NodePath("../../Gaa/Button2")
+focus_neighbour_bottom = NodePath(".")
+custom_colors/font_color_disabled = Color( 1, 1, 1, 1 )
+custom_colors/font_color_focus = Color( 1, 0.74902, 0, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 1, 0.435294, 0, 1 )
+custom_colors/font_color_pressed = Color( 1, 0.74902, 0, 1 )
+custom_fonts/font = SubResource( 75 )
+custom_styles/hover = SubResource( 76 )
+custom_styles/pressed = SubResource( 77 )
+custom_styles/focus = SubResource( 78 )
+custom_styles/disabled = SubResource( 79 )
+custom_styles/normal = SubResource( 80 )
+action_mode = 0
+
+[node name="Gaa" type="AnimatedSprite" parent="."]
+position = Vector2( 256, 160 )
+frames = SubResource( 105 )
+animation = "Default"
+playing = true
+
+[node name="Button" type="Label" parent="Gaa"]
+margin_left = -24.0
+margin_top = 80.0
+margin_right = 24.0
+margin_bottom = 106.0
+focus_neighbour_left = NodePath("../Extra")
+focus_neighbour_top = NodePath("../Settings")
+focus_neighbour_right = NodePath("../Extra")
+focus_neighbour_bottom = NodePath("../Begin")
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 75 )
+custom_styles/normal = SubResource( 80 )
+text = "Gaa"
+align = 1
+
+[node name="Button2" type="Button" parent="Gaa"]
+margin_left = -56.0
+margin_top = -96.0
+margin_right = 56.0
+margin_bottom = 96.0
+focus_neighbour_left = NodePath("../../Baa/Button2")
+focus_neighbour_top = NodePath("../../Back")
+focus_neighbour_right = NodePath("../../Sack/Button2")
+focus_neighbour_bottom = NodePath(".")
+custom_colors/font_color_disabled = Color( 1, 1, 1, 1 )
+custom_colors/font_color_focus = Color( 0, 0.92549, 1, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 0, 0.219608, 1, 1 )
+custom_colors/font_color_pressed = Color( 0, 0.92549, 1, 1 )
+custom_fonts/font = SubResource( 75 )
+custom_styles/hover = SubResource( 76 )
+custom_styles/pressed = SubResource( 77 )
+custom_styles/focus = SubResource( 78 )
+custom_styles/disabled = SubResource( 79 )
+custom_styles/normal = SubResource( 80 )
+action_mode = 0
+
+[node name="Sack" type="AnimatedSprite" parent="."]
+position = Vector2( 416, 160 )
+frames = SubResource( 114 )
+animation = "Default"
+frame = 1
+playing = true
+
+[node name="Button" type="Label" parent="Sack"]
+margin_left = -16.0
+margin_top = 72.0
+margin_right = 36.0
+margin_bottom = 98.0
+rect_rotation = 15.0
+focus_neighbour_left = NodePath("../Extra")
+focus_neighbour_top = NodePath("../Settings")
+focus_neighbour_right = NodePath("../Extra")
+focus_neighbour_bottom = NodePath("../Begin")
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 75 )
+custom_styles/normal = SubResource( 80 )
+text = "Sack"
+align = 2
+
+[node name="Button2" type="Button" parent="Sack"]
+margin_left = -56.0
+margin_top = -96.0
+margin_right = 56.0
+margin_bottom = 96.0
+focus_neighbour_left = NodePath("../../Gaa/Button2")
+focus_neighbour_top = NodePath("../../Back")
+focus_neighbour_right = NodePath("../../Baa/Button2")
+focus_neighbour_bottom = NodePath(".")
+custom_colors/font_color_disabled = Color( 1, 1, 1, 1 )
+custom_colors/font_color_focus = Color( 1, 0, 0.890196, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 0.521569, 0, 1, 1 )
+custom_colors/font_color_pressed = Color( 1, 0, 0.890196, 1 )
+custom_fonts/font = SubResource( 75 )
+custom_styles/hover = SubResource( 76 )
+custom_styles/pressed = SubResource( 77 )
+custom_styles/focus = SubResource( 78 )
+custom_styles/disabled = SubResource( 79 )
+custom_styles/normal = SubResource( 80 )
+action_mode = 0
+
+[node name="Back" type="Button" parent="."]
+margin_left = 408.0
+margin_top = 32.0
+margin_right = 460.0
+margin_bottom = 58.0
+focus_neighbour_left = NodePath("../Gaa/Button2")
+focus_neighbour_top = NodePath("../Sack/Button2")
+focus_neighbour_right = NodePath("../Baa/Button2")
+focus_neighbour_bottom = NodePath("../Sack/Button2")
+custom_colors/font_color_disabled = Color( 1, 1, 1, 1 )
+custom_colors/font_color_focus = Color( 1, 0, 0.211765, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 0.619608, 0, 0.466667, 1 )
+custom_colors/font_color_pressed = Color( 1, 0, 0.211765, 1 )
+custom_fonts/font = SubResource( 75 )
+custom_styles/hover = SubResource( 76 )
+custom_styles/pressed = SubResource( 77 )
+custom_styles/focus = SubResource( 78 )
+custom_styles/disabled = SubResource( 79 )
+custom_styles/normal = SubResource( 80 )
+action_mode = 0
+text = "Back"
+
+[node name="Title" type="Label" parent="."]
+anchor_left = 0.171875
+anchor_top = 0.453333
+anchor_right = 0.816406
+anchor_bottom = 0.453333
+margin_left = -88.0
+margin_top = -104.0
+margin_right = 94.0
+margin_bottom = -78.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 81 )
+text = "Select Your Character!"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="DifficultyBorder" type="ColorRect" parent="."]
+visible = false
+margin_left = -16.0
+margin_top = -16.0
+margin_right = 528.0
+margin_bottom = 316.0
+color = Color( 0, 0, 0, 0.588235 )
+
+[node name="Border" type="ColorRect" parent="DifficultyBorder"]
+margin_top = 144.0
+margin_right = 544.0
+margin_bottom = 208.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="Title" type="Label" parent="DifficultyBorder/Border"]
+anchor_left = 0.171875
+anchor_top = 0.693333
+anchor_right = 0.816406
+anchor_bottom = 0.693333
+margin_left = -181.5
+margin_top = -60.3733
+margin_right = 184.875
+margin_bottom = -34.3733
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 81 )
+text = "How will you like your difficulty sir?"
+align = 1
+valign = 1
+
+[node name="Title2" type="Label" parent="DifficultyBorder/Border"]
+anchor_left = 0.171875
+anchor_top = 0.693333
+anchor_right = 0.816406
+anchor_bottom = 0.693333
+margin_left = 111.5
+margin_top = 3.62669
+margin_right = -108.125
+margin_bottom = 29.6267
+custom_colors/font_color = Color( 1, 1, 1, 0.588235 )
+custom_fonts/font = SubResource( 87 )
+text = "press \"ESC\" to hide"
+align = 1
+valign = 1
+
+[node name="Hard" type="Button" parent="DifficultyBorder/Border"]
+margin_left = 80.0
+margin_top = 19.0
+margin_right = 184.0
+margin_bottom = 45.0
+hint_tooltip = "Enemies beat you up harder but 
+you get more cool stuff from them"
+focus_neighbour_left = NodePath("../Extra")
+focus_neighbour_top = NodePath("../Settings")
+focus_neighbour_right = NodePath("../Extra")
+focus_neighbour_bottom = NodePath("../Begin")
+theme = ExtResource( 10 )
+custom_colors/font_color_disabled = Color( 1, 1, 1, 1 )
+custom_colors/font_color_focus = Color( 1, 0, 0.211765, 1 )
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0.619608, 0, 0.466667, 1 )
+custom_colors/font_color_pressed = Color( 1, 0, 0.211765, 1 )
+custom_fonts/font = SubResource( 86 )
+custom_styles/hover = SubResource( 76 )
+custom_styles/pressed = SubResource( 77 )
+custom_styles/focus = SubResource( 78 )
+custom_styles/disabled = SubResource( 79 )
+custom_styles/normal = SubResource( 80 )
+action_mode = 0
+text = "I like it hard bitch"
+
+[node name="Soft" type="Button" parent="DifficultyBorder/Border"]
+margin_left = 224.0
+margin_top = 19.0
+margin_right = 320.0
+margin_bottom = 45.0
+hint_tooltip = "The casual difficulty, enemies hit 
+you as the way intended and you 
+get a fair amount of stuff from them"
+focus_neighbour_left = NodePath("../Extra")
+focus_neighbour_top = NodePath("../Settings")
+focus_neighbour_right = NodePath("../Extra")
+focus_neighbour_bottom = NodePath("../Begin")
+theme = ExtResource( 10 )
+custom_colors/font_color_disabled = Color( 1, 1, 1, 1 )
+custom_colors/font_color_focus = Color( 0.45098, 1, 0.866667, 1 )
+custom_colors/font_color = Color( 0, 0.937255, 1, 1 )
+custom_colors/font_color_hover = Color( 0, 0.376471, 1, 1 )
+custom_colors/font_color_pressed = Color( 0.45098, 1, 0.866667, 1 )
+custom_fonts/font = SubResource( 86 )
+custom_styles/hover = SubResource( 76 )
+custom_styles/pressed = SubResource( 77 )
+custom_styles/focus = SubResource( 78 )
+custom_styles/disabled = SubResource( 79 )
+custom_styles/normal = SubResource( 80 )
+action_mode = 0
+text = "i-i like it s-soft!"
+
+[node name="Baby" type="Button" parent="DifficultyBorder/Border"]
+margin_left = 376.0
+margin_top = 19.0
+margin_right = 472.0
+margin_bottom = 45.0
+hint_tooltip = "Baby mode, pretty sure enemies 
+can't really hurt you and you 
+don't get anything from this 
+except story"
+focus_neighbour_left = NodePath("../Extra")
+focus_neighbour_top = NodePath("../Settings")
+focus_neighbour_right = NodePath("../Extra")
+focus_neighbour_bottom = NodePath("../Begin")
+theme = ExtResource( 10 )
+custom_colors/font_color_disabled = Color( 1, 1, 1, 1 )
+custom_colors/font_color_focus = Color( 0.984314, 0.572549, 1, 1 )
+custom_colors/font_color = Color( 0.984314, 0, 1, 1 )
+custom_colors/font_color_hover = Color( 0.305882, 0, 0.619608, 1 )
+custom_colors/font_color_pressed = Color( 0.984314, 0.572549, 1, 1 )
+custom_fonts/font = SubResource( 86 )
+custom_styles/hover = SubResource( 76 )
+custom_styles/pressed = SubResource( 77 )
+custom_styles/focus = SubResource( 78 )
+custom_styles/disabled = SubResource( 79 )
+custom_styles/normal = SubResource( 80 )
+action_mode = 0
+text = "\"goo goo gaa gaa\""
+
+[node name="Error" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 11 )
+volume_db = -3.0
+bus = "SFX"
+
+[node name="Selecting" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+volume_db = -10.0
+bus = "SFX"
+
+[node name="Selected" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+volume_db = -10.0
+bus = "SFX"
+
+[node name="Transition" parent="." instance=ExtResource( 8 )]
+
+[node name="ColorRect" type="ColorRect" parent="Transition"]
+visible = false
+margin_left = -16.0
+margin_top = -16.0
+margin_right = 528.0
+margin_bottom = 314.0
+color = Color( 1, 1, 1, 0 )
+
+[node name="Camera" type="Camera2D" parent="."]
+position = Vector2( 256, 150 )
+rotating = true
+current = true
+zoom = Vector2( 0.95, 0.95 )
+
+[node name="Animation" type="AnimationPlayer" parent="."]
+playback_speed = 2.0
+anims/Menu = SubResource( 82 )
+"anims/Menu Static" = SubResource( 85 )
+anims/RESET = SubResource( 83 )
+"anims/Transition In" = SubResource( 84 )
+
+[connection signal="mouse_entered" from="Baa/Button" to="." method="_on_Button_mouse_entered"]
+[connection signal="focus_entered" from="Baa/Button2" to="." method="_on_Button_mouse_entered"]
+[connection signal="mouse_entered" from="Baa/Button2" to="." method="_on_Button_mouse_entered"]
+[connection signal="pressed" from="Baa/Button2" to="." method="_on_Button_pressed"]
+[connection signal="mouse_entered" from="Gaa/Button" to="." method="_on_Button2_mouse_entered"]
+[connection signal="focus_entered" from="Gaa/Button2" to="." method="_on_Button2_mouse_entered"]
+[connection signal="mouse_entered" from="Gaa/Button2" to="." method="_on_Button2_mouse_entered"]
+[connection signal="pressed" from="Gaa/Button2" to="." method="_on_Button2_pressed"]
+[connection signal="mouse_entered" from="Sack/Button" to="." method="_on_Button3_mouse_entered"]
+[connection signal="focus_entered" from="Sack/Button2" to="." method="_on_Button3_mouse_entered"]
+[connection signal="mouse_entered" from="Sack/Button2" to="." method="_on_Button3_mouse_entered"]
+[connection signal="pressed" from="Sack/Button2" to="." method="_on_Button3_pressed"]
+[connection signal="pressed" from="Back" to="." method="_on_Back_pressed"]
+[connection signal="pressed" from="DifficultyBorder/Border/Hard" to="." method="_on_Hard_pressed"]
+[connection signal="pressed" from="DifficultyBorder/Border/Soft" to="." method="_on_Soft_pressed"]
+[connection signal="pressed" from="DifficultyBorder/Border/Baby" to="." method="_on_Baby_pressed"]
+[connection signal="animation_finished" from="Transition/Animation" to="." method="_on_Animation_animation_finished"]
+
+[editable path="Transition"]

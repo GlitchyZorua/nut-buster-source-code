@@ -1,0 +1,854 @@
+[gd_scene load_steps=36 format=2]
+
+[ext_resource path="res://Assets/Backgrounds/BaaBG/RatVillageCenter.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Scenes/Characters/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Assets/Scenes/Misc/DialogueInteractor.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Assets/Scenes/Misc/Portal.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Assets/Codes/Sections.gd" type="Script" id=5]
+[ext_resource path="res://Assets/SFX/Falling.mp3" type="AudioStream" id=6]
+[ext_resource path="res://Assets/Scenes/Characters/Jackeron.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Assets/Scenes/Misc/NpcNavigation.tscn" type="PackedScene" id=9]
+
+[sub_resource type="AtlasTexture" id=133]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 0, 1024, 600 )
+
+[sub_resource type="AtlasTexture" id=134]
+atlas = ExtResource( 1 )
+region = Rect2( 1024, 0, 1024, 600 )
+
+[sub_resource type="SpriteFrames" id=127]
+animations = [ {
+"frames": [ SubResource( 133 ), SubResource( 134 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="NavigationPolygon" id=132]
+vertices = PoolVector2Array( 744, 286, 1080, 286, 1072, 326, 720, 310, 1432, 534, 1536, 590, 1536, 750, 512, 750, 512, 310, 1400, 446, 672, 326, 672, 310, 1152, 310, 1536, 310, 1536, 422, 632, 310 )
+polygons = [ PoolIntArray( 0, 1, 2, 3 ), PoolIntArray( 4, 5, 6, 7, 8 ), PoolIntArray( 9, 4, 8, 10 ), PoolIntArray( 10, 11, 3, 2, 9 ), PoolIntArray( 12, 13, 14, 9, 2 ), PoolIntArray( 8, 15, 10 ) ]
+outlines = [ PoolVector2Array( 1536, 422, 1536, 310, 1152, 310, 1072, 326, 1080, 286, 744, 286, 720, 310, 672, 310, 672, 326, 632, 310, 512, 310, 512, 750, 1536, 750, 1536, 590, 1432, 534, 1400, 446 ) ]
+
+[sub_resource type="RectangleShape2D" id=110]
+extents = Vector2( 67.3649, 8.28666 )
+
+[sub_resource type="Animation" id=88]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Top:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, -224 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Bottom:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 160 ) ]
+}
+
+[sub_resource type="Animation" id=89]
+resource_name = "TransitionIn"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Top:rect_position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -356 ), Vector2( 0, -356 ), Vector2( 0, -224 ), Vector2( 0, -224 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Bottom:rect_position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 272 ), Vector2( 0, 272 ), Vector2( 0, 160 ), Vector2( 0, 160 ) ]
+}
+
+[sub_resource type="Animation" id=90]
+resource_name = "TransitionOut"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Top:rect_position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -224 ), Vector2( 0, -224 ), Vector2( 0, -356 ), Vector2( 0, -356 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Bottom:rect_position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 160 ), Vector2( 0, 160 ), Vector2( 0, 272 ), Vector2( 0, 272 ) ]
+}
+
+[sub_resource type="Animation" id=135]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Top:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, -224 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Bottom:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 160 ) ]
+}
+
+[sub_resource type="Animation" id=136]
+resource_name = "StaticTransitionOut"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Top:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, -356 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Bottom:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 272 ) ]
+}
+
+[sub_resource type="Animation" id=137]
+resource_name = "TransitionIn"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Top:rect_position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -356 ), Vector2( 0, -356 ), Vector2( 0, -224 ), Vector2( 0, -224 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Bottom:rect_position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 272 ), Vector2( 0, 272 ), Vector2( 0, 160 ), Vector2( 0, 160 ) ]
+}
+
+[sub_resource type="Animation" id=138]
+resource_name = "TransitionOut"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Top:rect_position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -224 ), Vector2( 0, -224 ), Vector2( 0, -356 ), Vector2( 0, -356 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Bottom:rect_position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 160 ), Vector2( 0, 160 ), Vector2( 0, 272 ), Vector2( 0, 272 ) ]
+}
+
+[sub_resource type="Animation" id=139]
+resource_name = "Arrow"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Arrow/Pointer:offset")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 4 ) ]
+}
+
+[sub_resource type="Animation" id=140]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Arrow/Pointer:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 2 ) ]
+}
+
+[sub_resource type="Animation" id=141]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Top:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, -224 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Bottom:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 160 ) ]
+}
+
+[sub_resource type="Animation" id=142]
+resource_name = "StaticTransitionOut"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Top:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, -356 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Bottom:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 272 ) ]
+}
+
+[sub_resource type="Animation" id=143]
+resource_name = "TransitionIn"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Top:rect_position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -356 ), Vector2( 0, -356 ), Vector2( 0, -224 ), Vector2( 0, -224 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Bottom:rect_position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 272 ), Vector2( 0, 272 ), Vector2( 0, 160 ), Vector2( 0, 160 ) ]
+}
+
+[sub_resource type="Animation" id=144]
+resource_name = "TransitionOut"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Top:rect_position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -224 ), Vector2( 0, -224 ), Vector2( 0, -356 ), Vector2( 0, -356 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Bottom:rect_position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 160 ), Vector2( 0, 160 ), Vector2( 0, 272 ), Vector2( 0, 272 ) ]
+}
+
+[sub_resource type="Animation" id=145]
+resource_name = "Arrow"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Arrow/Pointer:offset")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 4 ) ]
+}
+
+[sub_resource type="Animation" id=146]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Arrow/Pointer:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 2 ) ]
+}
+
+[sub_resource type="Animation" id=147]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Top:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, -224 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Bottom:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 160 ) ]
+}
+
+[sub_resource type="Animation" id=148]
+resource_name = "StaticTransitionOut"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Top:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, -356 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Bottom:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 272 ) ]
+}
+
+[sub_resource type="Animation" id=149]
+resource_name = "TransitionIn"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Top:rect_position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -356 ), Vector2( 0, -356 ), Vector2( 0, -224 ), Vector2( 0, -224 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Bottom:rect_position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 272 ), Vector2( 0, 272 ), Vector2( 0, 160 ), Vector2( 0, 160 ) ]
+}
+
+[sub_resource type="Animation" id=150]
+resource_name = "TransitionOut"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Top:rect_position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -224 ), Vector2( 0, -224 ), Vector2( 0, -356 ), Vector2( 0, -356 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Bottom:rect_position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 160 ), Vector2( 0, 160 ), Vector2( 0, 272 ), Vector2( 0, 272 ) ]
+}
+
+[sub_resource type="Animation" id=151]
+resource_name = "Arrow"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Arrow/Pointer:offset")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 4 ) ]
+}
+
+[sub_resource type="Animation" id=152]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Arrow/Pointer:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 2 ) ]
+}
+
+[sub_resource type="NavigationPolygon" id=131]
+vertices = PoolVector2Array( 1664, 694, 384, 694, 384, 342, 1664, 342 )
+polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
+outlines = [ PoolVector2Array( 1664, 342, 384, 342, 384, 694, 1664, 694 ) ]
+
+[node name="Section 18_2" type="Node2D"]
+script = ExtResource( 5 )
+section = 18.2
+music = "res://Assets/Music/Rattalooie.mp3"
+
+[node name="Backgrounds" type="ParallaxBackground" parent="."]
+
+[node name="1" type="ParallaxLayer" parent="Backgrounds"]
+
+[node name="Background" type="ColorRect" parent="Backgrounds/1"]
+margin_right = 512.0
+margin_bottom = 300.0
+color = Color( 0.317647, 0.0980392, 0.0980392, 1 )
+
+[node name="2" type="ParallaxLayer" parent="Backgrounds"]
+motion_scale = Vector2( 0.2, 0.2 )
+
+[node name="3" type="ParallaxLayer" parent="Backgrounds"]
+motion_scale = Vector2( 0.8, 0.8 )
+motion_mirroring = Vector2( 1024, 0 )
+
+[node name="4" type="ParallaxLayer" parent="Backgrounds"]
+
+[node name="Background" type="AnimatedSprite" parent="Backgrounds/4"]
+position = Vector2( 512, 300 )
+frames = SubResource( 127 )
+frame = 1
+playing = true
+
+[node name="Walls" type="StaticBody2D" parent="."]
+position = Vector2( -512, -150 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Navigation" type="Navigation2D" parent="Walls" groups=["LevelNavigation"]]
+visible = false
+position = Vector2( 512, 150 )
+
+[node name="NavigationPolygonInstance" type="NavigationPolygonInstance" parent="Walls/Navigation"]
+position = Vector2( -512, -150 )
+navpoly = SubResource( 132 )
+
+[node name="Portal" parent="Walls" instance=ExtResource( 4 )]
+position = Vector2( 1544, 366 )
+rotation = -1.57079
+scale = Vector2( 0.950049, 0.965431 )
+next_scene_path = "res://Assets/Scenes/Sections/Section 18.1.tscn"
+player_spawn_location = Vector2( 40, 240 )
+
+[node name="Collision" parent="Walls/Portal" index="0"]
+position = Vector2( -0.00012207, 0 )
+rotation = 2.98014e-08
+shape = SubResource( 110 )
+
+[node name="Animation" parent="Walls/Portal/Transition" index="2"]
+anims/RESET = SubResource( 88 )
+anims/TransitionIn = SubResource( 89 )
+anims/TransitionOut = SubResource( 90 )
+
+[node name="Pointer" parent="Walls/Portal/Arrow" index="0"]
+position = Vector2( 920, 192 )
+
+[node name="Portal2" parent="Walls" instance=ExtResource( 4 )]
+position = Vector2( 504, 390 )
+rotation = -1.57079
+scale = Vector2( 0.950049, 0.965431 )
+next_scene_path = "res://Assets/Scenes/Sections/Section 18.3.tscn"
+player_spawn_location = Vector2( 464, 224 )
+
+[node name="Collision" parent="Walls/Portal2" index="0"]
+position = Vector2( -0.00012207, 0 )
+rotation = 2.98014e-08
+shape = SubResource( 110 )
+
+[node name="Animation" parent="Walls/Portal2/Transition" index="2"]
+anims/RESET = SubResource( 135 )
+anims/StaticTransitionOut = SubResource( 136 )
+anims/TransitionIn = SubResource( 137 )
+anims/TransitionOut = SubResource( 138 )
+
+[node name="Arrow" parent="Walls/Portal2" index="2"]
+anims/Arrow = SubResource( 139 )
+anims/RESET = SubResource( 140 )
+
+[node name="Pointer" parent="Walls/Portal2/Arrow" index="0"]
+position = Vector2( 24, 240 )
+rotation = -4.71238
+
+[node name="Portal3" parent="Walls" instance=ExtResource( 4 )]
+position = Vector2( 504, 662 )
+rotation = -1.57079
+scale = Vector2( 0.950049, 0.965431 )
+next_scene_path = "res://Assets/Scenes/Sections/Section 18.tscn"
+player_spawn_location = Vector2( 464, 480 )
+
+[node name="Collision" parent="Walls/Portal3" index="0"]
+position = Vector2( -0.00012207, 0 )
+rotation = 2.98014e-08
+shape = SubResource( 110 )
+
+[node name="Animation" parent="Walls/Portal3/Transition" index="2"]
+anims/RESET = SubResource( 141 )
+anims/StaticTransitionOut = SubResource( 142 )
+anims/TransitionIn = SubResource( 143 )
+anims/TransitionOut = SubResource( 144 )
+
+[node name="Arrow" parent="Walls/Portal3" index="2"]
+anims/Arrow = SubResource( 145 )
+anims/RESET = SubResource( 146 )
+
+[node name="Pointer" parent="Walls/Portal3/Arrow" index="0"]
+position = Vector2( 24, 512 )
+rotation = -4.71238
+
+[node name="Portal4" parent="Walls" instance=ExtResource( 4 )]
+position = Vector2( 1544, 662 )
+rotation = -1.57079
+scale = Vector2( 0.950049, 0.965431 )
+next_scene_path = "res://Assets/Scenes/Sections/Section 18.tscn"
+player_spawn_location = Vector2( 56, 240 )
+
+[node name="Collision" parent="Walls/Portal4" index="0"]
+position = Vector2( -0.00012207, 0 )
+rotation = 2.98014e-08
+shape = SubResource( 110 )
+
+[node name="Animation" parent="Walls/Portal4/Transition" index="2"]
+anims/RESET = SubResource( 147 )
+anims/StaticTransitionOut = SubResource( 148 )
+anims/TransitionIn = SubResource( 149 )
+anims/TransitionOut = SubResource( 150 )
+
+[node name="Arrow" parent="Walls/Portal4" index="2"]
+anims/Arrow = SubResource( 151 )
+anims/RESET = SubResource( 152 )
+
+[node name="Pointer" parent="Walls/Portal4/Arrow" index="0"]
+position = Vector2( 1000, 512 )
+
+[node name="Collision" type="CollisionPolygon2D" parent="Walls"]
+modulate = Color( 1, 1, 1, 0.392157 )
+position = Vector2( 16, -26 )
+polygon = PoolVector2Array( 496, 176, 496, 328, 616, 328, 648, 336, 648, 328, 696, 328, 720, 304, 1072, 304, 1064, 344, 1144, 328, 1520, 328, 1536, 336, 1536, 440, 1400, 520, 1400, 536, 1424, 544, 1424, 552, 1520, 601.566, 1520, 624, 1536, 632, 1536, 744, 1520, 752, 1520, 776, 496.698, 776, 496, 752, 480, 744, 480, 632, 496.522, 624.937, 496.354, 480.18, 480, 472, 480, 360, 496, 352, 496, 176, 480, 176, 480, 352, 464, 352, 464, 480, 480, 480, 480, 624, 464, 624, 464, 752, 480, 752, 480, 792, 1536, 792, 1536, 752, 1552, 752, 1552, 624, 1536, 623.765, 1536, 480, 1552, 480, 1552, 328, 1536, 328, 1536, 176, 1520, 176 )
+
+[node name="YSort" type="YSort" parent="."]
+
+[node name="NpcNavigation" parent="YSort" instance=ExtResource( 9 )]
+modulate = Color( 0.694118, 0.615686, 0.733333, 1 )
+position = Vector2( 0, 0 )
+
+[node name="NavigationPolygonInstance" parent="YSort/NpcNavigation" index="0"]
+position = Vector2( -512, -134 )
+navpoly = SubResource( 131 )
+
+[node name="SpawnLeft" parent="YSort/NpcNavigation/Spawner" index="0"]
+position = Vector2( -120, 224 )
+
+[node name="SpawnRight" parent="YSort/NpcNavigation/Spawner" index="1"]
+position = Vector2( 1144, 224 )
+
+[node name="Player" parent="YSort" instance=ExtResource( 2 )]
+modulate = Color( 0.694118, 0.615686, 0.733333, 1 )
+position = Vector2( 920, 208 )
+ATTACKING = false
+
+[node name="Sprite" parent="YSort/Player" index="6"]
+flip_h = true
+
+[node name="Camera" parent="YSort/Player" index="12"]
+zoom = Vector2( 0.8, 0.8 )
+
+[node name="TopLeft" parent="YSort/Player/Camera/Limits" index="0"]
+position = Vector2( 0, -16 )
+
+[node name="BottomRight" parent="YSort/Player/Camera/Limits" index="1"]
+position = Vector2( 1024, 600 )
+
+[node name="Icon" parent="YSort/Player/MiniMenu/Background/Holder/Options/Stats" index="9"]
+frame = 2
+
+[node name="Jackeron" parent="YSort" instance=ExtResource( 8 )]
+modulate = Color( 0.694118, 0.615686, 0.733333, 1 )
+position = Vector2( 1088, 256 )
+
+[node name="DialogueInteractor2" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( 368, 152 )
+DIALOGUE = 4
+INDEX = 31
+ALT_INDEX = 40
+
+[node name="Indicator" parent="YSort/DialogueInteractor2" index="1"]
+margin_left = -56.0
+margin_top = -88.0
+margin_right = 72.0
+margin_bottom = -64.0
+
+[node name="Building1" type="Sprite" parent="YSort"]
+position = Vector2( 512, 332 )
+texture = ExtResource( 1 )
+offset = Vector2( 0, -32 )
+hframes = 3
+vframes = 3
+frame = 2
+
+[node name="Building2" type="Sprite" parent="YSort"]
+position = Vector2( 512, 332 )
+texture = ExtResource( 1 )
+offset = Vector2( 0, -92 )
+hframes = 3
+vframes = 3
+frame = 3
+
+[node name="Collider" type="StaticBody2D" parent="YSort/Building2"]
+
+[node name="Collision" type="CollisionPolygon2D" parent="YSort/Building2/Collider"]
+polygon = PoolVector2Array( -320, 52, -272, 4, -240, 4, -208, 20, -208, 20, -200, 4, 48, 4, 56, 20, 96, 4, 96, -36, -288, -36, -360, 28 )
+
+[node name="Building3" type="Sprite" parent="YSort"]
+position = Vector2( 512, 156 )
+texture = ExtResource( 1 )
+offset = Vector2( 0, 136 )
+hframes = 3
+vframes = 3
+frame = 4
+
+[node name="Collider" type="StaticBody2D" parent="YSort/Building3"]
+
+[node name="Collision" type="CollisionPolygon2D" parent="YSort/Building3/Collider"]
+position = Vector2( -8, 140 )
+polygon = PoolVector2Array( 264, -144, 264, -128, 312, -128, 312, -144 )
+
+[node name="Building4" type="Sprite" parent="YSort"]
+position = Vector2( 512, 300 )
+texture = ExtResource( 1 )
+hframes = 3
+vframes = 3
+frame = 5
+
+[node name="Collider" type="StaticBody2D" parent="YSort/Building4"]
+
+[node name="Collision" type="CollisionPolygon2D" parent="YSort/Building4/Collider"]
+polygon = PoolVector2Array( 144, 12, 144, -4, 192, -4, 192, 4, 240, 4, 240, 20, 192, 20, 192, 12 )
+
+[node name="Building5" type="Sprite" parent="YSort"]
+position = Vector2( 512, 364 )
+texture = ExtResource( 1 )
+offset = Vector2( 0, -64 )
+hframes = 3
+vframes = 3
+frame = 6
+
+[node name="Collider" type="StaticBody2D" parent="YSort/Building5"]
+
+[node name="Collision" type="CollisionPolygon2D" parent="YSort/Building5/Collider"]
+position = Vector2( 0, -64 )
+polygon = PoolVector2Array( 304, 84, 304, 68, 328, 68, 348, 68, 348, 100, 320, 100, 320, 84 )
+
+[node name="Building6" type="Sprite" parent="YSort"]
+position = Vector2( 512, 332 )
+texture = ExtResource( 1 )
+offset = Vector2( 0, -32 )
+hframes = 3
+vframes = 3
+frame = 7
+
+[node name="Collider" type="StaticBody2D" parent="YSort/Building6"]
+
+[node name="Collision" type="CollisionPolygon2D" parent="YSort/Building6/Collider"]
+position = Vector2( 0, -32 )
+polygon = PoolVector2Array( 360, 44, 360, 20, 381, 20, 381, 44 )
+
+[node name="Foregrounds" type="ParallaxBackground" parent="."]
+layer = 0
+
+[node name="0" type="ParallaxLayer" parent="Foregrounds"]
+modulate = Color( 1, 1, 1, 0.74902 )
+
+[node name="1" type="ParallaxLayer" parent="Foregrounds"]
+motion_scale = Vector2( 1.188, 1 )
+motion_mirroring = Vector2( 512, 0 )
+
+[node name="2" type="ParallaxLayer" parent="Foregrounds"]
+motion_mirroring = Vector2( 512, 0 )
+
+[node name="Ambience" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+volume_db = -15.0
+autoplay = true
+bus = "SFX"
+
+[node name="Cutscene" type="AnimationPlayer" parent="."]
+
+[editable path="Walls/Portal"]
+[editable path="Walls/Portal/Transition"]
+[editable path="Walls/Portal2"]
+[editable path="Walls/Portal2/Transition"]
+[editable path="Walls/Portal3"]
+[editable path="Walls/Portal3/Transition"]
+[editable path="Walls/Portal4"]
+[editable path="Walls/Portal4/Transition"]
+[editable path="YSort/NpcNavigation"]
+[editable path="YSort/Player"]
+[editable path="YSort/Player/MiniMenu"]
+[editable path="YSort/DialogueInteractor2"]

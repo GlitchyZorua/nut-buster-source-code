@@ -1,0 +1,54 @@
+[gd_resource type="Theme" load_steps=11 format=2]
+
+[sub_resource type="StyleBoxLine" id=48]
+color = Color( 1, 1, 1, 1 )
+thickness = 10
+
+[sub_resource type="StyleBoxLine" id=46]
+color = Color( 1, 0.513726, 0, 1 )
+thickness = 10
+
+[sub_resource type="StyleBoxLine" id=47]
+color = Color( 0.992157, 1, 0, 1 )
+thickness = 10
+
+[sub_resource type="StyleBoxLine" id=43]
+thickness = 10
+
+[sub_resource type="StyleBoxLine" id=45]
+thickness = 10
+
+[sub_resource type="StyleBoxLine" id=49]
+color = Color( 1, 1, 1, 1 )
+thickness = 10
+vertical = true
+
+[sub_resource type="StyleBoxLine" id=50]
+color = Color( 1, 0.513726, 0, 1 )
+thickness = 10
+vertical = true
+
+[sub_resource type="StyleBoxLine" id=51]
+color = Color( 0.992157, 1, 0, 1 )
+thickness = 10
+vertical = true
+
+[sub_resource type="StyleBoxLine" id=52]
+thickness = 10
+vertical = true
+
+[sub_resource type="StyleBoxLine" id=53]
+thickness = 10
+vertical = true
+
+[resource]
+HScrollBar/styles/grabber = SubResource( 48 )
+HScrollBar/styles/grabber_highlight = SubResource( 46 )
+HScrollBar/styles/grabber_pressed = SubResource( 47 )
+HScrollBar/styles/scroll = SubResource( 43 )
+HScrollBar/styles/scroll_focus = SubResource( 45 )
+VScrollBar/styles/grabber = SubResource( 49 )
+VScrollBar/styles/grabber_highlight = SubResource( 50 )
+VScrollBar/styles/grabber_pressed = SubResource( 51 )
+VScrollBar/styles/scroll = SubResource( 52 )
+VScrollBar/styles/scroll_focus = SubResource( 53 )

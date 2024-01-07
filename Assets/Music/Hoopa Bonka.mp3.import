@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Hoopa Bonka.mp3-f921a69ae21f3c5c716d3b6bc8e7b7c6.mp3str"
+
+[deps]
+
+source_file="res://Assets/Music/Hoopa Bonka.mp3"
+dest_files=[ "res://.import/Hoopa Bonka.mp3-f921a69ae21f3c5c716d3b6bc8e7b7c6.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

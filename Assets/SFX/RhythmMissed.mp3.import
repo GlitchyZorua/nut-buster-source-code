@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/RhythmMissed.mp3-c8c30b2eafa7510493b59deac01d590e.mp3str"
+
+[deps]
+
+source_file="res://Assets/SFX/RhythmMissed.mp3"
+dest_files=[ "res://.import/RhythmMissed.mp3-c8c30b2eafa7510493b59deac01d590e.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Muffled Super Impact.mp3-0c5b5e8d93f88e9faa2a13d11f588eb5.mp3str"
+
+[deps]
+
+source_file="res://Assets/SFX/Muffled Super Impact.mp3"
+dest_files=[ "res://.import/Muffled Super Impact.mp3-0c5b5e8d93f88e9faa2a13d11f588eb5.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

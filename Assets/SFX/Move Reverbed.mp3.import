@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Move Reverbed.mp3-798c950c8f658e29798ce02ac80519ac.mp3str"
+
+[deps]
+
+source_file="res://Assets/SFX/Move Reverbed.mp3"
+dest_files=[ "res://.import/Move Reverbed.mp3-798c950c8f658e29798ce02ac80519ac.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

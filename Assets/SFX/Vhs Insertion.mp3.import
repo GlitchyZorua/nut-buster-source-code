@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Vhs Insertion.mp3-aea1bec5adbd758278ba2ba80bd0ee11.mp3str"
+
+[deps]
+
+source_file="res://Assets/SFX/Vhs Insertion.mp3"
+dest_files=[ "res://.import/Vhs Insertion.mp3-aea1bec5adbd758278ba2ba80bd0ee11.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

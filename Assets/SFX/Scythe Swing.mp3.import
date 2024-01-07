@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Scythe Swing.mp3-b5dd9d97262fd08e463d79e84c0cb363.mp3str"
+
+[deps]
+
+source_file="res://Assets/SFX/Scythe Swing.mp3"
+dest_files=[ "res://.import/Scythe Swing.mp3-b5dd9d97262fd08e463d79e84c0cb363.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

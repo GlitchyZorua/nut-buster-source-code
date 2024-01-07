@@ -1,0 +1,1345 @@
+[gd_scene load_steps=56 format=2]
+
+[ext_resource path="res://Assets/Codes/Settings.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Fonts/m5x7.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://Assets/Sprites/Misc/Settings.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Sprites/Misc/Pointer.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Scenes/Misc/Transition.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Assets/Sprites/Misc/StaticLines.png" type="Texture" id=6]
+[ext_resource path="res://Assets/SFX/MenuSelected.mp3" type="AudioStream" id=7]
+[ext_resource path="res://Assets/SFX/MenuSelecting.mp3" type="AudioStream" id=8]
+[ext_resource path="res://Assets/Fonts/NiceFont.tres" type="DynamicFont" id=10]
+[ext_resource path="res://Assets/Sprites/Misc/BoxCheck.png" type="Texture" id=11]
+[ext_resource path="res://Assets/Sprites/Misc/BoxUncheck.png" type="Texture" id=12]
+[ext_resource path="res://Assets/SFX/Click.mp3" type="AudioStream" id=13]
+[ext_resource path="res://Assets/Sprites/Misc/Resetting.png" type="Texture" id=14]
+[ext_resource path="res://Assets/Codes/Camera.gd" type="Script" id=15]
+[ext_resource path="res://Assets/Sprites/Misc/SackResettingJumpscare.png" type="Texture" id=16]
+[ext_resource path="res://Assets/SFX/Jumpscare Noise.mp3" type="AudioStream" id=17]
+[ext_resource path="res://Assets/Codes/KeybindButton.gd" type="Script" id=18]
+[ext_resource path="res://Assets/Codes/Keybind.gd" type="Script" id=19]
+[ext_resource path="res://Assets/Fonts/TooltipFont.tres" type="Theme" id=20]
+[ext_resource path="res://Assets/Themes/Scrolls.tres" type="Theme" id=21]
+
+[sub_resource type="StyleBoxFlat" id=23]
+bg_color = Color( 0.0352941, 0.0313726, 0.0745098, 0.588235 )
+border_width_left = 10
+border_width_right = 10
+border_color = Color( 0.0352941, 0.0313726, 0.0745098, 0.588235 )
+
+[sub_resource type="StyleBoxFlat" id=24]
+bg_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="StyleBoxFlat" id=25]
+bg_color = Color( 0, 0, 0.0784314, 0.588235 )
+border_width_left = 10
+border_width_right = 10
+border_color = Color( 0, 0, 0.0784314, 0.588235 )
+
+[sub_resource type="StyleBoxFlat" id=26]
+bg_color = Color( 0.0352941, 0.0313726, 0.0745098, 0.588235 )
+
+[sub_resource type="StyleBoxFlat" id=34]
+bg_color = Color( 0.00392157, 0, 0.0392157, 0.45098 )
+
+[sub_resource type="StyleBoxEmpty" id=12]
+
+[sub_resource type="StyleBoxEmpty" id=13]
+
+[sub_resource type="StyleBoxEmpty" id=14]
+
+[sub_resource type="StyleBoxEmpty" id=15]
+
+[sub_resource type="StyleBoxEmpty" id=16]
+
+[sub_resource type="StyleBoxEmpty" id=17]
+
+[sub_resource type="StyleBoxLine" id=1]
+thickness = 6
+
+[sub_resource type="StyleBoxLine" id=2]
+color = Color( 1, 0.894118, 0, 1 )
+thickness = 6
+
+[sub_resource type="StyleBoxLine" id=3]
+color = Color( 1, 1, 1, 1 )
+thickness = 6
+
+[sub_resource type="DynamicFont" id=4]
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 2 )
+
+[sub_resource type="StyleBoxEmpty" id=18]
+
+[sub_resource type="StyleBoxEmpty" id=19]
+
+[sub_resource type="StyleBoxEmpty" id=20]
+
+[sub_resource type="StyleBoxEmpty" id=21]
+
+[sub_resource type="StyleBoxEmpty" id=22]
+
+[sub_resource type="DynamicFont" id=5]
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 2 )
+
+[sub_resource type="StyleBoxEmpty" id=6]
+
+[sub_resource type="StyleBoxEmpty" id=7]
+
+[sub_resource type="StyleBoxEmpty" id=8]
+
+[sub_resource type="StyleBoxEmpty" id=9]
+
+[sub_resource type="StyleBoxEmpty" id=10]
+
+[sub_resource type="Animation" id=27]
+resource_name = "Jumpscare"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("../../../../../../Jumpscare:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../../../../../../JumpscareSound:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=28]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("../../../../../../Jumpscare:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+
+[sub_resource type="DynamicFont" id=35]
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=36]
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 2 )
+
+[sub_resource type="StyleBoxFlat" id=37]
+bg_color = Color( 0, 0, 0, 0.588235 )
+
+[sub_resource type="StyleBoxFlat" id=38]
+bg_color = Color( 0, 0, 0, 0.588235 )
+
+[sub_resource type="StyleBoxFlat" id=39]
+bg_color = Color( 0, 0, 0, 0.588235 )
+
+[sub_resource type="StyleBoxFlat" id=40]
+bg_color = Color( 0, 0, 0, 0.588235 )
+
+[sub_resource type="StyleBoxFlat" id=41]
+bg_color = Color( 0, 0, 0, 0.588235 )
+
+[node name="Settings" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+
+[node name="ColorBackground" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -48.0
+margin_top = -52.0
+margin_right = 48.0
+margin_bottom = 52.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="Background" type="Sprite" parent="."]
+position = Vector2( 256, 150 )
+texture = ExtResource( 3 )
+
+[node name="StaticLines" type="Sprite" parent="Background"]
+modulate = Color( 0, 0.0392157, 0.196078, 0.329412 )
+texture = ExtResource( 6 )
+
+[node name="Holder" type="ColorRect" parent="."]
+margin_right = 512.0
+margin_bottom = 300.0
+color = Color( 0, 0, 0, 0.509804 )
+
+[node name="Container" type="TabContainer" parent="Holder"]
+margin_left = 48.0
+margin_top = 40.0
+margin_right = 464.0
+margin_bottom = 248.0
+custom_fonts/font = ExtResource( 10 )
+custom_styles/tab_fg = SubResource( 23 )
+custom_styles/tab_disabled = SubResource( 24 )
+custom_styles/tab_bg = SubResource( 25 )
+custom_styles/panel = SubResource( 26 )
+
+[node name="General" type="Tabs" parent="Holder/Container"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 13.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Holder/Container/General"]
+margin_left = 16.0
+margin_top = 107.0
+margin_right = 400.0
+margin_bottom = 163.0
+theme = ExtResource( 21 )
+custom_styles/bg = SubResource( 34 )
+follow_focus = true
+scroll_vertical_enabled = false
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Holder/Container/General/ScrollContainer"]
+margin_right = 534.0
+margin_bottom = 32.0
+alignment = 1
+
+[node name="LowQuality" type="CheckBox" parent="Holder/Container/General/ScrollContainer/HBoxContainer"]
+margin_right = 100.0
+margin_bottom = 32.0
+hint_tooltip = "makes things 
+more pixelated 
+(less lag)"
+theme = ExtResource( 20 )
+custom_colors/font_color_disabled = Color( 1, 1, 1, 1 )
+custom_colors/font_color_focus = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover_pressed = Color( 0.964706, 1, 0, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 1, 0.894118, 0, 1 )
+custom_colors/font_color_pressed = Color( 1, 0.435294, 0, 1 )
+custom_fonts/font = ExtResource( 10 )
+custom_icons/radio_checked_disabled = ExtResource( 12 )
+custom_icons/radio_checked = ExtResource( 12 )
+custom_icons/checked_disabled = ExtResource( 11 )
+custom_icons/radio_unchecked_disabled = ExtResource( 12 )
+custom_icons/checked = ExtResource( 11 )
+custom_icons/radio_unchecked = ExtResource( 12 )
+custom_icons/unchecked_disabled = ExtResource( 12 )
+custom_icons/unchecked = ExtResource( 12 )
+custom_styles/hover = SubResource( 12 )
+custom_styles/pressed = SubResource( 13 )
+custom_styles/focus = SubResource( 14 )
+custom_styles/disabled = SubResource( 15 )
+custom_styles/hover_pressed = SubResource( 16 )
+custom_styles/normal = SubResource( 17 )
+action_mode = 0
+text = "Anti Aliasing"
+
+[node name="Screenshake" type="CheckBox" parent="Holder/Container/General/ScrollContainer/HBoxContainer"]
+margin_left = 104.0
+margin_right = 208.0
+margin_bottom = 32.0
+hint_tooltip = "disables/enables 
+screenshake effects"
+theme = ExtResource( 20 )
+custom_colors/font_color_disabled = Color( 1, 1, 1, 1 )
+custom_colors/font_color_focus = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover_pressed = Color( 0.964706, 1, 0, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 1, 0.894118, 0, 1 )
+custom_colors/font_color_pressed = Color( 1, 0.435294, 0, 1 )
+custom_fonts/font = ExtResource( 10 )
+custom_icons/radio_checked_disabled = ExtResource( 12 )
+custom_icons/radio_checked = ExtResource( 12 )
+custom_icons/checked_disabled = ExtResource( 11 )
+custom_icons/radio_unchecked_disabled = ExtResource( 12 )
+custom_icons/checked = ExtResource( 11 )
+custom_icons/radio_unchecked = ExtResource( 12 )
+custom_icons/unchecked_disabled = ExtResource( 12 )
+custom_icons/unchecked = ExtResource( 12 )
+custom_styles/hover = SubResource( 12 )
+custom_styles/pressed = SubResource( 13 )
+custom_styles/focus = SubResource( 14 )
+custom_styles/disabled = SubResource( 15 )
+custom_styles/hover_pressed = SubResource( 16 )
+custom_styles/normal = SubResource( 17 )
+action_mode = 0
+text = "Screen Shake"
+
+[node name="FlashingEffects" type="CheckBox" parent="Holder/Container/General/ScrollContainer/HBoxContainer"]
+margin_left = 212.0
+margin_right = 333.0
+margin_bottom = 32.0
+hint_tooltip = "disables/enables 
+flashing effects"
+theme = ExtResource( 20 )
+custom_colors/font_color_disabled = Color( 1, 1, 1, 1 )
+custom_colors/font_color_focus = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover_pressed = Color( 0.964706, 1, 0, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 1, 0.894118, 0, 1 )
+custom_colors/font_color_pressed = Color( 1, 0.435294, 0, 1 )
+custom_fonts/font = ExtResource( 10 )
+custom_icons/radio_checked_disabled = ExtResource( 12 )
+custom_icons/radio_checked = ExtResource( 12 )
+custom_icons/checked_disabled = ExtResource( 11 )
+custom_icons/radio_unchecked_disabled = ExtResource( 12 )
+custom_icons/checked = ExtResource( 11 )
+custom_icons/radio_unchecked = ExtResource( 12 )
+custom_icons/unchecked_disabled = ExtResource( 12 )
+custom_icons/unchecked = ExtResource( 12 )
+custom_styles/hover = SubResource( 12 )
+custom_styles/pressed = SubResource( 13 )
+custom_styles/focus = SubResource( 14 )
+custom_styles/disabled = SubResource( 15 )
+custom_styles/hover_pressed = SubResource( 16 )
+custom_styles/normal = SubResource( 17 )
+action_mode = 0
+text = "Flashing Effects"
+
+[node name="AutoPause" type="CheckBox" parent="Holder/Container/General/ScrollContainer/HBoxContainer"]
+margin_left = 337.0
+margin_right = 431.0
+margin_bottom = 32.0
+hint_tooltip = "automatically pause 
+after 1 minute 
+of unactivity"
+theme = ExtResource( 20 )
+custom_colors/font_color_disabled = Color( 1, 1, 1, 1 )
+custom_colors/font_color_focus = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover_pressed = Color( 0.964706, 1, 0, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 1, 0.894118, 0, 1 )
+custom_colors/font_color_pressed = Color( 1, 0.435294, 0, 1 )
+custom_fonts/font = ExtResource( 10 )
+custom_icons/radio_checked_disabled = ExtResource( 12 )
+custom_icons/radio_checked = ExtResource( 12 )
+custom_icons/checked_disabled = ExtResource( 11 )
+custom_icons/radio_unchecked_disabled = ExtResource( 12 )
+custom_icons/checked = ExtResource( 11 )
+custom_icons/radio_unchecked = ExtResource( 12 )
+custom_icons/unchecked_disabled = ExtResource( 12 )
+custom_icons/unchecked = ExtResource( 12 )
+custom_styles/hover = SubResource( 12 )
+custom_styles/pressed = SubResource( 13 )
+custom_styles/focus = SubResource( 14 )
+custom_styles/disabled = SubResource( 15 )
+custom_styles/hover_pressed = SubResource( 16 )
+custom_styles/normal = SubResource( 17 )
+action_mode = 0
+text = "Auto Pause"
+
+[node name="FPSCounter" type="CheckBox" parent="Holder/Container/General/ScrollContainer/HBoxContainer"]
+margin_left = 435.0
+margin_right = 534.0
+margin_bottom = 32.0
+hint_tooltip = "automatically pause 
+after 1 minute 
+of unactivity"
+theme = ExtResource( 20 )
+custom_colors/font_color_disabled = Color( 1, 1, 1, 1 )
+custom_colors/font_color_focus = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover_pressed = Color( 0.964706, 1, 0, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 1, 0.894118, 0, 1 )
+custom_colors/font_color_pressed = Color( 1, 0.435294, 0, 1 )
+custom_fonts/font = ExtResource( 10 )
+custom_icons/radio_checked_disabled = ExtResource( 12 )
+custom_icons/radio_checked = ExtResource( 12 )
+custom_icons/checked_disabled = ExtResource( 11 )
+custom_icons/radio_unchecked_disabled = ExtResource( 12 )
+custom_icons/checked = ExtResource( 11 )
+custom_icons/radio_unchecked = ExtResource( 12 )
+custom_icons/unchecked_disabled = ExtResource( 12 )
+custom_icons/unchecked = ExtResource( 12 )
+custom_styles/hover = SubResource( 12 )
+custom_styles/pressed = SubResource( 13 )
+custom_styles/focus = SubResource( 14 )
+custom_styles/disabled = SubResource( 15 )
+custom_styles/hover_pressed = SubResource( 16 )
+custom_styles/normal = SubResource( 17 )
+action_mode = 0
+text = "FPS Counter"
+
+[node name="VolumeBar" type="HSlider" parent="Holder/Container/General"]
+margin_left = 144.0
+margin_top = 27.0
+margin_right = 400.0
+margin_bottom = 43.0
+custom_icons/tick = ExtResource( 4 )
+custom_icons/grabber_disabled = ExtResource( 4 )
+custom_icons/grabber_highlight = ExtResource( 4 )
+custom_icons/grabber = ExtResource( 4 )
+custom_styles/slider = SubResource( 1 )
+custom_styles/grabber_area_highlight = SubResource( 2 )
+custom_styles/grabber_area = SubResource( 3 )
+min_value = -50.0
+max_value = 50.0
+value = 50.0
+
+[node name="VolumeCounter" type="Label" parent="Holder/Container/General/VolumeBar"]
+margin_left = -128.0
+margin_right = 256.0
+margin_bottom = 14.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 4 )
+text = "MUSIC VOLUME: 100%"
+
+[node name="SFXBar" type="HSlider" parent="Holder/Container/General"]
+margin_left = 144.0
+margin_top = 43.0
+margin_right = 400.0
+margin_bottom = 59.0
+custom_icons/tick = ExtResource( 4 )
+custom_icons/grabber_disabled = ExtResource( 4 )
+custom_icons/grabber_highlight = ExtResource( 4 )
+custom_icons/grabber = ExtResource( 4 )
+custom_styles/slider = SubResource( 1 )
+custom_styles/grabber_area_highlight = SubResource( 2 )
+custom_styles/grabber_area = SubResource( 3 )
+min_value = -50.0
+max_value = 50.0
+value = 50.0
+
+[node name="SFXCounter" type="Label" parent="Holder/Container/General/SFXBar"]
+margin_left = -128.0
+margin_right = 256.0
+margin_bottom = 14.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 4 )
+text = "SFX VOLUME: 100%"
+
+[node name="BrightnessBar" type="HSlider" parent="Holder/Container/General"]
+margin_left = 144.0
+margin_top = 59.0
+margin_right = 400.0
+margin_bottom = 75.0
+custom_icons/tick = ExtResource( 4 )
+custom_icons/grabber_disabled = ExtResource( 4 )
+custom_icons/grabber_highlight = ExtResource( 4 )
+custom_icons/grabber = ExtResource( 4 )
+custom_styles/slider = SubResource( 1 )
+custom_styles/grabber_area_highlight = SubResource( 2 )
+custom_styles/grabber_area = SubResource( 3 )
+max_value = 5.0
+step = 0.1
+
+[node name="BrightnessCounter" type="Label" parent="Holder/Container/General/BrightnessBar"]
+margin_left = -128.0
+margin_right = 256.0
+margin_bottom = 14.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 4 )
+text = "BRIGHTNESS: 100%"
+
+[node name="Reset" type="Button" parent="Holder/Container/General"]
+margin_left = 192.0
+margin_top = 171.0
+margin_right = 224.0
+margin_bottom = 187.0
+custom_colors/font_color_disabled = Color( 1, 0, 0.258824, 1 )
+custom_colors/font_color_focus = Color( 0.513726, 0, 0.32549, 1 )
+custom_colors/font_color = Color( 1, 0, 0.258824, 1 )
+custom_colors/font_color_hover = Color( 0.513726, 0, 0.32549, 1 )
+custom_colors/font_color_pressed = Color( 0.513726, 0, 0.32549, 1 )
+custom_fonts/font = ExtResource( 10 )
+custom_styles/hover = SubResource( 18 )
+custom_styles/pressed = SubResource( 19 )
+custom_styles/focus = SubResource( 20 )
+custom_styles/disabled = SubResource( 21 )
+custom_styles/normal = SubResource( 22 )
+action_mode = 0
+text = "Reset"
+
+[node name="ResettingBorder" type="ColorRect" parent="Holder/Container/General/Reset"]
+visible = false
+margin_left = -240.0
+margin_top = -224.0
+margin_right = 272.0
+margin_bottom = 72.0
+color = Color( 0, 0, 0, 0.654902 )
+
+[node name="Title" type="Label" parent="Holder/Container/General/Reset/ResettingBorder"]
+margin_left = 64.0
+margin_top = 64.0
+margin_right = 448.0
+margin_bottom = 78.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 4 )
+text = "WHO ARE YOU GOING TO RESET???"
+align = 1
+
+[node name="Gaa" type="Sprite" parent="Holder/Container/General/Reset/ResettingBorder"]
+position = Vector2( 84, 160 )
+texture = ExtResource( 14 )
+hframes = 6
+
+[node name="Selecting" type="Button" parent="Holder/Container/General/Reset/ResettingBorder/Gaa"]
+margin_left = -80.0
+margin_top = -80.0
+margin_right = 80.0
+margin_bottom = 80.0
+custom_colors/font_color_disabled = Color( 1, 1, 1, 1 )
+custom_colors/font_color_focus = Color( 1, 0.435294, 0, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 1, 0.866667, 0, 1 )
+custom_colors/font_color_pressed = Color( 1, 0.72549, 0.458824, 1 )
+custom_fonts/font = SubResource( 5 )
+custom_styles/hover = SubResource( 6 )
+custom_styles/pressed = SubResource( 7 )
+custom_styles/focus = SubResource( 8 )
+custom_styles/disabled = SubResource( 9 )
+custom_styles/normal = SubResource( 10 )
+action_mode = 0
+flat = true
+
+[node name="Baa" type="Sprite" parent="Holder/Container/General/Reset/ResettingBorder"]
+position = Vector2( 260, 160 )
+texture = ExtResource( 14 )
+hframes = 6
+frame = 2
+
+[node name="Selecting" type="Button" parent="Holder/Container/General/Reset/ResettingBorder/Baa"]
+margin_left = -80.0
+margin_top = -80.0
+margin_right = 80.0
+margin_bottom = 80.0
+custom_colors/font_color_disabled = Color( 1, 1, 1, 1 )
+custom_colors/font_color_focus = Color( 1, 0.435294, 0, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 1, 0.866667, 0, 1 )
+custom_colors/font_color_pressed = Color( 1, 0.72549, 0.458824, 1 )
+custom_fonts/font = SubResource( 5 )
+custom_styles/hover = SubResource( 6 )
+custom_styles/pressed = SubResource( 7 )
+custom_styles/focus = SubResource( 8 )
+custom_styles/disabled = SubResource( 9 )
+custom_styles/normal = SubResource( 10 )
+action_mode = 0
+flat = true
+
+[node name="Sack" type="Sprite" parent="Holder/Container/General/Reset/ResettingBorder"]
+position = Vector2( 428, 160 )
+texture = ExtResource( 14 )
+hframes = 6
+frame = 4
+
+[node name="Selecting" type="Button" parent="Holder/Container/General/Reset/ResettingBorder/Sack"]
+margin_left = -80.0
+margin_top = -80.0
+margin_right = 80.0
+margin_bottom = 80.0
+custom_colors/font_color_disabled = Color( 1, 1, 1, 1 )
+custom_colors/font_color_focus = Color( 1, 0.435294, 0, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 1, 0.866667, 0, 1 )
+custom_colors/font_color_pressed = Color( 1, 0.72549, 0.458824, 1 )
+custom_fonts/font = SubResource( 5 )
+custom_styles/hover = SubResource( 6 )
+custom_styles/pressed = SubResource( 7 )
+custom_styles/focus = SubResource( 8 )
+custom_styles/disabled = SubResource( 9 )
+custom_styles/normal = SubResource( 10 )
+action_mode = 0
+flat = true
+
+[node name="Animation" type="AnimationPlayer" parent="Holder/Container/General/Reset/ResettingBorder/Sack"]
+anims/Jumpscare = SubResource( 27 )
+anims/RESET = SubResource( 28 )
+
+[node name="Controls" type="Tabs" parent="Holder/Container"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -4.0
+margin_bottom = -4.0
+script = ExtResource( 19 )
+
+[node name="Movement" type="ScrollContainer" parent="Holder/Container/Controls"]
+margin_left = 12.0
+margin_top = 16.0
+margin_right = 140.0
+margin_bottom = 184.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Holder/Container/Controls/Movement"]
+margin_right = 128.0
+margin_bottom = 115.0
+
+[node name="Title" type="Label" parent="Holder/Container/Controls/Movement/VBoxContainer"]
+margin_right = 128.0
+margin_bottom = 13.0
+rect_min_size = Vector2( 128, 0 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 35 )
+text = "---MOVEMENT---"
+align = 1
+
+[node name="UpKey" type="Button" parent="Holder/Container/Controls/Movement/VBoxContainer" groups=["button_keys"]]
+margin_top = 17.0
+margin_right = 128.0
+margin_bottom = 30.0
+focus_mode = 0
+custom_colors/font_color_disabled = Color( 1, 1, 1, 1 )
+custom_colors/font_color_focus = Color( 1, 0.435294, 0, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 1, 0.866667, 0, 1 )
+custom_colors/font_color_pressed = Color( 1, 0.72549, 0.458824, 1 )
+custom_fonts/font = SubResource( 36 )
+custom_styles/hover = SubResource( 37 )
+custom_styles/pressed = SubResource( 38 )
+custom_styles/focus = SubResource( 39 )
+custom_styles/disabled = SubResource( 40 )
+custom_styles/normal = SubResource( 41 )
+action_mode = 0
+enabled_focus_mode = 0
+text = "Up "
+align = 2
+script = ExtResource( 18 )
+action_name = "ui_move_up"
+
+[node name="Title" type="Label" parent="Holder/Container/Controls/Movement/VBoxContainer/UpKey"]
+margin_left = 8.0
+margin_top = -1.0
+margin_right = 256.0
+margin_bottom = 13.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 35 )
+text = "Up Key:"
+
+[node name="DownKey" type="Button" parent="Holder/Container/Controls/Movement/VBoxContainer" groups=["button_keys"]]
+margin_top = 34.0
+margin_right = 128.0
+margin_bottom = 47.0
+focus_mode = 0
+custom_colors/font_color_disabled = Color( 1, 1, 1, 1 )
+custom_colors/font_color_focus = Color( 1, 0.435294, 0, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 1, 0.866667, 0, 1 )
+custom_colors/font_color_pressed = Color( 1, 0.72549, 0.458824, 1 )
+custom_fonts/font = SubResource( 36 )
+custom_styles/hover = SubResource( 37 )
+custom_styles/pressed = SubResource( 38 )
+custom_styles/focus = SubResource( 39 )
+custom_styles/disabled = SubResource( 40 )
+custom_styles/normal = SubResource( 41 )
+action_mode = 0
+enabled_focus_mode = 0
+text = "Down "
+align = 2
+script = ExtResource( 18 )
+action_name = "ui_move_down"
+
+[node name="Title" type="Label" parent="Holder/Container/Controls/Movement/VBoxContainer/DownKey"]
+margin_left = 8.0
+margin_top = -1.0
+margin_right = 256.0
+margin_bottom = 13.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 35 )
+text = "Down Key:"
+
+[node name="RightKey" type="Button" parent="Holder/Container/Controls/Movement/VBoxContainer" groups=["button_keys"]]
+margin_top = 51.0
+margin_right = 128.0
+margin_bottom = 64.0
+focus_mode = 0
+custom_colors/font_color_disabled = Color( 1, 1, 1, 1 )
+custom_colors/font_color_focus = Color( 1, 0.435294, 0, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 1, 0.866667, 0, 1 )
+custom_colors/font_color_pressed = Color( 1, 0.72549, 0.458824, 1 )
+custom_fonts/font = SubResource( 36 )
+custom_styles/hover = SubResource( 37 )
+custom_styles/pressed = SubResource( 38 )
+custom_styles/focus = SubResource( 39 )
+custom_styles/disabled = SubResource( 40 )
+custom_styles/normal = SubResource( 41 )
+action_mode = 0
+enabled_focus_mode = 0
+text = "Right "
+align = 2
+script = ExtResource( 18 )
+action_name = "ui_move_right"
+
+[node name="Title" type="Label" parent="Holder/Container/Controls/Movement/VBoxContainer/RightKey"]
+margin_left = 8.0
+margin_top = -1.0
+margin_right = 256.0
+margin_bottom = 13.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 35 )
+text = "Right Key:"
+
+[node name="LeftKey" type="Button" parent="Holder/Container/Controls/Movement/VBoxContainer" groups=["button_keys"]]
+margin_top = 68.0
+margin_right = 128.0
+margin_bottom = 81.0
+focus_mode = 0
+custom_colors/font_color_disabled = Color( 1, 1, 1, 1 )
+custom_colors/font_color_focus = Color( 1, 0.435294, 0, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 1, 0.866667, 0, 1 )
+custom_colors/font_color_pressed = Color( 1, 0.72549, 0.458824, 1 )
+custom_fonts/font = SubResource( 36 )
+custom_styles/hover = SubResource( 37 )
+custom_styles/pressed = SubResource( 38 )
+custom_styles/focus = SubResource( 39 )
+custom_styles/disabled = SubResource( 40 )
+custom_styles/normal = SubResource( 41 )
+action_mode = 0
+enabled_focus_mode = 0
+text = "Left "
+align = 2
+script = ExtResource( 18 )
+action_name = "ui_move_left"
+
+[node name="Title" type="Label" parent="Holder/Container/Controls/Movement/VBoxContainer/LeftKey"]
+margin_left = 8.0
+margin_top = -1.0
+margin_right = 256.0
+margin_bottom = 13.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 35 )
+text = "Left Key:"
+
+[node name="DashKey" type="Button" parent="Holder/Container/Controls/Movement/VBoxContainer" groups=["button_keys"]]
+margin_top = 85.0
+margin_right = 128.0
+margin_bottom = 98.0
+focus_mode = 0
+custom_colors/font_color_disabled = Color( 1, 1, 1, 1 )
+custom_colors/font_color_focus = Color( 1, 0.435294, 0, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 1, 0.866667, 0, 1 )
+custom_colors/font_color_pressed = Color( 1, 0.72549, 0.458824, 1 )
+custom_fonts/font = SubResource( 36 )
+custom_styles/hover = SubResource( 37 )
+custom_styles/pressed = SubResource( 38 )
+custom_styles/focus = SubResource( 39 )
+custom_styles/disabled = SubResource( 40 )
+custom_styles/normal = SubResource( 41 )
+action_mode = 0
+enabled_focus_mode = 0
+text = "A "
+align = 2
+script = ExtResource( 18 )
+action_name = "ui_dash"
+
+[node name="Title" type="Label" parent="Holder/Container/Controls/Movement/VBoxContainer/DashKey"]
+margin_left = 8.0
+margin_top = -1.0
+margin_right = 256.0
+margin_bottom = 13.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 35 )
+text = "Dash Key:"
+
+[node name="JumpKey" type="Button" parent="Holder/Container/Controls/Movement/VBoxContainer" groups=["button_keys"]]
+margin_top = 102.0
+margin_right = 128.0
+margin_bottom = 115.0
+focus_mode = 0
+custom_colors/font_color_disabled = Color( 1, 1, 1, 1 )
+custom_colors/font_color_focus = Color( 1, 0.435294, 0, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 1, 0.866667, 0, 1 )
+custom_colors/font_color_pressed = Color( 1, 0.72549, 0.458824, 1 )
+custom_fonts/font = SubResource( 36 )
+custom_styles/hover = SubResource( 37 )
+custom_styles/pressed = SubResource( 38 )
+custom_styles/focus = SubResource( 39 )
+custom_styles/disabled = SubResource( 40 )
+custom_styles/normal = SubResource( 41 )
+action_mode = 0
+enabled_focus_mode = 0
+text = "G "
+align = 2
+script = ExtResource( 18 )
+action_name = "ui_jump"
+
+[node name="Title" type="Label" parent="Holder/Container/Controls/Movement/VBoxContainer/JumpKey"]
+margin_left = 8.0
+margin_top = -1.0
+margin_right = 256.0
+margin_bottom = 13.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 35 )
+text = "Jump Key:"
+
+[node name="Attacks" type="ScrollContainer" parent="Holder/Container/Controls"]
+margin_left = 148.0
+margin_top = 16.0
+margin_right = 276.0
+margin_bottom = 184.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Holder/Container/Controls/Attacks"]
+margin_right = 128.0
+margin_bottom = 166.0
+
+[node name="Title2" type="Label" parent="Holder/Container/Controls/Attacks/VBoxContainer"]
+margin_right = 128.0
+margin_bottom = 13.0
+rect_min_size = Vector2( 128, 0 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 35 )
+text = "---ATTACKS---"
+align = 1
+
+[node name="BlockKey" type="Button" parent="Holder/Container/Controls/Attacks/VBoxContainer" groups=["button_keys"]]
+margin_top = 17.0
+margin_right = 128.0
+margin_bottom = 30.0
+focus_mode = 0
+custom_colors/font_color_disabled = Color( 1, 1, 1, 1 )
+custom_colors/font_color_focus = Color( 1, 0.435294, 0, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 1, 0.866667, 0, 1 )
+custom_colors/font_color_pressed = Color( 1, 0.72549, 0.458824, 1 )
+custom_fonts/font = SubResource( 36 )
+custom_styles/hover = SubResource( 37 )
+custom_styles/pressed = SubResource( 38 )
+custom_styles/focus = SubResource( 39 )
+custom_styles/disabled = SubResource( 40 )
+custom_styles/normal = SubResource( 41 )
+action_mode = 0
+enabled_focus_mode = 0
+text = "X "
+align = 2
+script = ExtResource( 18 )
+action_name = "ui_block"
+
+[node name="Title" type="Label" parent="Holder/Container/Controls/Attacks/VBoxContainer/BlockKey"]
+margin_left = 8.0
+margin_top = -1.0
+margin_right = 256.0
+margin_bottom = 13.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 35 )
+text = "Block Key:"
+
+[node name="AttackKey" type="Button" parent="Holder/Container/Controls/Attacks/VBoxContainer" groups=["button_keys"]]
+margin_top = 34.0
+margin_right = 128.0
+margin_bottom = 47.0
+focus_mode = 0
+custom_colors/font_color_disabled = Color( 1, 1, 1, 1 )
+custom_colors/font_color_focus = Color( 1, 0.435294, 0, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 1, 0.866667, 0, 1 )
+custom_colors/font_color_pressed = Color( 1, 0.72549, 0.458824, 1 )
+custom_fonts/font = SubResource( 36 )
+custom_styles/hover = SubResource( 37 )
+custom_styles/pressed = SubResource( 38 )
+custom_styles/focus = SubResource( 39 )
+custom_styles/disabled = SubResource( 40 )
+custom_styles/normal = SubResource( 41 )
+action_mode = 0
+enabled_focus_mode = 0
+text = "Z "
+align = 2
+script = ExtResource( 18 )
+action_name = "ui_attack"
+
+[node name="Title" type="Label" parent="Holder/Container/Controls/Attacks/VBoxContainer/AttackKey"]
+margin_left = 8.0
+margin_top = -1.0
+margin_right = 256.0
+margin_bottom = 13.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 35 )
+text = "Attack Key:"
+
+[node name="Skill 1" type="Button" parent="Holder/Container/Controls/Attacks/VBoxContainer" groups=["button_keys"]]
+margin_top = 51.0
+margin_right = 128.0
+margin_bottom = 64.0
+focus_mode = 0
+custom_colors/font_color_disabled = Color( 1, 1, 1, 1 )
+custom_colors/font_color_focus = Color( 1, 0.435294, 0, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 1, 0.866667, 0, 1 )
+custom_colors/font_color_pressed = Color( 1, 0.72549, 0.458824, 1 )
+custom_fonts/font = SubResource( 36 )
+custom_styles/hover = SubResource( 37 )
+custom_styles/pressed = SubResource( 38 )
+custom_styles/focus = SubResource( 39 )
+custom_styles/disabled = SubResource( 40 )
+custom_styles/normal = SubResource( 41 )
+action_mode = 0
+enabled_focus_mode = 0
+text = "S "
+align = 2
+script = ExtResource( 18 )
+action_name = "ui_superkick"
+
+[node name="Title" type="Label" parent="Holder/Container/Controls/Attacks/VBoxContainer/Skill 1"]
+margin_left = 8.0
+margin_top = -1.0
+margin_right = 256.0
+margin_bottom = 13.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 35 )
+text = "Skill 1 Key:"
+
+[node name="Skill 2" type="Button" parent="Holder/Container/Controls/Attacks/VBoxContainer" groups=["button_keys"]]
+margin_top = 68.0
+margin_right = 128.0
+margin_bottom = 81.0
+focus_mode = 0
+custom_colors/font_color_disabled = Color( 1, 1, 1, 1 )
+custom_colors/font_color_focus = Color( 1, 0.435294, 0, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 1, 0.866667, 0, 1 )
+custom_colors/font_color_pressed = Color( 1, 0.72549, 0.458824, 1 )
+custom_fonts/font = SubResource( 36 )
+custom_styles/hover = SubResource( 37 )
+custom_styles/pressed = SubResource( 38 )
+custom_styles/focus = SubResource( 39 )
+custom_styles/disabled = SubResource( 40 )
+custom_styles/normal = SubResource( 41 )
+action_mode = 0
+enabled_focus_mode = 0
+text = "D"
+align = 2
+script = ExtResource( 18 )
+action_name = "ui_decked"
+
+[node name="Title" type="Label" parent="Holder/Container/Controls/Attacks/VBoxContainer/Skill 2"]
+margin_left = 8.0
+margin_top = -1.0
+margin_right = 256.0
+margin_bottom = 13.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 35 )
+text = "Skill 2 Key:"
+
+[node name="Skill 3" type="Button" parent="Holder/Container/Controls/Attacks/VBoxContainer" groups=["button_keys"]]
+margin_top = 85.0
+margin_right = 128.0
+margin_bottom = 98.0
+focus_mode = 0
+custom_colors/font_color_disabled = Color( 1, 1, 1, 1 )
+custom_colors/font_color_focus = Color( 1, 0.435294, 0, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 1, 0.866667, 0, 1 )
+custom_colors/font_color_pressed = Color( 1, 0.72549, 0.458824, 1 )
+custom_fonts/font = SubResource( 36 )
+custom_styles/hover = SubResource( 37 )
+custom_styles/pressed = SubResource( 38 )
+custom_styles/focus = SubResource( 39 )
+custom_styles/disabled = SubResource( 40 )
+custom_styles/normal = SubResource( 41 )
+action_mode = 0
+enabled_focus_mode = 0
+text = "V "
+align = 2
+script = ExtResource( 18 )
+action_name = "ui_transformation"
+
+[node name="Title" type="Label" parent="Holder/Container/Controls/Attacks/VBoxContainer/Skill 3"]
+margin_left = 8.0
+margin_top = -1.0
+margin_right = 256.0
+margin_bottom = 13.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 35 )
+text = "Skill 3 Key:"
+
+[node name="Skill 4" type="Button" parent="Holder/Container/Controls/Attacks/VBoxContainer" groups=["button_keys"]]
+margin_top = 102.0
+margin_right = 128.0
+margin_bottom = 115.0
+focus_mode = 0
+custom_colors/font_color_disabled = Color( 1, 1, 1, 1 )
+custom_colors/font_color_focus = Color( 1, 0.435294, 0, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 1, 0.866667, 0, 1 )
+custom_colors/font_color_pressed = Color( 1, 0.72549, 0.458824, 1 )
+custom_fonts/font = SubResource( 36 )
+custom_styles/hover = SubResource( 37 )
+custom_styles/pressed = SubResource( 38 )
+custom_styles/focus = SubResource( 39 )
+custom_styles/disabled = SubResource( 40 )
+custom_styles/normal = SubResource( 41 )
+action_mode = 0
+enabled_focus_mode = 0
+text = "F "
+align = 2
+script = ExtResource( 18 )
+action_name = "ui_tp_behind"
+
+[node name="Title" type="Label" parent="Holder/Container/Controls/Attacks/VBoxContainer/Skill 4"]
+margin_left = 8.0
+margin_top = -1.0
+margin_right = 256.0
+margin_bottom = 13.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 35 )
+text = "Skill 4 Key:"
+
+[node name="Skill 5" type="Button" parent="Holder/Container/Controls/Attacks/VBoxContainer" groups=["button_keys"]]
+margin_top = 119.0
+margin_right = 128.0
+margin_bottom = 132.0
+focus_mode = 0
+custom_colors/font_color_disabled = Color( 1, 1, 1, 1 )
+custom_colors/font_color_focus = Color( 1, 0.435294, 0, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 1, 0.866667, 0, 1 )
+custom_colors/font_color_pressed = Color( 1, 0.72549, 0.458824, 1 )
+custom_fonts/font = SubResource( 36 )
+custom_styles/hover = SubResource( 37 )
+custom_styles/pressed = SubResource( 38 )
+custom_styles/focus = SubResource( 39 )
+custom_styles/disabled = SubResource( 40 )
+custom_styles/normal = SubResource( 41 )
+action_mode = 0
+enabled_focus_mode = 0
+text = "B"
+align = 2
+script = ExtResource( 18 )
+action_name = "ui_sucker"
+
+[node name="Title" type="Label" parent="Holder/Container/Controls/Attacks/VBoxContainer/Skill 5"]
+margin_left = 8.0
+margin_top = -1.0
+margin_right = 256.0
+margin_bottom = 13.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 35 )
+text = "Skill 5 Key:"
+
+[node name="Skill 6" type="Button" parent="Holder/Container/Controls/Attacks/VBoxContainer" groups=["button_keys"]]
+margin_top = 136.0
+margin_right = 128.0
+margin_bottom = 149.0
+focus_mode = 0
+custom_colors/font_color_disabled = Color( 1, 1, 1, 1 )
+custom_colors/font_color_focus = Color( 1, 0.435294, 0, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 1, 0.866667, 0, 1 )
+custom_colors/font_color_pressed = Color( 1, 0.72549, 0.458824, 1 )
+custom_fonts/font = SubResource( 36 )
+custom_styles/hover = SubResource( 37 )
+custom_styles/pressed = SubResource( 38 )
+custom_styles/focus = SubResource( 39 )
+custom_styles/disabled = SubResource( 40 )
+custom_styles/normal = SubResource( 41 )
+action_mode = 0
+enabled_focus_mode = 0
+text = "W"
+align = 2
+script = ExtResource( 18 )
+action_name = "ui_extra_skill_1"
+
+[node name="Title" type="Label" parent="Holder/Container/Controls/Attacks/VBoxContainer/Skill 6"]
+margin_left = 8.0
+margin_top = -1.0
+margin_right = 256.0
+margin_bottom = 13.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 35 )
+text = "Extra Skill 1 Key:"
+
+[node name="Skill 7" type="Button" parent="Holder/Container/Controls/Attacks/VBoxContainer" groups=["button_keys"]]
+margin_top = 153.0
+margin_right = 128.0
+margin_bottom = 166.0
+focus_mode = 0
+custom_colors/font_color_disabled = Color( 1, 1, 1, 1 )
+custom_colors/font_color_focus = Color( 1, 0.435294, 0, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 1, 0.866667, 0, 1 )
+custom_colors/font_color_pressed = Color( 1, 0.72549, 0.458824, 1 )
+custom_fonts/font = SubResource( 36 )
+custom_styles/hover = SubResource( 37 )
+custom_styles/pressed = SubResource( 38 )
+custom_styles/focus = SubResource( 39 )
+custom_styles/disabled = SubResource( 40 )
+custom_styles/normal = SubResource( 41 )
+action_mode = 0
+enabled_focus_mode = 0
+text = "E"
+align = 2
+script = ExtResource( 18 )
+action_name = "ui_extra_skill_2"
+
+[node name="Title" type="Label" parent="Holder/Container/Controls/Attacks/VBoxContainer/Skill 7"]
+margin_left = 8.0
+margin_top = -1.0
+margin_right = 256.0
+margin_bottom = 13.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 35 )
+text = "Extra Skill 2 Key:"
+
+[node name="Misc" type="ScrollContainer" parent="Holder/Container/Controls"]
+margin_left = 284.0
+margin_top = 16.0
+margin_right = 412.0
+margin_bottom = 184.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Holder/Container/Controls/Misc"]
+margin_right = 128.0
+margin_bottom = 81.0
+
+[node name="Title3" type="Label" parent="Holder/Container/Controls/Misc/VBoxContainer"]
+margin_right = 128.0
+margin_bottom = 13.0
+rect_min_size = Vector2( 128, 0 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 35 )
+text = "---MISC---"
+align = 1
+
+[node name="TrainKey" type="Button" parent="Holder/Container/Controls/Misc/VBoxContainer" groups=["button_keys"]]
+margin_top = 17.0
+margin_right = 128.0
+margin_bottom = 30.0
+focus_mode = 0
+custom_colors/font_color_disabled = Color( 1, 1, 1, 1 )
+custom_colors/font_color_focus = Color( 1, 0.435294, 0, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 1, 0.866667, 0, 1 )
+custom_colors/font_color_pressed = Color( 1, 0.72549, 0.458824, 1 )
+custom_fonts/font = SubResource( 36 )
+custom_styles/hover = SubResource( 37 )
+custom_styles/pressed = SubResource( 38 )
+custom_styles/focus = SubResource( 39 )
+custom_styles/disabled = SubResource( 40 )
+custom_styles/normal = SubResource( 41 )
+action_mode = 0
+enabled_focus_mode = 0
+text = "T "
+align = 2
+script = ExtResource( 18 )
+action_name = "ui_train"
+
+[node name="Title" type="Label" parent="Holder/Container/Controls/Misc/VBoxContainer/TrainKey"]
+margin_left = 8.0
+margin_top = -1.0
+margin_right = 256.0
+margin_bottom = 13.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 35 )
+text = "Train Key:"
+
+[node name="ResetKey" type="Button" parent="Holder/Container/Controls/Misc/VBoxContainer" groups=["button_keys"]]
+margin_top = 34.0
+margin_right = 128.0
+margin_bottom = 47.0
+focus_mode = 0
+custom_colors/font_color_disabled = Color( 1, 1, 1, 1 )
+custom_colors/font_color_focus = Color( 1, 0.435294, 0, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 1, 0.866667, 0, 1 )
+custom_colors/font_color_pressed = Color( 1, 0.72549, 0.458824, 1 )
+custom_fonts/font = SubResource( 36 )
+custom_styles/hover = SubResource( 37 )
+custom_styles/pressed = SubResource( 38 )
+custom_styles/focus = SubResource( 39 )
+custom_styles/disabled = SubResource( 40 )
+custom_styles/normal = SubResource( 41 )
+action_mode = 0
+enabled_focus_mode = 0
+text = "R "
+align = 2
+script = ExtResource( 18 )
+action_name = "ui_reset"
+
+[node name="Title" type="Label" parent="Holder/Container/Controls/Misc/VBoxContainer/ResetKey"]
+margin_left = 8.0
+margin_top = -1.0
+margin_right = 256.0
+margin_bottom = 13.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 35 )
+text = "Reset Key:"
+
+[node name="MenuKey" type="Button" parent="Holder/Container/Controls/Misc/VBoxContainer" groups=["button_keys"]]
+margin_top = 51.0
+margin_right = 128.0
+margin_bottom = 64.0
+focus_mode = 0
+custom_colors/font_color_disabled = Color( 1, 1, 1, 1 )
+custom_colors/font_color_focus = Color( 1, 0.435294, 0, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 1, 0.866667, 0, 1 )
+custom_colors/font_color_pressed = Color( 1, 0.72549, 0.458824, 1 )
+custom_fonts/font = SubResource( 36 )
+custom_styles/hover = SubResource( 37 )
+custom_styles/pressed = SubResource( 38 )
+custom_styles/focus = SubResource( 39 )
+custom_styles/disabled = SubResource( 40 )
+custom_styles/normal = SubResource( 41 )
+action_mode = 0
+enabled_focus_mode = 0
+text = "C "
+align = 2
+script = ExtResource( 18 )
+action_name = "ui_menu"
+
+[node name="Title" type="Label" parent="Holder/Container/Controls/Misc/VBoxContainer/MenuKey"]
+margin_left = 8.0
+margin_top = -1.0
+margin_right = 256.0
+margin_bottom = 13.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 35 )
+text = "Menu Key:"
+
+[node name="FullscreenKey" type="Button" parent="Holder/Container/Controls/Misc/VBoxContainer" groups=["button_keys"]]
+margin_top = 68.0
+margin_right = 128.0
+margin_bottom = 81.0
+focus_mode = 0
+custom_colors/font_color_disabled = Color( 1, 1, 1, 1 )
+custom_colors/font_color_focus = Color( 1, 0.435294, 0, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 1, 0.866667, 0, 1 )
+custom_colors/font_color_pressed = Color( 1, 0.72549, 0.458824, 1 )
+custom_fonts/font = SubResource( 36 )
+custom_styles/hover = SubResource( 37 )
+custom_styles/pressed = SubResource( 38 )
+custom_styles/focus = SubResource( 39 )
+custom_styles/disabled = SubResource( 40 )
+custom_styles/normal = SubResource( 41 )
+action_mode = 0
+enabled_focus_mode = 0
+text = "F4 "
+align = 2
+script = ExtResource( 18 )
+action_name = "ui_fullscreen"
+
+[node name="Title" type="Label" parent="Holder/Container/Controls/Misc/VBoxContainer/FullscreenKey"]
+margin_left = 8.0
+margin_top = -1.0
+margin_right = 256.0
+margin_bottom = 13.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 35 )
+text = "Fullscreen Key:"
+
+[node name="Back" type="Button" parent="Holder"]
+margin_left = 245.0
+margin_top = 248.0
+margin_right = 267.0
+margin_bottom = 264.0
+custom_colors/font_color_disabled = Color( 1, 1, 1, 1 )
+custom_colors/font_color_focus = Color( 1, 0.435294, 0, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 1, 0.866667, 0, 1 )
+custom_colors/font_color_pressed = Color( 1, 0.72549, 0.458824, 1 )
+custom_fonts/font = SubResource( 5 )
+custom_styles/hover = SubResource( 6 )
+custom_styles/pressed = SubResource( 7 )
+custom_styles/focus = SubResource( 8 )
+custom_styles/disabled = SubResource( 9 )
+custom_styles/normal = SubResource( 10 )
+action_mode = 0
+text = "Back"
+
+[node name="Camera" type="Camera2D" parent="."]
+position = Vector2( 256, 150 )
+current = true
+limit_smoothed = true
+smoothing_enabled = true
+smoothing_speed = 8.0
+script = ExtResource( 15 )
+
+[node name="Limits" type="Node" parent="Camera"]
+
+[node name="TopLeft" type="Position2D" parent="Camera/Limits"]
+
+[node name="BottomRight" type="Position2D" parent="Camera/Limits"]
+position = Vector2( 512, 300 )
+
+[node name="Tween" type="Tween" parent="Camera"]
+
+[node name="Timer" type="Timer" parent="Camera"]
+
+[node name="Jumpscare" type="Sprite" parent="."]
+visible = false
+position = Vector2( 256, 150 )
+texture = ExtResource( 16 )
+
+[node name="Transition" parent="." instance=ExtResource( 5 )]
+
+[node name="Selecting" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+volume_db = -10.0
+bus = "SFX"
+
+[node name="JumpscareSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 17 )
+volume_db = -5.0
+bus = "SFX"
+
+[node name="Selected" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+volume_db = -10.0
+bus = "SFX"
+
+[node name="Click" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 13 )
+volume_db = -3.0
+bus = "SFX"
+
+[connection signal="tab_changed" from="Holder/Container" to="." method="_on_Container_tab_changed"]
+[connection signal="mouse_entered" from="Holder/Container/General/ScrollContainer/HBoxContainer/LowQuality" to="." method="_on_Stuff_mouse_entered"]
+[connection signal="toggled" from="Holder/Container/General/ScrollContainer/HBoxContainer/LowQuality" to="." method="_on_Stuff_pressed"]
+[connection signal="mouse_entered" from="Holder/Container/General/ScrollContainer/HBoxContainer/Screenshake" to="." method="_on_Stuff_mouse_entered"]
+[connection signal="toggled" from="Holder/Container/General/ScrollContainer/HBoxContainer/Screenshake" to="." method="_on_Stuff_pressed"]
+[connection signal="mouse_entered" from="Holder/Container/General/ScrollContainer/HBoxContainer/FlashingEffects" to="." method="_on_Stuff_mouse_entered"]
+[connection signal="toggled" from="Holder/Container/General/ScrollContainer/HBoxContainer/FlashingEffects" to="." method="_on_Stuff_pressed"]
+[connection signal="mouse_entered" from="Holder/Container/General/ScrollContainer/HBoxContainer/AutoPause" to="." method="_on_Stuff_mouse_entered"]
+[connection signal="toggled" from="Holder/Container/General/ScrollContainer/HBoxContainer/AutoPause" to="." method="_on_Stuff_pressed"]
+[connection signal="mouse_entered" from="Holder/Container/General/ScrollContainer/HBoxContainer/FPSCounter" to="." method="_on_Stuff_mouse_entered"]
+[connection signal="toggled" from="Holder/Container/General/ScrollContainer/HBoxContainer/FPSCounter" to="." method="_on_Stuff_pressed"]
+[connection signal="focus_entered" from="Holder/Container/General/VolumeBar" to="." method="_on_Stuff_focus_entered"]
+[connection signal="mouse_entered" from="Holder/Container/General/VolumeBar" to="." method="_on_Stuff_mouse_entered"]
+[connection signal="value_changed" from="Holder/Container/General/VolumeBar" to="." method="_on_VolumeBar_value_changed"]
+[connection signal="focus_entered" from="Holder/Container/General/SFXBar" to="." method="_on_Stuff_focus_entered"]
+[connection signal="mouse_entered" from="Holder/Container/General/SFXBar" to="." method="_on_Stuff_mouse_entered"]
+[connection signal="value_changed" from="Holder/Container/General/SFXBar" to="." method="_on_SFXBar_value_changed"]
+[connection signal="focus_entered" from="Holder/Container/General/BrightnessBar" to="." method="_on_Stuff_focus_entered"]
+[connection signal="mouse_entered" from="Holder/Container/General/BrightnessBar" to="." method="_on_Stuff_mouse_entered"]
+[connection signal="focus_entered" from="Holder/Container/General/Reset" to="." method="_on_Stuff_focus_entered"]
+[connection signal="mouse_entered" from="Holder/Container/General/Reset" to="." method="_on_Stuff_mouse_entered"]
+[connection signal="pressed" from="Holder/Container/General/Reset" to="." method="_on_Reset_pressed"]
+[connection signal="mouse_entered" from="Holder/Container/General/Reset/ResettingBorder/Gaa/Selecting" to="." method="_on_Gaa_Selecting_mouse_entered"]
+[connection signal="mouse_exited" from="Holder/Container/General/Reset/ResettingBorder/Gaa/Selecting" to="." method="_on_Selecting_mouse_exited"]
+[connection signal="pressed" from="Holder/Container/General/Reset/ResettingBorder/Gaa/Selecting" to="." method="_on_Gaa_Selecting_pressed"]
+[connection signal="mouse_entered" from="Holder/Container/General/Reset/ResettingBorder/Baa/Selecting" to="." method="_on_Baa_Selecting_mouse_entered"]
+[connection signal="mouse_exited" from="Holder/Container/General/Reset/ResettingBorder/Baa/Selecting" to="." method="_on_Selecting_mouse_exited"]
+[connection signal="pressed" from="Holder/Container/General/Reset/ResettingBorder/Baa/Selecting" to="." method="_on_Baa_Selecting_pressed"]
+[connection signal="mouse_entered" from="Holder/Container/General/Reset/ResettingBorder/Sack/Selecting" to="." method="_on_Sack_Selecting_mouse_entered"]
+[connection signal="mouse_exited" from="Holder/Container/General/Reset/ResettingBorder/Sack/Selecting" to="." method="_on_Selecting_mouse_exited"]
+[connection signal="pressed" from="Holder/Container/General/Reset/ResettingBorder/Sack/Selecting" to="." method="_on_Sack_Selecting_pressed"]
+[connection signal="animation_finished" from="Holder/Container/General/Reset/ResettingBorder/Sack/Animation" to="." method="_on_JumpscareAnimation_animation_finished"]
+[connection signal="focus_entered" from="Holder/Back" to="." method="_on_Stuff_focus_entered"]
+[connection signal="mouse_entered" from="Holder/Back" to="." method="_on_Stuff_mouse_entered"]
+[connection signal="pressed" from="Holder/Back" to="." method="_on_Back_pressed"]
+[connection signal="timeout" from="Camera/Timer" to="Camera" method="_on_Timer_timeout"]
+[connection signal="animation_finished" from="Transition/Animation" to="." method="_on_Animation_animation_finished"]
+
+[editable path="Transition"]

@@ -1,0 +1,449 @@
+[gd_scene load_steps=21 format=2]
+
+[ext_resource path="res://Assets/Scenes/Characters/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Assets/Backgrounds/BaaBG/HerWorldBackground.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Sprites/Sprite/Sack.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Codes/Sections.gd" type="Script" id=6]
+[ext_resource path="res://Assets/Scenes/Misc/Portal.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Assets/SFX/Falling.mp3" type="AudioStream" id=10]
+[ext_resource path="res://Assets/Sprites/Misc/LargeShadow.png" type="Texture" id=13]
+[ext_resource path="res://Assets/Scenes/Misc/DialogueInteractor.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Assets/Shaders/Shader 2.gdshader" type="Shader" id=16]
+[ext_resource path="res://Assets/Sprites/Misc/Light.png" type="Texture" id=17]
+
+[sub_resource type="Gradient" id=65]
+offsets = PoolRealArray( 0.242236, 1 )
+colors = PoolColorArray( 0, 0, 0, 1, 0, 0, 0, 0 )
+
+[sub_resource type="GradientTexture" id=66]
+gradient = SubResource( 65 )
+
+[sub_resource type="ShaderMaterial" id=61]
+shader = ExtResource( 16 )
+shader_param/gradient = SubResource( 66 )
+
+[sub_resource type="Gradient" id=67]
+offsets = PoolRealArray( 0.130435, 1 )
+colors = PoolColorArray( 0, 0.116638, 0.574219, 0.235294, 0, 0, 0, 0 )
+
+[sub_resource type="GradientTexture" id=70]
+gradient = SubResource( 67 )
+
+[sub_resource type="ShaderMaterial" id=69]
+shader = ExtResource( 16 )
+shader_param/gradient = SubResource( 70 )
+
+[sub_resource type="Animation" id=63]
+resource_name = "Cutscene 4_9"
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "_load_dialogue"
+} ]
+}
+
+[sub_resource type="Animation" id=62]
+resource_name = "Cutscene 5"
+length = 2.0
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "_load_dialogue"
+} ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Foregrounds/1/Darkness:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("YSort/Player:ENABLED")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("YSort/Player:CUTSCENE")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("YSort/Sack:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 80, 152 ) ]
+}
+tracks/5/type = "method"
+tracks/5/path = NodePath(".")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "play_music"
+} ]
+}
+
+[sub_resource type="Animation" id=57]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("YSort/Sack:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("YSort/Sack:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 80, 152 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("YSort/Sack:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0.239216, 0.254902, 0.32549, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("SackShadow:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("YSort/Player:ENABLED")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("YSort/Player:CUTSCENE")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/6/type = "method"
+tracks/6/path = NodePath(".")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "play_music"
+} ]
+}
+
+[sub_resource type="Animation" id=58]
+resource_name = "Sack Idle"
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("YSort/Sack:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("YSort/Sack:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0.239216, 0.254902, 0.32549, 1 ) ]
+}
+
+[node name="Section 8" type="Node2D"]
+script = ExtResource( 6 )
+section = 8
+no_music = 8
+
+[node name="Backgrounds" type="ParallaxBackground" parent="."]
+
+[node name="1" type="ParallaxLayer" parent="Backgrounds"]
+motion_scale = Vector2( 0.2, 1 )
+motion_mirroring = Vector2( 512, 0 )
+
+[node name="Background" type="ColorRect" parent="Backgrounds/1"]
+margin_right = 512.0
+margin_bottom = 300.0
+color = Color( 0.00392157, 0.00784314, 0.027451, 1 )
+
+[node name="2" type="ParallaxLayer" parent="Backgrounds"]
+motion_scale = Vector2( 0.6, 1 )
+motion_mirroring = Vector2( 1024, 0 )
+
+[node name="Hanging Rocks" type="Sprite" parent="Backgrounds/2"]
+modulate = Color( 0.807843, 0.866667, 1, 0.156863 )
+position = Vector2( 512, 150 )
+texture = ExtResource( 2 )
+hframes = 4
+frame = 3
+
+[node name="3" type="ParallaxLayer" parent="Backgrounds"]
+motion_scale = Vector2( 0.8, 1 )
+motion_mirroring = Vector2( 1024, 0 )
+
+[node name="Spikes" type="Sprite" parent="Backgrounds/3"]
+modulate = Color( 0.662745, 0.768627, 1, 0.392157 )
+position = Vector2( 512, 150 )
+texture = ExtResource( 2 )
+hframes = 4
+frame = 2
+
+[node name="4" type="ParallaxLayer" parent="Backgrounds"]
+
+[node name="Road" type="Sprite" parent="Backgrounds/4"]
+modulate = Color( 0.886275, 0.921569, 1, 1 )
+position = Vector2( 512, 150 )
+texture = ExtResource( 2 )
+hframes = 4
+
+[node name="FadeDown" type="ColorRect" parent="Backgrounds/4"]
+material = SubResource( 61 )
+margin_top = 300.0
+margin_right = 124.0
+margin_bottom = 1324.0
+rect_rotation = -89.9999
+
+[node name="FadeUp" type="ColorRect" parent="Backgrounds/4"]
+material = SubResource( 69 )
+margin_left = 1024.0
+margin_right = 1104.0
+margin_bottom = 1024.0
+rect_rotation = 89.9999
+
+[node name="Walls" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Walls"]
+visible = false
+position = Vector2( 0, -8 )
+polygon = PoolVector2Array( 0, 160, 1024, 160, 1024, 8, 0, 8, -16, 8, -16, 308, -16, 328, 1024, 328, 1040, 328, 1040, 8, 1024, 8, 1024, 200, 0, 200 )
+
+[node name="Portal" parent="Walls" instance=ExtResource( 7 )]
+position = Vector2( 1024, 160 )
+scale = Vector2( 0.950049, 0.965431 )
+next_scene_path = "res://Assets/Scenes/Sections/Section 9.tscn"
+player_spawn_location = Vector2( 32, 168 )
+
+[node name="Pointer" parent="Walls/Portal/Arrow" index="0"]
+modulate = Color( 1, 0.584314, 0, 0.509804 )
+position = Vector2( 1008, 168 )
+
+[node name="SackShadow" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+position = Vector2( 80, 168 )
+scale = Vector2( 1, 0.5 )
+texture = ExtResource( 13 )
+
+[node name="YSort" type="YSort" parent="."]
+
+[node name="Sack" type="Sprite" parent="YSort"]
+modulate = Color( 0.239216, 0.254902, 0.32549, 1 )
+position = Vector2( 80, 152 )
+texture = ExtResource( 3 )
+hframes = 32
+vframes = 3
+frame = 1
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="YSort/Sack"]
+position = Vector2( 0, 16 )
+remote_path = NodePath("../../../SackShadow")
+update_rotation = false
+update_scale = false
+
+[node name="DialogueInteractor" parent="YSort/Sack" instance=ExtResource( 15 )]
+DIALOGUE = 1
+INDEX = 15
+ALT_INDEX = 24
+
+[node name="Light" type="Light2D" parent="YSort/Sack"]
+texture = ExtResource( 17 )
+energy = 0.8
+range_layer_max = 1
+
+[node name="Player" parent="YSort" instance=ExtResource( 1 )]
+modulate = Color( 0.254902, 0.282353, 0.317647, 1 )
+position = Vector2( 32, 160 )
+
+[node name="Camera" parent="YSort/Player" index="12"]
+zoom = Vector2( 0.8, 0.8 )
+
+[node name="BottomRight" parent="YSort/Player/Camera/Limits" index="1"]
+position = Vector2( 1024, 300 )
+
+[node name="Icon" parent="YSort/Player/MiniMenu/Background/Holder/Options/Stats" index="9"]
+frame = 2
+
+[node name="Hurt" parent="YSort/Player" index="23"]
+bus = "Reverb"
+
+[node name="Dush" parent="YSort/Player" index="24"]
+bus = "Reverb"
+
+[node name="Critical" parent="YSort/Player" index="27"]
+bus = "Reverb"
+
+[node name="Woosh" parent="YSort/Player" index="28"]
+bus = "Reverb"
+
+[node name="Ding" parent="YSort/Player" index="29"]
+bus = "Reverb"
+
+[node name="Scream" parent="YSort/Player" index="30"]
+bus = "Reverb"
+
+[node name="Footstep" parent="YSort/Player" index="31"]
+bus = "Reverb"
+
+[node name="Teleport" parent="YSort/Player" index="32"]
+bus = "Reverb"
+
+[node name="SuperKick" parent="YSort/Player" index="33"]
+bus = "Reverb"
+
+[node name="Transformation" parent="YSort/Player" index="34"]
+bus = "Reverb"
+
+[node name="Light" type="Light2D" parent="YSort/Player"]
+texture = ExtResource( 17 )
+texture_scale = 1.5
+energy = 0.8
+range_layer_max = 1
+
+[node name="Foregrounds" type="ParallaxBackground" parent="."]
+layer = 0
+
+[node name="1" type="ParallaxLayer" parent="Foregrounds"]
+motion_scale = Vector2( 1.5, 1 )
+motion_mirroring = Vector2( 512, 0 )
+
+[node name="Darkness" type="ColorRect" parent="Foregrounds/1"]
+visible = false
+margin_right = 512.0
+margin_bottom = 300.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="2" type="ParallaxLayer" parent="Foregrounds"]
+motion_scale = Vector2( 1.5, 1 )
+motion_mirroring = Vector2( 1024, 0 )
+
+[node name="Spikes" type="Sprite" parent="Foregrounds/2"]
+modulate = Color( 0, 0, 0, 0.705882 )
+position = Vector2( 512, 208 )
+texture = ExtResource( 2 )
+hframes = 4
+frame = 2
+
+[node name="Ambience" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
+volume_db = -10.0
+autoplay = true
+bus = "Reverb"
+
+[node name="Cutscene" type="AnimationPlayer" parent="."]
+autoplay = "Sack Idle"
+"anims/Cutscene 4_9" = SubResource( 63 )
+"anims/Cutscene 5" = SubResource( 62 )
+anims/RESET = SubResource( 57 )
+"anims/Sack Idle" = SubResource( 58 )
+
+[editable path="Walls/Portal"]
+[editable path="Walls/Portal/Transition"]
+[editable path="YSort/Player"]
+[editable path="YSort/Player/MiniMenu"]

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Rumbling.mp3-44b6a35cf4824c675fc8250a18e5c86a.mp3str"
+
+[deps]
+
+source_file="res://Assets/SFX/Rumbling.mp3"
+dest_files=[ "res://.import/Rumbling.mp3-44b6a35cf4824c675fc8250a18e5c86a.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

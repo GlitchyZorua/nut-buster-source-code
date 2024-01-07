@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Woahup.mp3-486cf366f2b29e0823678254b4150be6.mp3str"
+
+[deps]
+
+source_file="res://Assets/SFX/Woahup.mp3"
+dest_files=[ "res://.import/Woahup.mp3-486cf366f2b29e0823678254b4150be6.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

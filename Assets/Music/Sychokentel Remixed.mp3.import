@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Sychokentel Remixed.mp3-32b0a79b7b99c89839184681bde0cbbb.mp3str"
+
+[deps]
+
+source_file="res://Assets/Music/Sychokentel Remixed.mp3"
+dest_files=[ "res://.import/Sychokentel Remixed.mp3-32b0a79b7b99c89839184681bde0cbbb.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

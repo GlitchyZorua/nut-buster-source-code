@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Scythe Impact.mp3-aeca943eb0e3b28d1ced149040aedd63.mp3str"
+
+[deps]
+
+source_file="res://Assets/SFX/Scythe Impact.mp3"
+dest_files=[ "res://.import/Scythe Impact.mp3-aeca943eb0e3b28d1ced149040aedd63.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0
