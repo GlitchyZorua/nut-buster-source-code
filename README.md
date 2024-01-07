@@ -5,6 +5,10 @@ posted source code by permission from chal.
 
 if you do fork it, feel free to send it to us via discord.
 
+all i ask is, please, don't make fnf shit with the characters. at lest do something creative.
+
+i mean, you can if you want, but... we just discourage it.
+
 Chal's Discord: https://discord.gg/mnSd8GM6sf
 
 
