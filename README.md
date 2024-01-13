@@ -7,7 +7,7 @@ if you do fork it, feel free to send it to us via discord.
 
 all i ask is, please, don't make fnf shit with the characters. at lest do something creative.
 
-i mean, you can if you want, but... we just discourage it, We won't stop you. Promise.
+i mean, you can if you want, but... we just discourage it, We won't stop you, tho. Promise.
 
 Chal's Discord: https://discord.gg/mnSd8GM6sf
 
@@ -86,3 +86,43 @@ The data shall now be reset. have fun.
 
 
 #### dammit chal you fucking jumpscared me, not cool :(
+
+
+# will you clean up the shitty code
+
+maybe not. as there is a remake coming, I don't see a reason to clean up the fucking code.
+
+
+# I'm a developer and if you can add a console to the remake, that'll be cool.
+
+it is planned. but we do not have the budget to it yet. soon tho.
+
+# will the remake be in unity?
+no.
+
+# what about scratch?
+what the actual fuck, no.
+
+# unreal engine?
+no. it would make the game 10x more laggy. and broken. chals pc isn't that good.
+
+![ezgif-1-dcc7481e5d](https://github.com/GlitchyZorua/nut-buster-source-code/assets/54043124/a90a5f4d-c2e0-4cec-8349-3be61213b01c)
+
+
+# game maker?
+no.
+
+# RPG Maker?
+HOW THE FUCK IS THAT POSSIBLE-- NO!
+
+# What about my own game engine that I just made 50 seconds ago that is totally fast--
+
+please leave.
+
+# Godot?
+
+yes. 
+
+# Squeak? 
+what is wrong with you.
+
