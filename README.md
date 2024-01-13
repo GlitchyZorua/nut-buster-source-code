@@ -78,6 +78,8 @@ yes
 3. Pick any character you wanna reset
 > [!TIP]
 > If you wanna reset all save files, you'll need to reset each indiviality. if you are playing an older version of there is an already an option to reset it all.
+
+
 ![](https://github.com/GlitchyZorua/GlitchyZorua.github.io/blob/main/projects/random/nb_2.PNG?raw=true)
 
 The data shall now be reset. have fun.
