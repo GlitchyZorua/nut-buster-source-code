@@ -83,3 +83,6 @@ yes
 ![](https://github.com/GlitchyZorua/GlitchyZorua.github.io/blob/main/projects/random/nb_2.PNG?raw=true)
 
 The data shall now be reset. have fun.
+
+
+#### dammit chal you fucking jumpscared me, not cool :(
