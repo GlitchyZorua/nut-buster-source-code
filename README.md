@@ -125,3 +125,8 @@ yes.
 # Squeak? 
 what is wrong with you.
 
+# I have other questions.
+cool. 
+
+E-mail (business only): redchaoticlegend@gmail.com
+Discord Server: https://discord.gg/mnSd8GM6sf
