@@ -95,7 +95,7 @@ maybe not. as there is a remake coming, I don't see a reason to clean up the fuc
 
 # I'm a developer and if you can add a console to the remake, that'll be cool.
 
-it is planned. but we do not have the budget to it yet. soon tho.
+it is planned.
 
 # will the remake be in unity?
 no.
